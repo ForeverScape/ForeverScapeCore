@@ -1,4 +1,4 @@
-This is the ForeverScape TileEngineModule for Angular
+This is the ForeverScape TileEngineModule as an Angular Component
 
 One day this might become a Polymer WebWidget
 
