@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="FScapeApp" scroll>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+        <title></title>
+        <script src="main/resources/lib/jquery-1.10.2/jquery-1.10.2.min.js"></script>
+        <script src="main/resources/lib/underscore-1.6/underscore-min.js"></script>
+        <script src="main/resources/lib/angular-1.2.16/angular.js"></script>
+        <script src="main/resources/lib/angular-1.2.16/angular-route.min.js"></script>
+        <script src="main/resources/lib/angular-1.2.16/angular-resource.min.js"></script>
+        <script src="main/resources/lib/debugger/renderjson.js"></script>
+        <script src="main/resources/lib/debugger/dimple.v1.1.2.min.js"></script>
+        <script src="main/resources/lib/d3.v3.1.10.min.js"></script>
+        <script src="main/resources/lib/class.js"></script>
+        <script src="main/resources/lib/angular-translate.js"></script>
+        <script src="main/resources/lib/angular-translate-loader-static-files.js"></script>
+        <script src="main/resources/lib/Stacktrace.js"></script>
+
+        <script src="main/resources/lib/ngForeverScape/compiled/ngForeverscape.min.js"></script>
+
+
+        <!-- build:script app -->
+        <!-- /build -->
+
+        <!-- build:script core -->
+        <!-- /build -->
+
+        <link rel="stylesheet" type="text/css" href="main/resources/css/screen.css" />
+    </head>
+    <body ng-controller="GlobalController as globalCtrl">
+        <navigation></navigation>
+        <div ng-view style="min-width: 100%;"></div>
+
+        <overlay></overlay>
+
+
+        <load-indicator></load-indicator>
+
+    </body>
+</html>

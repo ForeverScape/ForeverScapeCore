@@ -1,0 +1,3 @@
+[submodule "src/main/resources/lib/ngForeverScape"]
+	path = src/main/resources/lib/ngForeverScape
+	url = https://github.com/vance/NgForeverScape.git

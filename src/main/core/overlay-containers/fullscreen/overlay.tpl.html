@@ -1,0 +1,15 @@
+<div class="overlay-container"
+     ng-controller="OverlayController as overlayCtrl"
+     ng-show="overlayCtrl.showOverlay"
+     ng-click="overlayCtrl.onShadowClick($event)">
+
+    <div class="overlay-content-wrapper">
+
+        <div class="overlay-close" ng-show="overlayCtrl.showCloseIcon" ng-click="overlayCtrl.close()"></div>
+
+        <div class="overlay-help" ng-show="overlayCtrl.showHelpIcon"></div>
+
+        <overlay-content></overlay-content>
+
+    </div>
+</div>

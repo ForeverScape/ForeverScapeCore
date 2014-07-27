@@ -1,0 +1,26 @@
+#! groovy
+
+dependencies {
+
+    ext{
+        gebVersion = "0.9.1"
+        seleniumVersion = "2.37.0"
+        jacksonVersion = "1.9.3"
+        slf4jVersion = "1.7.0"
+    }
+
+    groovy "org.codehaus.groovy:groovy-all:2.1.5"
+    compile(
+            "org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion"
+    )
+    runtime "org.jruby:jruby-complete:1.7.12"
+    testCompile(
+            "org.spockframework:spock-core:0.7-groovy-2.0",
+            "org.gebish:geb-spock:$gebVersion",
+            "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion",
+            "org.seleniumhq.selenium:selenium-safari-driver:$seleniumVersion"
+    )
+
+    localDrivers.each { driver -> testCompile "org.seleniumhq.selenium:selenium-$driver-driver:$seleniumVersion" }
+
+}

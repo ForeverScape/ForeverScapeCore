@@ -1,0 +1,8 @@
+/node_modules
+/.grunt
+/.idea
+/test/coverage
+/src/index.html
+/src/index_minified.html
+/src/minified
+website

@@ -1,0 +1,41 @@
+{
+    "frayed" :
+    [
+        {
+            "type":"humanInteraction",
+            "values":{
+                "speaking": 8,
+                "sentimentalConversation":5,
+                "physicalTaskRequests":8,
+                "talkingAboutFood":6,
+                "talkingInGeneral":7,
+                "answeringQuestions": 6
+            }
+        },
+        {
+            "type":"physicalTasks",
+            "values":{
+                "bendingOver": 8,
+                "repetitiveMotion":8,
+                "lookingUp":7,
+                "sittingAtDesk":9,
+                "liftingHeavyThings":10,
+                "liftingAwkwardThings":8,
+                "driving":7,
+                "inhalingDust":6
+            }
+        },
+        {
+            "type":"work",
+            "values": {
+                "email":7,
+                "documentation":7,
+                "readingAboutAngular":8,
+                "emailingAboutAngular":9,
+                "randomBestPracticesSuggestions": 6,
+                "talkAboutSoccer":6
+            }
+        }
+    ]
+
+}

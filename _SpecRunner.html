@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner</title>
+
+  
+  <link rel="stylesheet" type="text/css" href=".grunt/grunt-contrib-jasmine/jasmine.css">
+  
+
+  <script src=".grunt\grunt-contrib-jasmine/require.js"></script>
+  <script>
+    require.onError = function(error) {
+      var message = error.requireType + ': ';
+      if (error.requireType === 'scripterror' || error.requireType === 'notloaded' && error.requireModules) {
+        message += 'Illegal path or script error: ' + '[\'' + error.requireModules.join("', '") + '\']';
+      } else {
+        message += error.message;
+      }
+
+      throw Error(message);
+    };
+  </script>
+
+  
+  
+  <script src=".grunt/grunt-contrib-jasmine/jasmine.js"></script>
+  
+  <script src=".grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
+  
+  <script src=".grunt/grunt-contrib-jasmine/boot.js"></script>
+  
+  <script src="src/main/resources/lib/angular-1.2.16/angular.js"></script>
+  
+  <script src="src/main/resources/lib/angular-1.2.16/angular-mocks.js"></script>
+  
+  <script src="src/main/resources/lib/angular-1.2.16/angular-resource.js"></script>
+  
+  <script src="src/main/resources/lib/angular-1.2.16/angular-route.js"></script>
+  
+  <script src="src/main/resources/lib/debugger/renderjson.js"></script>
+  
+  <script src="src/main/resources/lib/debugger/dimple.v1.1.2.min.js"></script>
+  
+  <script src="src/main/resources/lib/angular-1.2.16/angular-scenario"></script>
+  
+  <script src="src/main/resources/lib/angular-1.2.16/angular-loader.js"></script>
+  
+  <script src="src/main/resources/lib/class.js"></script>
+  
+  <script src="src/main/resources/lib/angular-translate.min.js"></script>
+  
+  <script src="src/main/resources/lib/stacktrace.js"></script>
+  
+  <script src="src/main/resources/lib/angular-translate.js"></script>
+  
+  
+
+  <script>
+    
+
+    
+      require.config({
+  "baseUrl": ".grunt/grunt-contrib-jasmine/",
+  "paths": {
+    "angular": "src/main/resources/lib/angular-1.2.16/angular",
+    "angularMocks": "src/main/resources/lib/angular-1.2.16/angular-mocks",
+    "angularResource": "src/main/resources/lib/angular-1.2.16/angular-resource",
+    "angularRoute": "src/main/resources/lib/angular-1.2.16/angular-route",
+    "angularScenario": "src/main/resources/lib/angular-1.2.16/angular-scenario",
+    "class": "src/main/resources/lib/class",
+    "pascal": "src/main/resources/lib/angular-translate"
+  },
+  "shim": {
+    "angular": {
+      "exports": "angular"
+    },
+    "angular-ui.utils": {
+      "deps": [
+        "angular"
+      ]
+    },
+    "angularMocks": {
+      "deps": [
+        "angular"
+      ],
+      "exports": "angular.mock"
+    },
+    "angularResource": {
+      "deps": [
+        "angular"
+      ],
+      "exports": "angular.resource"
+    },
+    "angularRoute": {
+      "deps": [
+        "angular"
+      ],
+      "exports": "angular.router"
+    },
+    "angularScenario": {
+      "deps": [
+        "angular"
+      ],
+      "exports": "angular.scenario"
+    },
+    "angularTranslate": {
+      "deps": [
+        "angular"
+      ],
+      "exports": "pascalprecht.translate"
+    }
+  }
+});
+    
+  </script>
+
+  <script>
+    // Delay onLoad function until we are ready
+    var startTests = window.onload;
+    window.onload = null;
+
+    function launchTest() {
+    require([
+      
+        
+        '../../src/main/app/app' ,
+      
+        
+        '../../src/main/app/components/loadIndicator/LoadIndicatorDirective' ,
+      
+        
+        '../../src/main/app/components/nav/NavController.Spec' ,
+      
+        
+        '../../src/main/app/components/nav/NavController' ,
+      
+        
+        '../../src/main/app/components/nav/NavigationDirective' ,
+      
+        
+        '../../src/main/app/components/widgetView/WidgetListDirective' ,
+      
+        
+        '../../src/main/app/global/HttpInterceptor' ,
+      
+        
+        '../../src/main/app/modals/createNewWidget/NewWidgetController' ,
+      
+        
+        '../../src/main/app/modals/createNewWidget/NewWidgetModal' ,
+      
+        
+        '../../src/main/app/modals/errorModal/ErrorController' ,
+      
+        
+        '../../src/main/app/modals/errorModal/ErrorModal' ,
+      
+        
+        '../../src/main/app/modals/errorModal/ErrorService' ,
+      
+        
+        '../../src/main/app/modals/successModal/SuccessController' ,
+      
+        
+        '../../src/main/app/modals/successModal/SuccessModal' ,
+      
+        
+        '../../src/main/app/pages/test-page/TestController' ,
+      
+        
+        '../../src/main/app/pages/widget/WidgetController.Spec' ,
+      
+        
+        '../../src/main/app/pages/widget/WidgetController' ,
+      
+        
+        '../../src/main/app/settings' ,
+      
+        
+        '../../src/main/core/authentication/AuthTest' ,
+      
+        
+        '../../src/main/core/base/BaseController' ,
+      
+        
+        '../../src/main/core/base/BaseHttpService' ,
+      
+        
+        '../../src/main/core/base/BaseModel' ,
+      
+        
+        '../../src/main/core/base/GlobalController' ,
+      
+        
+        '../../src/main/core/directives/Alerts' ,
+      
+        
+        '../../src/main/core/directives/Validation' ,
+      
+        
+        '../../src/main/core/models/GlobalModelService' ,
+      
+        
+        '../../src/main/core/models/widget/WidgetFactory.Spec' ,
+      
+        
+        '../../src/main/core/models/widget/WidgetModel' ,
+      
+        
+        '../../src/main/core/models/widget/WidgetService' ,
+      
+        
+        '../../src/main/core/overlay-containers/fullscreen/OverlayController' ,
+      
+        
+        '../../src/main/core/utils/Constants' ,
+      
+        
+        '../../src/main/core/utils/URLParameterParser.Spec' ,
+      
+        
+        '../../src/main/core/utils/URLParameterParser' ,
+      
+        
+        '../../src/main/core/utils/btf-modal' 
+      
+    ],
+    function(){
+      require(['src/main/app/components/nav/NavController.Spec.js','src/main/app/pages/widget/WidgetController.Spec.js','src/main/core/models/widget/WidgetFactory.Spec.js','src/main/core/utils/URLParameterParser.Spec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+        startTests();
+      });
+    }
+    )
+  }
+  </script>
+
+  
+  <script>
+  launchTest();
+  </script>
+  
+</head>
+<body>
+</body>
+</html>

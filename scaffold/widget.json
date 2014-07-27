@@ -1,0 +1,31 @@
+{
+    "root":[
+        {
+            "id":0,
+            "name":"Larry",
+            "lastName": "Lover",
+            "price":100,
+            "currency":"USD",
+            "rating":3,
+            "readOnly": true
+        },
+        {
+            "id":1,
+            "name":"Curly",
+            "lastName": "Champ",
+            "price":200,
+            "currency":"HK",
+            "rating":5,
+            "readOnly": true
+        },
+        {
+            "id":2,
+            "name":"Moe",
+            "lastName": "Manly",
+            "price":300,
+            "currency":"YEN",
+            "rating":4,
+            "readOnly": true
+        }
+    ]
+}
