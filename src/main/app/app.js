@@ -22,7 +22,7 @@ app.config( function($routeProvider ) {
 
         $routeProvider
             .when('/', {
-                templateUrl: '../../main/app/pages/home/home.tpl.html'
+                templateUrl: '../../main/app/pages/testbed/testbed.tpl.html'
                 //controller: 'HomeController'
             })
 

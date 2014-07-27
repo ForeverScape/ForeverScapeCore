@@ -1,7 +1,45 @@
 angular.module('FScapeApp.Services').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('src/main/app/components/loadIndicator/indicator.html',
+  $templateCache.put('src/main/app/pages/error.html',
+    "<p>Page does not exist... or does it?</p>"
+  );
+
+
+  $templateCache.put('src/main/app/pages/testbed/testbed.tpl.html',
+    "<div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<h1>ForeverScape Engine</h1>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <h2>Testbed</h2>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    This is the testbed page where you can load  and test the engine directive\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<foreverscape-engine width=\"100%\" height=\"fill-window\" ></foreverscape-engine>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('src/main/core/components/loadIndicator/indicator.html',
     "<div class=\"load-indicator-view\">\r" +
     "\n" +
     "  <div class=\"load-indicator-background\">&nbsp;</div>\r" +
@@ -16,7 +54,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/app/components/nav/navigation.html',
+  $templateCache.put('src/main/core/components/nav/navigation.html',
     "<nav class=\"header-container\" ng-controller=\"NavController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
     "\n" +
     "\r" +
@@ -77,7 +115,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/app/components/widgetView/WidgetList.tpl.html',
+  $templateCache.put('src/main/core/components/widgetView/WidgetList.tpl.html',
     "<div>\r" +
     "\n" +
     "\r" +
@@ -168,7 +206,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/app/modals/errorModal/error.tpl.html',
+  $templateCache.put('src/main/core/modals/errorModal/error.tpl.html',
     "<div class=\"debugger\" ng-controller=\"ErrorController as errorCtrl\">\r" +
     "\n" +
     "  <div class=\"overlay-header\">\r" +
@@ -191,7 +229,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/app/modals/successModal/success.tpl.html',
+  $templateCache.put('src/main/core/modals/successModal/success.tpl.html',
     "<div ng-controller=\"SuccessController as successCtrl\">\r" +
     "\n" +
     "  <div class=\"overlay-header\">\r" +
@@ -203,58 +241,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\r" +
     "\n" +
     "  </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('src/main/app/pages/error.html',
-    "<p>Page does not exist... or does it?</p>"
-  );
-
-
-  $templateCache.put('src/main/app/pages/home/home.tpl.html',
-    "<div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <br/>\r" +
-    "\n" +
-    "    <br/>\r" +
-    "\n" +
-    "    <br/>\r" +
-    "\n" +
-    "    <br/>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    wefewf wpoefijw efowine f\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<foreverscape-engine></foreverscape-engine>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "what the fuck?\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "\r" +
     "\n" +
