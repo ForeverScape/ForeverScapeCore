@@ -11,27 +11,9 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "<h1>ForeverScape Engine</h1>\r" +
-    "\n" +
-    "\r" +
+    "    <h1>ForeverScape Engine</h1>\r" +
     "\n" +
     "    <h2>Testbed</h2>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    This is the testbed page where you can load  and test the engine directive\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<foreverscape-engine width=\"100%\" height=\"fill-window\" ></foreverscape-engine>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "\r" +
     "\n" +

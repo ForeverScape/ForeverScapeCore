@@ -21,8 +21,8 @@ app.config( function($routeProvider ) {
         'use strict';
 
         $routeProvider
-            .when('/', {
-                templateUrl: '../../main/app/pages/testbed/testbed.tpl.html'
+            .when('/test', {
+                templateUrl: 'main/app/pages/testbed/testbed.tpl.html'
                 //controller: 'HomeController'
             })
 
