@@ -5,7 +5,9 @@ One day this might become a Polymer WebWidget.
 
 Licensing:
 
-Any display of content directly from or derived from the ForeverScape artwork must be accompanied with the text "ForeverScape" on or in the same vicinity of the display apparatus, NOT JUST IN SOURCE CODE. The minimum font size for the text "ForeverScape" must be at least 7% of the of height or width (whichever is greater) of the screen size of the artwork presented. 
+Any display of content directly from or derived from the ForeverScape artwork must be accompanied with the text "ForeverScape" on or in the same vicinity of the display apparatus, NOT JUST IN SOURCE CODE. The minimum font size for the text "ForeverScape" must be at least 7% of the of height or width (whichever is greater) of the screen size of the artwork presented and must link to http://foreverscape.com in a browser on the device. 
+
+You can create commercial products using this API and the images in the CDN hosted by ForeverScape, LLC as long as you adhere to the restrictions above. Failture to comply will be prosecuted to the fullest extent of the law, including trademark and copyright law. 
 
 Code is distributed under MIT license. 
 
@@ -25,8 +27,9 @@ Proposed Features:
 
 Usage:
 
-  There are several ways to use this library	
-	1) Add your own components to the application directory (or other directory of choice)
+  There are several ways to use this library	'
+  
+  	1) Add your own components to the application directory (or other directory of choice)
             
 
         2) Include `Core` Directory in your project
