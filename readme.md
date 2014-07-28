@@ -11,7 +11,7 @@ You can create commercial products using this API and the images in the CDN host
 Code is distributed under MIT license. 
 
 
-Demo: To Be Announced, see current *crappy* website at http://foreverscape.com
+Demo: To Be Announced, see the artwork at the current *slammed together* website http://foreverscape.com
 
 
 Proposed Features:
