@@ -33,11 +33,11 @@ Usage:
             
 
         2) Include `Core` Directory in your project
-            
+           
             - copy the core directory to your application
             - inject the following modules
 
-	3) Standalone Page (Good for viewing the Foreverscape)
+        3) Standalone Page (Good for viewing the Foreverscape)
             - Compile using `Compiling` directions below
             - host the application on your server of choice
             - run index.html in your browser
