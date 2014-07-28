@@ -1,6 +1,5 @@
 This is the ForeverScape Tile Engine Angular Component.
 
-One day this might become a Polymer WebWidget.
 
 
 Licensing:
@@ -17,11 +16,11 @@ Demo: To Be Announced
 
 Proposed Features:
 
-  - Endless, column shifting tiling 
-  - Memory and load optimization 
-  - Go-To-Any-Point
-  - Read data from game controller for scripting
-  - External interfaces to allow control by game engine, webpage, iframe etc.
+   - Endless, column shifting tiling 
+   - Memory and load optimization 
+   - Go-To-Any-Point
+   - Read data from game controller for scripting
+   - External interfaces to allow control by game engine, webpage, iframe etc.
 
 
 
