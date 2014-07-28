@@ -29,7 +29,7 @@ Usage:
 
   There are several ways to use this library	'
   
-  	1) Add your own components to the application directory (or other directory of choice)
+  	   1) Add your own components to the application directory (or other directory of choice)
             
 
         2) Include `Core` Directory in your project
