@@ -27,14 +27,27 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
   body {
     position:relative;
     vertical-align: top;
+    width:100%;
+    height:100%;
+
+
   }
+
+}
+
+.page {
+  margin-top:60px;
+  height: 100%;
+  width:100%
 }
 
 
 /***
   COMPONENTs
 ***/
-@import "../core/components/nav/Navigation";
+@import "../website/components/nav/Navigation";
+
+@import "../core/components/foreverscapeEngine/foreverscapeEngine";
 
 /***
   PAGEs

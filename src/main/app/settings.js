@@ -16,21 +16,12 @@ settingsModule.factory('settings', function() {
             return regexTestIfDev.test(this.baseURL());
         },
         serviceConfig: {
-            scaffoldBase: 'http://localhost:8383',
-            serviceBase: '',
-            endpoints: {
-                product: {
-                    target: 'scaffoldBase',
+           endpoints: {
+                config: {
+                    absolutePath: 'http://staging.foreverscape.com/service/',
                     version: "v1"
                 },
-                widget: {
-                    target: 'scaffoldBase',
-                    version: "v1"
-                },
-                season: {
-                    target: 'scaffoldBase',
-                    version: "v1"
-                }
+
             }
         }
     };

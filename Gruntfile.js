@@ -113,7 +113,7 @@ module.exports = function(grunt) {
             },
             pivotal: {
                 files: ['src/main/app/**/*.js', 'test/specs/**/*.js','src/main/website/**/*.js'],
-                tasks: ['connect', 'jasmine', 'jshint', 'buildIndex']
+                tasks: ['compile']
             }
 
 
@@ -138,6 +138,7 @@ module.exports = function(grunt) {
                     'src/main/resources/lib/angular-1.2.16/angular-mocks.js',
                     'src/main/resources/lib/angular-1.2.16/angular-resource.js',
                     'src/main/resources/lib/angular-1.2.16/angular-route.js',
+                    'src/main/resources/lib/angular-1.2.16/angular-cookies.js',
                     'src/main/resources/lib/debugger/renderjson.js',
                     'src/main/resources/lib/debugger/dimple.v1.1.2.min.js',
                     'src/main/resources/lib/angular-1.2.16/angular-scenario',
@@ -164,7 +165,8 @@ module.exports = function(grunt) {
                             'angularRoute': 'src/main/resources/lib/angular-1.2.16/angular-route',
                             'angularScenario': 'src/main/resources/lib/angular-1.2.16/angular-scenario',
                             'class': 'src/main/resources/lib/class',
-                            'pascal': 'src/main/resources/lib/angular-translate'
+                            'pascal': 'src/main/resources/lib/angular-translate',
+                            'angularCookies':'src/main/resources/lib/angular-1.2.16/angular-cookies.js',
                         },
                         shim: {
                             'angular': {
@@ -193,6 +195,10 @@ module.exports = function(grunt) {
                             'angularTranslate':{
                                 deps: ['angular'],
                                 'exports':'pascalprecht.translate'
+                            },
+                            'angularCookies':{
+                                deps: ['angular'],
+                                'exports':'ngCookies'
                             }
 
 
@@ -228,7 +234,11 @@ module.exports = function(grunt) {
                     }, {
                         pattern: 'src/main/resources/lib/angular-1.2.16/angular-route.js',
                         included: true
-                    }, {
+                    },  {
+                        pattern: 'src/main/resources/lib/angular-1.2.16/angular-cookies.js',
+                        included: true
+                    },
+                    {
                         pattern: 'src/main/resources/lib/angular-translate.min.js',
                         included: true
                     }, {
@@ -422,7 +432,7 @@ module.exports = function(grunt) {
 +
     // for building the index.html
     grunt.loadNpmTasks('grunt-html-build');
-    grunt.registerTask('buildIndex', ['htmlbuild:dev', 'replace:dev']);
+    grunt.registerTask('buildIndex', ['htmlbuild:dev', 'replace:dev', 'htmlbuild:prod', 'replace:prod']);
 
     // Default task.
     grunt.registerTask('default', ['watch']);

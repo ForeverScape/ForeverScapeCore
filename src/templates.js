@@ -7,13 +7,42 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
 
 
   $templateCache.put('src/main/app/pages/testbed/testbed.tpl.html',
-    "<div>\r" +
+    "<div class=\"page\">\r" +
     "\n" +
     "\r" +
     "\n" +
     "    <h1>ForeverScape Engine</h1>\r" +
     "\n" +
     "    <h2>Testbed</h2>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <foreverscape-engine></foreverscape-engine>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('src/main/core/components/foreverscapeEngine/foreverscape-engine.tpl.html',
+    "<div class=\"foreverscape-engine-wrapper\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"engine-frame\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -31,158 +60,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "    Loading...\r" +
     "\n" +
     "  </div>\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('src/main/core/components/nav/navigation.html',
-    "<nav class=\"header-container\" ng-controller=\"NavController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <span class=\"menu\" ng-click=\"showMenu=true\">\r" +
-    "\n" +
-    "        <div ng-show=\"showMenu\">HelloMenu</div>\r" +
-    "\n" +
-    "    </span>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <div class=\"title\">ForeverScape</div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <ul class=\"navigation\">\r" +
-    "\n" +
-    "        <li ng-class=\"{active:learnHover}\"\r" +
-    "\n" +
-    "                ng-mouseenter=\"learnHover=true\"\r" +
-    "\n" +
-    "                ng-mouseleave=\"learnHover=false\">\r" +
-    "\n" +
-    "            <b>L</b>earn\r" +
-    "\n" +
-    "        </li>\r" +
-    "\n" +
-    "        <li ng-class=\"{active:shopHover}\"\r" +
-    "\n" +
-    "                ng-mouseenter=\"shopHover=true\"\r" +
-    "\n" +
-    "                ng-mouseleave=\"shopHover=false\">\r" +
-    "\n" +
-    "            <b>S</b>hop\r" +
-    "\n" +
-    "        </li>\r" +
-    "\n" +
-    "        <li ng-class=\"{active:discoverHover}\"\r" +
-    "\n" +
-    "                ng-mouseenter=\"discoverHover=true\"\r" +
-    "\n" +
-    "                ng-mouseleave=\"discoverHover=false\">\r" +
-    "\n" +
-    "            <b>D</b>iscover\r" +
-    "\n" +
-    "        </li>\r" +
-    "\n" +
-    "    </ul>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</nav>"
-  );
-
-
-  $templateCache.put('src/main/core/components/widgetView/WidgetList.tpl.html',
-    "<div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <div ng-show=\"widgetCtrl.widgets.data.length > 1 \">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "        <span ng-show=\"widgetCtrl.widgets.data.length\"> Yay! We found {{widgetCtrl.widgets.data.length}} widgets! </span>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "        <ul ng-repeat=\"widget in widgetCtrl.widgets.data\">\r" +
-    "\n" +
-    "            <li>{{widget.name}} :\r" +
-    "\n" +
-    "                <a href=\"\" ng-click=\"widgetCtrl.getWidgetById(widget.id)\">Directive Link</a>, <a href=\"/#/widget/id/{{widget.id}}\">Permalink By Id</a> ,\r" +
-    "\n" +
-    "                <a href=\"/#/widget/name/{{widget.name}}\">Permalink By Name</a>\r" +
-    "\n" +
-    "                <a href=\"/#/widget/lastname/{{widget.lastName}}\">permalink by lastName</a>\r" +
-    "\n" +
-    "                <br/>\r" +
-    "\n" +
-    "                <input type=\"button\" ng-click=\"widgetCtrl.deleteWidget(widget.id)\" value=\"Delete\"/>\r" +
-    "\n" +
-    "                <input type=\"button\" ng-click=\"widgetCtrl.editWidget(widget.id)\" value=\"Edit\"/>\r" +
-    "\n" +
-    "                <br/>\r" +
-    "\n" +
-    "                Rating:\r" +
-    "\n" +
-    "                    <input type=\"button\" ng-click=\"widgetCtrl.rateWidget(widget.id,1)\" value=\"&#10032;\"/>\r" +
-    "\n" +
-    "                    <input type=\"button\" ng-click=\"widgetCtrl.rateWidget(widget.id,2)\" value=\"&#10032;\"/>\r" +
-    "\n" +
-    "                    <input type=\"button\" ng-click=\"widgetCtrl.rateWidget(widget.id,3)\" value=\"&#10032;\"/>\r" +
-    "\n" +
-    "                    <input type=\"button\" ng-click=\"widgetCtrl.rateWidget(widget.id,4)\" value=\"&#10032;\"/>\r" +
-    "\n" +
-    "                    <input type=\"button\" ng-click=\"widgetCtrl.rateWidget(widget.id,5)\" value=\"&#10032;\"/>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                <ul ng-repeat=\"(key, value) in widget track by $index\">\r" +
-    "\n" +
-    "                    <li style=\"margin-top:-12px;\" >{{key}} : {{value}}</li>\r" +
-    "\n" +
-    "                </ul>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "        </ul>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <div ng-show=\"widgetCtrl.widgets.data.length <= 1 && widgetCtrl.widgets.data.length > 0 \">\r" +
-    "\n" +
-    "        <ul ng-repeat=\"widget in widgetCtrl.widgets.data\">\r" +
-    "\n" +
-    "            <li >{{widget.name}}</li>\r" +
-    "\n" +
-    "        </ul>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "</div>"
   );
@@ -265,18 +142,77 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
+  $templateCache.put('src/main/website/components/nav/navigation.html',
+    "<nav class=\"header-container\" ng-controller=\"NavController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <span class=\"menu\" ng-click=\"showMenu=true\">\r" +
+    "\n" +
+    "        <div ng-show=\"showMenu\">HelloMenu</div>\r" +
+    "\n" +
+    "    </span>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"title\">ForeverScape</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <ul class=\"navigation\">\r" +
+    "\n" +
+    "        <li ng-class=\"{active:learnHover}\"\r" +
+    "\n" +
+    "                ng-mouseenter=\"learnHover=true\"\r" +
+    "\n" +
+    "                ng-mouseleave=\"learnHover=false\">\r" +
+    "\n" +
+    "            <b>L</b>earn\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "        <li ng-class=\"{active:shopHover}\"\r" +
+    "\n" +
+    "                ng-mouseenter=\"shopHover=true\"\r" +
+    "\n" +
+    "                ng-mouseleave=\"shopHover=false\">\r" +
+    "\n" +
+    "            <b>S</b>hop\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "        <li ng-class=\"{active:discoverHover}\"\r" +
+    "\n" +
+    "                ng-mouseenter=\"discoverHover=true\"\r" +
+    "\n" +
+    "                ng-mouseleave=\"discoverHover=false\">\r" +
+    "\n" +
+    "            <b>D</b>iscover\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "    </ul>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</nav>"
+  );
+
+
   $templateCache.put('src/main/website/pages/home/home.tpl.html',
-    "<div>\r" +
+    "<div class=\"page\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "<br/><br/><br/><br/><br/><br/>\r" +
-    "\n" +
-    "    Homepage\r" +
+    "    <h1>H</h1>\r" +
     "\n" +
     "\r" +
+    "\n" +
+    "<foreverscape-engine width=\"100%\" height=\"fill-window\"></foreverscape-engine>\r" +
     "\n" +
     "\r" +
     "\n" +

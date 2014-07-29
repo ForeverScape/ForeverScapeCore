@@ -127,54 +127,6 @@
         '../../src/main/app/app' ,
       
         
-        '../../src/main/app/components/loadIndicator/LoadIndicatorDirective' ,
-      
-        
-        '../../src/main/app/components/nav/NavController.Spec' ,
-      
-        
-        '../../src/main/app/components/nav/NavController' ,
-      
-        
-        '../../src/main/app/components/nav/NavigationDirective' ,
-      
-        
-        '../../src/main/app/components/widgetView/WidgetListDirective' ,
-      
-        
-        '../../src/main/app/global/HttpInterceptor' ,
-      
-        
-        '../../src/main/app/modals/createNewWidget/NewWidgetController' ,
-      
-        
-        '../../src/main/app/modals/createNewWidget/NewWidgetModal' ,
-      
-        
-        '../../src/main/app/modals/errorModal/ErrorController' ,
-      
-        
-        '../../src/main/app/modals/errorModal/ErrorModal' ,
-      
-        
-        '../../src/main/app/modals/errorModal/ErrorService' ,
-      
-        
-        '../../src/main/app/modals/successModal/SuccessController' ,
-      
-        
-        '../../src/main/app/modals/successModal/SuccessModal' ,
-      
-        
-        '../../src/main/app/pages/test-page/TestController' ,
-      
-        
-        '../../src/main/app/pages/widget/WidgetController.Spec' ,
-      
-        
-        '../../src/main/app/pages/widget/WidgetController' ,
-      
-        
         '../../src/main/app/settings' ,
       
         
@@ -193,13 +145,55 @@
         '../../src/main/core/base/GlobalController' ,
       
         
+        '../../src/main/core/components/foreverscapeEngine/foreverScapeEngineController' ,
+      
+        
+        '../../src/main/core/components/foreverscapeEngine/foreverScapeEngineDirective' ,
+      
+        
+        '../../src/main/core/components/loadIndicator/LoadIndicatorDirective' ,
+      
+        
+        '../../src/main/core/components/nav/NavController.Spec' ,
+      
+        
+        '../../src/main/core/components/nav/NavController' ,
+      
+        
+        '../../src/main/core/components/nav/NavigationDirective' ,
+      
+        
+        '../../src/main/core/components/widgetView/WidgetListDirective' ,
+      
+        
         '../../src/main/core/directives/Alerts' ,
       
         
         '../../src/main/core/directives/Validation' ,
       
         
+        '../../src/main/core/modals/errorModal/ErrorController' ,
+      
+        
+        '../../src/main/core/modals/errorModal/ErrorModal' ,
+      
+        
+        '../../src/main/core/modals/errorModal/ErrorService' ,
+      
+        
+        '../../src/main/core/modals/successModal/SuccessController' ,
+      
+        
+        '../../src/main/core/modals/successModal/SuccessModal' ,
+      
+        
         '../../src/main/core/models/GlobalModelService' ,
+      
+        
+        '../../src/main/core/models/config/ConfigModel' ,
+      
+        
+        '../../src/main/core/models/config/ConfigService' ,
       
         
         '../../src/main/core/models/widget/WidgetFactory.Spec' ,
@@ -223,11 +217,14 @@
         '../../src/main/core/utils/URLParameterParser' ,
       
         
-        '../../src/main/core/utils/btf-modal' 
+        '../../src/main/core/utils/btf-modal' ,
+      
+        
+        '../../src/main/website/site' 
       
     ],
     function(){
-      require(['src/main/core/components/nav/NavController.Spec.js','src/main/app/pages/widget/WidgetController.Spec.js','src/main/core/models/widget/WidgetFactory.Spec.js','src/main/core/utils/URLParameterParser.Spec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+      require(['src/main/website/components/nav/NavController.Spec.js','src/main/core/models/widget/WidgetFactory.Spec.js','src/main/core/utils/URLParameterParser.Spec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
         startTests();
       });
     }
