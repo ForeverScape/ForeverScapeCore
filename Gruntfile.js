@@ -14,7 +14,10 @@ module.exports = function(grunt) {
                         app: [
                             'src/main/app/**/*.js',
                             '!src/main/app/**/*Spec*.js',
-                            'src/templates.js'],
+                            'src/templates.js',
+                            'src/main/website/**/*.js', // this is not included in this repo
+                            '!src/main/website/**/*Spec.js',
+                            ],
                         core: ['src/main/core/**/*.js','!src/main/core/**/*Spec*.js']
                     }
                 }
@@ -109,7 +112,7 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             },
             pivotal: {
-                files: ['src/main/app/**/*.js', 'test/specs/**/*.js'],
+                files: ['src/main/app/**/*.js', 'test/specs/**/*.js','src/main/website/**/*.js'],
                 tasks: ['connect', 'jasmine', 'jshint', 'buildIndex']
             }
 
@@ -126,7 +129,7 @@ module.exports = function(grunt) {
         // we generate the template
         jasmine: {
 
-            src: ['./src/main/app/**/*.js', './src/main/core/**/*.js'],
+            src: ['./src/main/app/**/*.js', './src/main/core/**/*.js','src/main/website/**/*.js'],
             options: {
                 keepRunner: true,
                 build: true,
@@ -246,7 +249,12 @@ module.exports = function(grunt) {
                     }, {
                         pattern: 'src/main/app/**/*.js',
                         included: true
-                    }, {
+                    },
+                    {
+                        pattern: 'src/main/website/**/*.js',
+                        included: true
+                    },
+                    {
                         pattern: 'src/main/core/**/*.js',
                         included: true
                     }, {
@@ -320,6 +328,10 @@ module.exports = function(grunt) {
             core: {
                 src: ['src/main/core/**/*.js','!src/main/core/**/*Spec*.js'],
                 dest: 'src/minified/core.js'
+            },
+            website: {
+                src: ['src/main/website/**/*.js', '!src/main/website/**/*Spec*.js'],
+                dest: 'src/minified/website.js'
             }
         },
 
@@ -327,7 +339,7 @@ module.exports = function(grunt) {
         ngtemplates: {
             'FScapeApp.Services': {
                 cwd: '',
-                src: ['src/main/app/**/*.html', 'src/main/core/**/*.html'],
+                src: ['src/main/app/**/*.html', 'src/main/core/**/*.html','src/main/website/**/*.html'],
                 dest: 'src/templates.js'
             }
         },
@@ -384,7 +396,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'src/minified/app.min.js': ['src/minified/app.js'],
-                    'src/minified/core.min.js': ['src/minified/core.js']
+                    'src/minified/core.min.js': ['src/minified/core.js'],
+                    'src/minified/website.min.js': ['src/minified/website.js']
                 }
             }
         }

@@ -264,4 +264,23 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "</div>"
   );
 
+
+  $templateCache.put('src/main/website/pages/home/home.tpl.html',
+    "<div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<br/><br/><br/><br/><br/><br/>\r" +
+    "\n" +
+    "    Homepage\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
 }]);
