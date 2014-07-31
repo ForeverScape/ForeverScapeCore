@@ -1,53 +1,57 @@
-This is the ForeverScape Tile Engine Angular Component.
+##ForeverScape Tile Engine##
+### Angular Component ###
 
-One day this might become a Polymer WebWidget.
 
 
-Licensing:
+###Licensing:###
 
-Any display of content directly from or derived from the ForeverScape artwork must be accompanied with the text "ForeverScape" on or in the same vicinity of the display apparatus, NOT JUST IN SOURCE CODE. The minimum font size for the text "ForeverScape" must be at least 7% of the of height or width (whichever is greater) of the screen size of the artwork presented. 
+Any display of content directly from or derived from the ForeverScape artwork must be accompanied with the text "ForeverScape" on or in the same vicinity of the display apparatus, NOT JUST IN SOURCE CODE. The minimum font size for the text "ForeverScape" must be at least 7% of the of height or width (whichever is greater) of the screen size of the artwork presented and must link to ```http://foreverscape.com?source={{ URL of your company or app}}``` in a browser on the device. This applies to any single image, cropping of a single image or assembly of multiple images. 
+
+You can create commercial software products using this API and the images in the CDN hosted by ForeverScape, LLC as long as you adhere to the restrictions above. Failture to comply will be prosecuted to the fullest extent of the law, including trademark and copyright law. Redistribution of images is strictly prohibited and granted only by the Artist in writing. Reproduction of images, in the form of digital tranfer over network, print, etching, engraving, stamping, and other mediums is strictly prohibited.
 
 Code is distributed under MIT license. 
 
 
-Demo: To Be Announced
+###Demo:###
+To Be Announced, see the artwork at the current *slammed together* website http://foreverscape.com
 
 
-Proposed Features:
+###Proposed Features:###
 
-  - Endless, column shifting tiling 
-  - Memory and load optimization 
-  - Go-To-Any-Point
-  - Read data from game controller for scripting
-  - External interfaces to allow control by game engine, webpage, iframe etc.
+   - Endless, column shifting tiling 
+   - Memory and load optimization 
+   - Go-To-Any-Point
+   - Read data from game controller for scripting
+   - External interfaces to allow control by game engine, webpage, iframe etc.
 
 
 
-Usage:
+###Usage:###
 
-  There are several ways to use this library	
-	1) Add your own components to the application directory (or other directory of choice)
+  There are several ways to use this library	'
+  
+  	   1. Add your own components to the application directory (or other directory of choice)
             
 
-        2) Include `Core` Directory in your project
-            
+      2. Include `Core` Directory in your project
+           
             - copy the core directory to your application
             - inject the following modules
 
-	3) Standalone Page (Good for viewing the Foreverscape)
+      3. Standalone Page (Good for viewing the Foreverscape)
             - Compile using `Compiling` directions below
             - host the application on your server of choice
             - run index.html in your browser
 
 
-Compiling
+###Compiling###
 
-1) install node
-2) install grunt
-3) install node modules with command `npm install`
-4) run `grunt comiple` to compile to the `compiled` directory
+1. install node
+2. install grunt
+3. install node modules with command `npm install`
+4. run `grunt comiple` to compile to the `compiled` directory
 
-Unit Testing
+###Unit Testing###
 
 
 
