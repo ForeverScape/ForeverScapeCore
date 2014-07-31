@@ -38,6 +38,8 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
+    "        <div\r" +
+    "\n" +
     "\r" +
     "\n" +
     "\r" +
@@ -143,7 +145,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
 
 
   $templateCache.put('src/main/website/components/nav/navigation.html',
-    "<nav class=\"header-container\" ng-controller=\"NavController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
+    "<nav class=\"header-container\" ng-controller=\"navController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
     "\n" +
     "\r" +
     "\n" +

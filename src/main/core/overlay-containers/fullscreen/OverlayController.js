@@ -2,7 +2,7 @@
     'use strict';
 
 
-    angular.module('FScapeApp.Controllers').controller('OverlayController', ['$scope', '$element', '$controller',
+    angular.module('FScapeApp.Controllers').controller('overlayController', ['$scope', '$element', '$controller',
     function($scope, $element, $controller) {
         var controller = {
             scope: null,

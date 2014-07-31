@@ -112,11 +112,16 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             },
             pivotal: {
-                files: ['src/main/app/**/*.js', 'test/specs/**/*.js','src/main/website/**/*.js'],
+                files: [
+                        'src/main/app/**/*.html',
+                        'src/main/core/**/*.html',
+                        'src/main/website/**/*.html',
+                        'src/main/app/**/*.js',
+                        'test/specs/**/*.js',
+                        'src/main/core/**/*.js',
+                        'src/main/website/**/*.js'],
                 tasks: ['compile']
             }
-
-
         },
 
         connect: {

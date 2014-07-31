@@ -19,19 +19,13 @@
                     {
                         throw new Error('\n\n > WARNING! Please add a node in the settings file for your endpoint(' + path+'). < \n \n');
                     }
-
                     if(endpoint.version !== '' )
                     {
-                        finalUrl = endpoint.absoluteUrl + '/' + endpoint.version + '/';
+                        finalUrl = this.addSlash( endpoint.absoluteUrl ) + endpoint.version;
                     } else {
                         finalUrl = endpoint.absoluteUrl;
                     }
-
-                    if( finalUrl.charAt( finalUrl.length - 1 ) !== '/')
-                    {
-                        finalUrl = finalUrl + '/';
-                    }
-                    return finalUrl;
+                    return this.addSlash( finalUrl );
                 },
 
                 //
@@ -103,7 +97,17 @@
                         },
                         params: {}
                     });
+                },
+
+                addSlash: function(str)
+                {
+                    if( str.charAt( str.length - 1 ) !== '/')
+                    {
+                        str = str + '/';
+                    }
+                    return str;
                 }
+
             };
 
         };

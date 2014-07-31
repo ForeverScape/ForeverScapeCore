@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('FScapeApp.Services').factory("GlobalModelService",function() {
+    angular.module('FScapeApp.Services').factory("globalModelService",function() {
 
             return {
 

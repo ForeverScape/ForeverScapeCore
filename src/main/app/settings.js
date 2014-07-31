@@ -18,10 +18,13 @@ settingsModule.factory('settings', function() {
         serviceConfig: {
            endpoints: {
                 config: {
-                    absolutePath: 'http://staging.foreverscape.com/service/',
+                    absoluteUrl: 'http://staging.foreverscape.com/services/',
                     version: "v1"
                 },
-
+               tile:{
+                   absoluteUrl: 'http://staging.foreverscape.com/services/',
+                   version:"v1"
+               }
             }
         }
     };
