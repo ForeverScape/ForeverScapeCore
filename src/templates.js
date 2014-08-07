@@ -32,15 +32,31 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
+    "    <div class=\"hud\">zoom: {{fscapeEngineCtrl.zoom}} time: {{fscapeEngineCtrl.time}}</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "    <div class=\"engine-frame\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "        <div\r" +
+    "        <div class=\"engine-scale\">\r" +
     "\n" +
     "\r" +
+    "\n" +
+    "            <div ng-style=\"{left:gridBox.x, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                {{gridBox.id}}<br/>\r" +
+    "\n" +
+    "                {{gridBox.row}}x{{gridBox.col}}\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
     "\n" +
     "\r" +
     "\n" +

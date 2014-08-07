@@ -111,6 +111,10 @@ module.exports = function(grunt) {
                 files: ['src/**/*.scss'],
                 tasks: ['compass']
             },
+            html: {
+                files: ['src/**/*.html'],
+                tasks: ['buildIndex', 'compass']
+            },
             pivotal: {
                 files: [
                         'src/main/app/**/*.html',
@@ -172,6 +176,7 @@ module.exports = function(grunt) {
                             'class': 'src/main/resources/lib/class',
                             'pascal': 'src/main/resources/lib/angular-translate',
                             'angularCookies':'src/main/resources/lib/angular-1.2.16/angular-cookies.js',
+                            'tweenMax': 'src/main/resources/lib/tweenmax.min.js',
                         },
                         shim: {
                             'angular': {
@@ -204,6 +209,9 @@ module.exports = function(grunt) {
                             'angularCookies':{
                                 deps: ['angular'],
                                 'exports':'ngCookies'
+                            }, 'tweenMax':{
+                                deps: [''],
+                                'exports':'TweenMax'
                             }
 
 
@@ -253,7 +261,10 @@ module.exports = function(grunt) {
                         pattern: 'src/main/resources/lib/angular-translate.js',
                         included: true
                     },
-
+                    {
+                        pattern: 'src/main/resources/lib/tweenmax.min.js',
+                        included: true
+                    },
                     //bake down the templates
                     {
                         pattern: 'src/main/app/templates.js',
@@ -285,7 +296,8 @@ module.exports = function(grunt) {
                     }, {
                         pattern: 'src/main/resources/lib/class.js',
                         included: true
-                    }
+                    },
+
                 ],
                 exclude: [
                     'lib/angular-1.2.16/docs/**/*.*',
