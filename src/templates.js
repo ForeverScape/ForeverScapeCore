@@ -32,7 +32,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"hud\">zoom: {{fscapeEngineCtrl.zoom}} time: {{fscapeEngineCtrl.time}}</div>\r" +
+    "    <div class=\"hud\">zoom: {{fscapeEngineCtrl.zoom}} time: {{  fscapeEngineCtrl.time| number:0 }}</div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -44,7 +44,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "            <div ng-style=\"{left:gridBox.x, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
+    "            <div ng-style=\"{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -69,15 +69,9 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
 
 
   $templateCache.put('src/main/core/components/loadIndicator/indicator.html',
-    "<div class=\"load-indicator-view\">\r" +
+    "<div style='z-index:500' class=\"load-indicator-view\">\r" +
     "\n" +
-    "  <div class=\"load-indicator-background\">&nbsp;</div>\r" +
-    "\n" +
-    "  <div class=\"load-indicator-spinner ir\">\r" +
-    "\n" +
-    "    Loading...\r" +
-    "\n" +
-    "  </div>\r" +
+    "    <img src=\"main/resources/img/loader.gif\"/>\r" +
     "\n" +
     "</div>"
   );

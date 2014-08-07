@@ -41,6 +41,18 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
   width:100%
 }
 
+.load-indicator-view
+{
+  background-color:#000;
+  opacity:.5;
+  margin:auto;
+  position:absolute;
+  top:45%;
+  left:47%;
+  height:32px;
+  width:32px;
+  border-radius:3px;
+}
 
 /***
   COMPONENTs
