@@ -7,29 +7,32 @@ module.exports = function(grunt) {
         htmlbuild: {
             dev: {
                 src: 'src/index_builder.tpl.html',
-                dest: 'src/index.html',
+                dest: 'src/index_dev.html',
                 options: {
                     beautify: true,
                     scripts: {
                         app: [
                             'src/main/app/**/*.js',
                             '!src/main/app/**/*Spec*.js',
-                            'src/templates.js',
-                            'src/main/website/**/*.js', // this is not included in this repo
                             '!src/main/website/**/*Spec.js',
                             ],
-                        core: ['src/main/core/**/*.js','!src/main/core/**/*Spec*.js']
+                        core: ['src/main/core/**/*.js','!src/main/core/**/*Spec*.js'],
+                        website: ['src/main/website/**/*.js','!src/main/website/**/*Spec*.js'],
+                        templates: []
                     }
                 }
             },
             prod: {
                 src: 'src/index_builder.tpl.html',
-                dest: 'src/index_minified.html',
+                dest: 'src/index.html',
                 options: {
-                    beautify: true,
+                    beautify: false,
                     scripts: {
-                        app: 'src/minified/app.min.js',
-                        core: 'src/minified/core.min.js'
+                        // THE NG-MINNED version does not work!!!
+                        app: ['src/minified/app.js'],
+                        core: ['src/minified/core.js'],
+                        website: ['src/minified/website.js'],
+                        templates: ['src/templates.js']
                     }
                 }
             }
@@ -155,8 +158,7 @@ module.exports = function(grunt) {
                     'src/main/resources/lib/class.js',
                     'src/main/resources/lib/angular-translate.min.js',
                     'src/main/resources/lib/stacktrace.js',
-                    'src/main/resources/lib/angular-translate.js',
-
+                    'src/main/resources/lib/angular-translate.js'
                 ],
 
                 specs: 'src/**/*.Spec.js',
@@ -176,7 +178,7 @@ module.exports = function(grunt) {
                             'class': 'src/main/resources/lib/class',
                             'pascal': 'src/main/resources/lib/angular-translate',
                             'angularCookies':'src/main/resources/lib/angular-1.2.16/angular-cookies.js',
-                            'tweenMax': 'src/main/resources/lib/tweenmax.min.js',
+                            'tweenMax': 'src/main/resources/lib/tweenmax.min.js'
                         },
                         shim: {
                             'angular': {
@@ -365,8 +367,11 @@ module.exports = function(grunt) {
 
         ngtemplates: {
             'FScapeApp.Services': {
-                cwd: '',
-                src: ['src/main/app/**/*.html', 'src/main/core/**/*.html','src/main/website/**/*.html'],
+                cwd: 'src',
+                src: [
+                    'main/app/**/*.html',
+                    'main/core/**/*.html',
+                    'main/website/**/*.html'],
                 dest: 'src/templates.js'
             }
         },
@@ -397,16 +402,16 @@ module.exports = function(grunt) {
 
         replace: {
             prod: {
-                src: ['src/index_minified.html'], // source files array (supports minimatch)
-                dest: 'src/index_minified.html', // destination directory or file
+                src: ['src/index.html'], // source files array (supports minimatch)
+                dest: 'src/index.html', // destination directory or file
                 replacements: [{
                     from: ' type="text/javascript"', // string replacement
                     to: ''
                 }]
             },
             dev: {
-                src: ['src/index.html'], // source files array (supports minimatch)
-                dest: 'src/index.html', // destination directory or file
+                src: ['src/index_dev.html'], // source files array (supports minimatch)
+                dest: 'src/index_dev.html', // destination directory or file
                 replacements: [{
                     from: ' type="text/javascript"', // string replacement
                     to: ''
@@ -445,7 +450,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-text-replace');
-    grunt.registerTask('minify', ['ngmin:app', 'ngmin:core', 'uglify', 'htmlbuild:prod', 'replace:prod']);
+    grunt.registerTask('minify', ['ngmin:app', 'ngmin:core','ngmin:website', 'uglify', 'htmlbuild:prod', 'replace:prod']);
 +
     // for building the index.html
     grunt.loadNpmTasks('grunt-html-build');
@@ -471,6 +476,6 @@ module.exports = function(grunt) {
 
 
     // compile task
-    grunt.registerTask('compile', ['ngtemplates', 'compass', 'buildIndex' ]);
+    grunt.registerTask('compile', ['ngmin','uglify','ngtemplates', 'compass', 'buildIndex','htmlbuild:dev','htmlbuild:prod' ]);
 
 };

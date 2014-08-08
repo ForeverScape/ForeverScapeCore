@@ -5,12 +5,7 @@
         function($resource) {
 
 
-            var Widget = $resource('https://shop-dev.nike.net/das/secureTokens.json', {
-                widgetId: '@widgetId'
-            }, {
-
-
-            });
+            var Widget = {};
             return Widget;
         }
     ]);

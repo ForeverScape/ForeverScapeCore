@@ -1,12 +1,12 @@
 angular.module('FScapeApp.Services').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('src/main/app/pages/error.html',
+  $templateCache.put('main/app/pages/error.html',
     "<p>Page does not exist... or does it?</p>"
   );
 
 
-  $templateCache.put('src/main/app/pages/testbed/testbed.tpl.html',
+  $templateCache.put('main/app/pages/testbed/testbed.tpl.html',
     "<div class=\"page\">\r" +
     "\n" +
     "\r" +
@@ -27,7 +27,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/core/components/foreverscapeEngine/foreverscape-engine.tpl.html',
+  $templateCache.put('main/core/components/foreverscapeEngine/foreverscape-engine.tpl.html',
     "<div class=\"foreverscape-engine-wrapper\">\r" +
     "\n" +
     "\r" +
@@ -36,7 +36,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"engine-frame\">\r" +
+    "    <div class=\"engine-frame\" ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\" ng-mouseup=\"$event\" ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -44,13 +44,35 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "            <div ng-style=\"{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
+    "            <div class=\"engine-position\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                {{gridBox.id}}<br/>\r" +
+    "                <div ng-style=\"{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
     "\n" +
-    "                {{gridBox.row}}x{{gridBox.col}}\r" +
+    "\r" +
+    "\n" +
+    "                    <div class=\"grid-info\"> {{gridBox.id}}<br/>\r" +
+    "\n" +
+    "                        {{gridBox.row}}x{{gridBox.col}}</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <div class=\"thumb\"><img ng-src=\"{{gridBox.thumbSrc}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
+    "\n" +
+    "                    <div class=\"full\"><img/></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <!--<img src=\"http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg\" />-->\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "            </div>\r" +
     "\n" +
@@ -68,7 +90,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/core/components/loadIndicator/indicator.html',
+  $templateCache.put('main/core/components/loadIndicator/indicator.html',
     "<div style='z-index:500' class=\"load-indicator-view\">\r" +
     "\n" +
     "    <img src=\"main/resources/img/loader.gif\"/>\r" +
@@ -77,7 +99,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/core/modals/errorModal/error.tpl.html',
+  $templateCache.put('main/core/modals/errorModal/error.tpl.html',
     "<div class=\"debugger\" ng-controller=\"ErrorController as errorCtrl\">\r" +
     "\n" +
     "  <div class=\"overlay-header\">\r" +
@@ -100,7 +122,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/core/modals/successModal/success.tpl.html',
+  $templateCache.put('main/core/modals/successModal/success.tpl.html',
     "<div ng-controller=\"SuccessController as successCtrl\">\r" +
     "\n" +
     "  <div class=\"overlay-header\">\r" +
@@ -121,7 +143,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/core/overlay-containers/fullscreen/overlay.tpl.html',
+  $templateCache.put('main/core/overlay-containers/fullscreen/overlay.tpl.html',
     "<div class=\"overlay-container\"\r" +
     "\n" +
     "     ng-controller=\"OverlayController as overlayCtrl\"\r" +
@@ -154,7 +176,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/website/components/nav/navigation.html',
+  $templateCache.put('main/website/components/nav/navigation.html',
     "<nav class=\"header-container\" ng-controller=\"navController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
     "\n" +
     "\r" +
@@ -215,7 +237,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('src/main/website/pages/home/home.tpl.html',
+  $templateCache.put('main/website/pages/home/home.tpl.html',
     "<div class=\"page\">\r" +
     "\n" +
     "\r" +

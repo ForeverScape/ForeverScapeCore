@@ -18,13 +18,21 @@ $sprites: sprite-map("sprites/*.png");
 $retinaBgWidth: image-width(sprite-path($sprites-sprites));
 $retinaBgHeight: image-height(sprite-path($sprites-sprites));
 
-@mixin sprites-generate($image) {
+@mixin sprites-generate($image)
+
+
+
+
   body & {
     font-family: Helvetica, Sans Serif, Arial;
     @include sprites-sprite($image);
   }
 
   body {
+
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+
     position:relative;
     vertical-align: top;
     width:100%;
