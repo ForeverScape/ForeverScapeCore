@@ -32,11 +32,33 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"hud\">zoom: {{fscapeEngineCtrl.zoom}} time: {{  fscapeEngineCtrl.time| number:0 }}</div>\r" +
+    "    <div class=\"hud\">\r" +
+    "\n" +
+    "        zoom: {{fscapeEngineCtrl.zoom}}<br/>\r" +
+    "\n" +
+    "        time: {{ fscapeEngineCtrl.time| number:0 }}<br/>\r" +
+    "\n" +
+    "        left: {{fscapeEngineCtrl.offsetX}}<br/>\r" +
+    "\n" +
+    "        mx: {{fscapeEngineCtrl.mouseX}}<br/>\r" +
+    "\n" +
+    "        flick: {{fscapeEngineCtrl._flicking}}<br/>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"engine-frame\" ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\" ng-mouseup=\"$event\" ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\">\r" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"engine-frame\"\r" +
+    "\n" +
+    "         ng-mouseleave=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
+    "\n" +
+    "         ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\"\r" +
+    "\n" +
+    "         ng-mouseup=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
+    "\n" +
+    "         ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -191,45 +213,47 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"title\">ForeverScape</div>\r" +
+    "    <div class=\"title\"></div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "    <ul class=\"navigation\">\r" +
+    "    <div class=\"navigation\">\r" +
     "\n" +
-    "        <li ng-class=\"{active:learnHover}\"\r" +
+    "        <ul >\r" +
     "\n" +
-    "                ng-mouseenter=\"learnHover=true\"\r" +
+    "            <li ng-class=\"{active:learnHover}\"\r" +
     "\n" +
-    "                ng-mouseleave=\"learnHover=false\">\r" +
+    "                    ng-mouseenter=\"learnHover=true\"\r" +
     "\n" +
-    "            <b>L</b>earn\r" +
+    "                    ng-mouseleave=\"learnHover=false\">\r" +
     "\n" +
-    "        </li>\r" +
+    "                <b>L</b>earn\r" +
     "\n" +
-    "        <li ng-class=\"{active:shopHover}\"\r" +
+    "            </li>\r" +
     "\n" +
-    "                ng-mouseenter=\"shopHover=true\"\r" +
+    "            <li ng-class=\"{active:shopHover}\"\r" +
     "\n" +
-    "                ng-mouseleave=\"shopHover=false\">\r" +
+    "                    ng-mouseenter=\"shopHover=true\"\r" +
     "\n" +
-    "            <b>S</b>hop\r" +
+    "                    ng-mouseleave=\"shopHover=false\">\r" +
     "\n" +
-    "        </li>\r" +
+    "                <b>S</b>hop\r" +
     "\n" +
-    "        <li ng-class=\"{active:discoverHover}\"\r" +
+    "            </li>\r" +
     "\n" +
-    "                ng-mouseenter=\"discoverHover=true\"\r" +
+    "            <li ng-class=\"{active:discoverHover}\"\r" +
     "\n" +
-    "                ng-mouseleave=\"discoverHover=false\">\r" +
+    "                    ng-mouseenter=\"discoverHover=true\"\r" +
     "\n" +
-    "            <b>D</b>iscover\r" +
+    "                    ng-mouseleave=\"discoverHover=false\">\r" +
     "\n" +
-    "        </li>\r" +
+    "                <b>D</b>iscover\r" +
     "\n" +
-    "    </ul>\r" +
+    "            </li>\r" +
     "\n" +
-    "\r" +
+    "        </ul>\r" +
+    "\n" +
+    "    </div>\r" +
     "\n" +
     "\r" +
     "\n" +

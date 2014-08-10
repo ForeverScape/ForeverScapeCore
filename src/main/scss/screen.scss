@@ -18,18 +18,13 @@ $sprites: sprite-map("sprites/*.png");
 $retinaBgWidth: image-width(sprite-path($sprites-sprites));
 $retinaBgHeight: image-height(sprite-path($sprites-sprites));
 
-@mixin sprites-generate($image)
-
-
-
-
+@mixin sprites-generate($image) {
   body & {
     font-family: Helvetica, Sans Serif, Arial;
     @include sprites-sprite($image);
   }
 
   body {
-
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
 
@@ -38,6 +33,7 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
     width:100%;
     height:100%;
 
+    overflow-x:scroll;
 
   }
 
