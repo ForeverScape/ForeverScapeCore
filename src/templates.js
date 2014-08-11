@@ -38,11 +38,23 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        time: {{ fscapeEngineCtrl.time| number:0 }}<br/>\r" +
     "\n" +
-    "        left: {{fscapeEngineCtrl.offsetX}}<br/>\r" +
+    "        offX: {{fscapeEngineCtrl.offsetX}}<br/>\r" +
     "\n" +
-    "        mx: {{fscapeEngineCtrl.mouseX}}<br/>\r" +
+    "        offY: {{fscapeEngineCtrl.offsetY}}<br/>\r" +
     "\n" +
-    "        flick: {{fscapeEngineCtrl._flicking}}<br/>\r" +
+    "        tileZero: {{fscapeEngineCtrl.gridBoxes[0].screenX}}<br/>\r" +
+    "\n" +
+    "        offscreenLeft: {{fscapeEngineCtrl.offscreenLeft}}<br/>\r" +
+    "\n" +
+    "        offscrenRight: {{fscapeEngineCtrl.offscreenRight}}<br/>\r" +
+    "\n" +
+    "        farthestLeft: {{fscapeEngineCtrl.farthestLeft}}<br/>\r" +
+    "\n" +
+    "        farthestRight: {{fscapeEngineCtrl.farthestRight}}<br/>\r" +
+    "\n" +
+    "        tile109: {{fscapeEngineCtrl.gridBoxes[109].screenX}}<br/>\r" +
+    "\n" +
+    "        tile109: {{fscapeEngineCtrl.gridBoxes[109].currentTile.id}}<br/>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -70,17 +82,25 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "                <div ng-style=\"{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
+    "                <div id=\"{{gridBox.domId}}\" ng-style=\"{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                    <div class=\"grid-info\"> {{gridBox.id}}<br/>\r" +
+    "                    <div class=\"grid-info\">\r" +
     "\n" +
-    "                        {{gridBox.row}}x{{gridBox.col}}</div>\r" +
+    "                        {{gridBox.id}}<br/>\r" +
+    "\n" +
+    "                        {{gridBox.row}}x{{gridBox.col}}<br/>\r" +
+    "\n" +
+    "                        {{gridBox.screenX}}x{{gridBox.screenY}}<br/>\r" +
+    "\n" +
+    "                        id:{{gridBox.currentTileId}}\r" +
+    "\n" +
+    "                    </div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                    <div class=\"thumb\"><img ng-src=\"{{gridBox.thumbSrc}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
+    "                    <div class=\"thumb\"><img id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
     "\n" +
     "                    <div class=\"full\"><img/></div>\r" +
     "\n" +
