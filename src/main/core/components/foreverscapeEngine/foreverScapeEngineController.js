@@ -137,7 +137,7 @@
 
 
                     //flick
-                    if( ! this._flickingX && Math.abs( velX ) > .25 )
+                    if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
                     {
 
 
@@ -152,7 +152,7 @@
                                 }
                             });
                     }
-                    if( ! this._flickingY && Math.abs( velY ) > .25 )
+                    if( ! this._flickingY &&Math.abs( velX ) > .15 || Math.abs( velY ) > .15 )
                     {
 
                         this._flickingY= true;

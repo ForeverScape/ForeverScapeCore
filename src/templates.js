@@ -42,7 +42,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        offY: {{fscapeEngineCtrl.offsetY}}<br/>\r" +
     "\n" +
-    "       \r" +
+    "\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
