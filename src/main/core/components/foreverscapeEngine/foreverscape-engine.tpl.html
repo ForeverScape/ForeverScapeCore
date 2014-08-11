@@ -1,0 +1,52 @@
+<div class="foreverscape-engine-wrapper">
+
+    <div class="hud">
+        zoom: {{fscapeEngineCtrl.zoom}}<br/>
+        time: {{ fscapeEngineCtrl.time| number:0 }}<br/>
+        offX: {{fscapeEngineCtrl.offsetX}}<br/>
+        offY: {{fscapeEngineCtrl.offsetY}}<br/>
+       
+    </div>
+
+    <div class="engine-frame"
+         ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
+         ng-mousedown="fscapeEngineCtrl.mouseDown($event)"
+         ng-mouseup="fscapeEngineCtrl.mouseUp($event)"
+         ng-mousemove="fscapeEngineCtrl.mouseMove($event)">
+
+        <div class="engine-scale">
+
+            <div class="engine-position">
+
+                <div id="{{gridBox.domId}}" ng-style="{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }" class="grid-box" ng-repeat="(index,gridBox) in fscapeEngineCtrl.gridBoxes">
+
+
+                    <div class="full"><img id="full-{{gridBox.domId}}"  ng-style="{width:gridBox.width, height: gridBox.height}"/></div>
+                    <div class="thumb">
+                        <img image-onload numeric-id="{{gridBox.currentTile.id}}" id="thumb-{{gridBox.domId}}" ng-src="{{gridBox.currentTile.thumbUrl}}" ng-style="{width:gridBox.width, height: gridBox.height}"/>
+                    </div>
+
+
+<!--
+
+                    <div class="grid-info">
+                        Page {{gridBox.id}}<br/>
+                        {{gridBox.currentTile.name }}<br/>
+                        {{gridBox.isOnScreen}}
+                    </div>
+-->
+
+
+
+
+                    <!--<img src="http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg" />-->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

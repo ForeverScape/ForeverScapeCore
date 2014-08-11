@@ -42,23 +42,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        offY: {{fscapeEngineCtrl.offsetY}}<br/>\r" +
     "\n" +
-    "        tileZero: {{fscapeEngineCtrl.gridBoxes[0].screenX}}<br/>\r" +
-    "\n" +
-    "        offscreenLeft: {{fscapeEngineCtrl.offscreenLeft}}<br/>\r" +
-    "\n" +
-    "        offscrenRight: {{fscapeEngineCtrl.offscreenRight}}<br/>\r" +
-    "\n" +
-    "        farthestLeft: {{fscapeEngineCtrl.farthestLeft}}<br/>\r" +
-    "\n" +
-    "        farthestRight: {{fscapeEngineCtrl.farthestRight}}<br/>\r" +
-    "\n" +
-    "        tile45: {{fscapeEngineCtrl.gridBoxes[45].screenY}}<br/>\r" +
-    "\n" +
-    "        tile45: {{fscapeEngineCtrl.gridBoxes[45].currentTile.id}}<br/>\r" +
-    "\n" +
-    "        offscreenTop: {{fscapeEngineCtrl.offscreenTop}}<br/>\r" +
-    "\n" +
-    "        offscreenBottom: {{fscapeEngineCtrl.offscreenBottom}}<br/>\r" +
+    "       \r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -88,9 +72,21 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "                    <div class=\"thumb\"><img id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
+    "\r" +
     "\n" +
-    "                    <div class=\"full\"><img/></div>\r" +
+    "                    <div class=\"full\"><img id=\"full-{{gridBox.domId}}\"  ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
+    "\n" +
+    "                    <div class=\"thumb\">\r" +
+    "\n" +
+    "                        <img image-onload numeric-id=\"{{gridBox.currentTile.id}}\" id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<!--\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -98,9 +94,13 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "                        Page {{gridBox.id}}<br/>\r" +
     "\n" +
-    "                        {{gridBox.currentTile.name | capitalize}}<br/>\r" +
+    "                        {{gridBox.currentTile.name }}<br/>\r" +
+    "\n" +
+    "                        {{gridBox.isOnScreen}}\r" +
     "\n" +
     "                    </div>\r" +
+    "\n" +
+    "-->\r" +
     "\n" +
     "\r" +
     "\n" +

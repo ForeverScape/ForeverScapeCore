@@ -1,0 +1,73 @@
+.foreverscape-engine-wrapper
+{
+
+  background-color:#eeeeff;
+  position:fixed;
+  left:0;
+  right:0;
+  top:90px;
+  bottom:0px;
+
+  .engine-scale
+  {
+
+  }
+
+  .engine-position
+  {
+    position:relative;
+    width: 100%;
+    height:100%;
+    background-color:#ffbbbb;;
+
+  }
+
+
+
+  .hud {
+    position:absolute;
+    z-index:100;
+    margin-top: 5px;
+    color:greenyellow;
+    background-color:rgba(0, 0, 0, 0.5)
+  }
+
+  .engine-frame {
+    opacity:1;
+    width:100%;
+    height:100%;
+    border:1px solid #000;
+    background-color:#000;
+
+    .grid-box
+    {
+      position:absolute;
+      background-color:#aaaaaa;
+      opacity:1;
+      border:1px solid #000;
+    }
+
+    .thumb {
+      position:absolute;
+      z-index:20;
+    }
+    .full {
+      position:absolute;
+      z-index:40;
+    }
+
+    .grid-info
+    {
+      position:absolute;
+      z-index:2;
+
+      font-size:120px;
+    }
+
+
+
+
+  }
+
+}
+

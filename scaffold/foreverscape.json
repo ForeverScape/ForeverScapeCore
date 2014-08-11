@@ -1,0 +1,11 @@
+{
+         "totalPages":760,
+         "cdnVersion":"v11",
+         "cdnPrefix":"http://d2zwcujesf1bgv.cloudfront.net/",
+         "basePath":"prod/:version/images/",
+         "pathThumbnail":"tiny_preload_size",
+         "pathWebsize":"websize_1024",
+         "license":null,
+         "tileWidth": 1004,
+         "tileHeight": 768
+ }
