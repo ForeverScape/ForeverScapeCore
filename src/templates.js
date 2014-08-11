@@ -52,11 +52,13 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        farthestRight: {{fscapeEngineCtrl.farthestRight}}<br/>\r" +
     "\n" +
-    "        tile109: {{fscapeEngineCtrl.gridBoxes[109].screenX}}<br/>\r" +
+    "        tile45: {{fscapeEngineCtrl.gridBoxes[45].screenY}}<br/>\r" +
     "\n" +
-    "        tile109: {{fscapeEngineCtrl.gridBoxes[109].currentTile.id}}<br/>\r" +
+    "        tile45: {{fscapeEngineCtrl.gridBoxes[45].currentTile.id}}<br/>\r" +
     "\n" +
-    "\r" +
+    "        offscreenTop: {{fscapeEngineCtrl.offscreenTop}}<br/>\r" +
+    "\n" +
+    "        offscreenBottom: {{fscapeEngineCtrl.offscreenBottom}}<br/>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -86,23 +88,23 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
+    "                    <div class=\"thumb\"><img id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
+    "\n" +
+    "                    <div class=\"full\"><img/></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "                    <div class=\"grid-info\">\r" +
     "\n" +
-    "                        {{gridBox.id}}<br/>\r" +
+    "                        Page {{gridBox.id}}<br/>\r" +
     "\n" +
-    "                        {{gridBox.row}}x{{gridBox.col}}<br/>\r" +
-    "\n" +
-    "                        {{gridBox.screenX}}x{{gridBox.screenY}}<br/>\r" +
-    "\n" +
-    "                        id:{{gridBox.currentTileId}}\r" +
+    "                        {{gridBox.currentTile.name | capitalize}}<br/>\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                    <div class=\"thumb\"><img id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
-    "\n" +
-    "                    <div class=\"full\"><img/></div>\r" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -286,7 +288,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <h1>H</h1>\r" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
