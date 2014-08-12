@@ -82,7 +82,7 @@
 
 
                     $(document).bind("touchstart", function(event) {
-//
+
                         event.preventDefault();
                         event.originalEvent.preventDefault();
 
@@ -91,8 +91,6 @@
 
                         that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
                         that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-
-                        trace("start " + that.mouseDownX);
 
                         that.down()
                     });
@@ -104,13 +102,11 @@
 
                     $(document).bind("touchmove", function(event) {
 
-                        trace("touchmove");
                         event.preventDefault();
                         event.originalEvent.preventDefault();
                         that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
                         that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
 
-                        trace("move" +  that.mouseX );
                         that.move();
                     });
 
@@ -120,22 +116,12 @@
                         event.originalEvent.preventDefault();
 
                         that.up();
-
-                        trace("end")
-                        trace("s " + that.mouseDownX );
-                        trace("e " + that.mouseX);
-
-
                     });
 
                     $(document).bind("touchcancel", function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
-
-                       trace("touchCancel")
-
-
                     });
 
                     configModel.getConfig().then( function(){
@@ -169,10 +155,10 @@
 
                     jQuery('.engine-frame').bind('pinch',function(e){
 
-                        //alert("pinch");
+                        trace("Pinch")
                     });
 
-                    trace("finish init");
+
 
 //                    setTimeout( function(){
 //
@@ -246,7 +232,6 @@
                     if( this.is_touch_device )
                         return;
 
-
                     this.mouseX = $event.pageX;
                     this.mouseY = $event.pageY;
 
@@ -274,11 +259,6 @@
                         this.offsetY += this.dy;
 
                         $('.engine-position').css({ 'top': this.offsetY });
-                    }
-
-                    if( this._dragging && this.mousePreviousX )
-                    {
-                        //this.flick();
                     }
 
 
@@ -323,8 +303,6 @@
                     var velX = this.dx / dTime;
                     var velY = this.dy / dTime;
 
-
-                    trace("flick");
                     //flick
                     if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
                     {
@@ -336,6 +314,7 @@
                                 css:{left:that.offsetX},
                                 onComplete: function(){
                                     that._flickingX = false;
+                                    $scope.$apply();
                                 }
                             });
                     }
@@ -349,6 +328,7 @@
                                 css:{top:that.offsetY},
                                 onComplete: function(){
                                     that._flickingY = false;
+                                    $scope.$apply();
                                 }
                             });
                     }
@@ -360,7 +340,6 @@
 
                 zoomIn: function( val)
                 {
-                    trace( "zoomIn");
                     if( this.zoom > 1.5)
                         return;
 
@@ -376,15 +355,11 @@
                 },
 
                 setZoomTarget: function(){
-
-                    trace( "setZoomTarget");
                     var that = this;
                     TweenMax.to( $('.engine-scale'), 1,
                         {
                             css:{scale:that.zoom}
                         });
-
-                    trace( "setZoomTarget:end");
                 },
 
                 render: function()
@@ -492,7 +467,7 @@
 
 
 
-                        if( ! this._dragging && ! this._flickingX && ! this._flickingY )
+                        if( this.zoom > .5 && ! this._dragging && ! this._flickingX && ! this._flickingY )
                         {
                             var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
                             var isOnRight = gb.screenX < window.innerWidth;
@@ -507,24 +482,24 @@
 
                                     gb.isOnScreen = true;
 
-//                                    if( gb.fullElement.attr('src') != gb.currentTile.fullUrl);
-//                                    {
-//                                        gb.fullElement.attr("src",gb.currentTile.fullUrl);
-//                                    }
+                                    if( gb.fullElement.attr('src') != gb.currentTile.fullUrl);
+                                    {
+                                        gb.fullElement.attr("src",gb.currentTile.fullUrl);
+                                    }
                                 }
 
-                            } else {
-
-//                                if( gb.currentTile){
-//
-//                                    gb.isOnScren = false;
-//
-//                                    if( gb.fullElement.attr('src') )
-//                                        gb.fullElement.attr("src","");
-//
-//                                }
-
                             }
+
+                        } else {
+
+                                if( gb.currentTile){
+
+                                    gb.isOnScren = false;
+
+                                    if( gb.fullElement.attr('src') )
+                                        gb.fullElement.attr("src","");
+
+                                }
 
                         }
 

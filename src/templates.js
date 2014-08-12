@@ -277,6 +277,28 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "            </li>\r" +
     "\n" +
+    "            <li ng-class=\"{active:videoHover}\"\r" +
+    "\n" +
+    "                ng-mouseenter=\"videoHover=true\"\r" +
+    "\n" +
+    "                ng-mouseleave=\"videoHover=false\">\r" +
+    "\n" +
+    "                <b>V</b>ideo\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "            <li ng-class=\"{active:sourceHover}\"\r" +
+    "\n" +
+    "                ng-mouseenter=\"sourceHover=true\"\r" +
+    "\n" +
+    "                ng-mouseleave=\"sourceHover=false\">\r" +
+    "\n" +
+    "                <b>S</b>ourcecode\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "        </ul>\r" +
     "\n" +
     "    </div>\r" +
