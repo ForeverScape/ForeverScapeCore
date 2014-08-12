@@ -1,11 +1,17 @@
 ##ForeverScape Tile Engine##
-### Angular Component ###
+### An Artwork so Large, it Needs it's own Software to View it ###
 
 The ForeverScape is a massive 2.3 football field long hand-drawn illustration that tiles like wallpaper (every page connects to the next). This is an Angular component implementation that allows users to explore the ForeverScape universe and developers to build upon this universe with their own interactives.
 
 ### Live Demo ###
 ###http://staging.foreverscape.com###
 <b>Currently, the new engine is in beta staging. We don't have a dev area yet, so this is both staging and dev, and therefore may be unstable during periods of high velocity development. </b>
+
+
+####Learn More:####
+See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
+
+
 
 
 ###Licensing:###
@@ -17,8 +23,6 @@ You can create commercial software products using this API and the images in the
 Code is distributed under MIT license. 
 
 
-###Demo:###
-To Be Announced, see the artwork at the current *slammed together* website http://foreverscape.com
 
 
 ###Proposed Features:###
@@ -58,6 +62,6 @@ To Be Announced, see the artwork at the current *slammed together* website http:
 
 ###Unit Testing###
 
-
+TBD
 
 
