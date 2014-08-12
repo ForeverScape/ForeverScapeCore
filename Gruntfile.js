@@ -158,7 +158,8 @@ module.exports = function(grunt) {
                     'src/main/resources/lib/class.js',
                     'src/main/resources/lib/angular-translate.min.js',
                     'src/main/resources/lib/stacktrace.js',
-                    'src/main/resources/lib/angular-translate.js'
+                    'src/main/resources/lib/angular-translate.js',
+                    'src/main/resources/lib/angular-1.2.16/angular-touch.js'
                 ],
 
                 specs: 'src/**/*.Spec.js',
@@ -178,7 +179,8 @@ module.exports = function(grunt) {
                             'class': 'src/main/resources/lib/class',
                             'pascal': 'src/main/resources/lib/angular-translate',
                             'angularCookies':'src/main/resources/lib/angular-1.2.16/angular-cookies.js',
-                            'tweenMax': 'src/main/resources/lib/tweenmax.min.js'
+                            'tweenMax': 'src/main/resources/lib/tweenmax.min.js',
+                            'angularTouch':'src/main/resources/lib/angular-1.2.16/angular-touch.js'
                         },
                         shim: {
                             'angular': {
@@ -214,6 +216,9 @@ module.exports = function(grunt) {
                             }, 'tweenMax':{
                                 deps: [''],
                                 'exports':'TweenMax'
+                            }, 'angularTouch':{
+                                deps: [''],
+                                'exports':'angular.touch'
                             }
 
 
@@ -432,7 +437,43 @@ module.exports = function(grunt) {
                     'src/minified/website.min.js': ['src/minified/website.js']
                 }
             }
+        },
+
+        'ftp-deploy': {
+            build: {
+                auth: {
+                    host: 'ftp.foreverscape.com',
+                    port: 21,
+                    authKey: 'key1'
+                },
+                src: [
+                        'deploy/src',
+                    ],
+                dest: '',
+                exclusions: []
+            }
+        },
+
+        copy: {
+            main: {
+                files: [
+                    // includes files within path
+                    {
+                        expand: true,
+                        src: [
+                            'src/index.html',
+                            'src/templates.js',
+                            'src/minified/**',
+                            'src/main/resources/**'
+                        ],
+                        dest: 'deploy/'
+                    }
+                ]
+            }
         }
+
+
+
 
     });
 
@@ -444,17 +485,20 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-angular-templates');
-
+    grunt.loadNpmTasks('grunt-ftp-deploy');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // minification tasks
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.registerTask('minify', ['ngmin:app', 'ngmin:core','ngmin:website', 'uglify', 'htmlbuild:prod', 'replace:prod']);
-+
+
     // for building the index.html
     grunt.loadNpmTasks('grunt-html-build');
     grunt.registerTask('buildIndex', ['htmlbuild:dev', 'replace:dev', 'htmlbuild:prod', 'replace:prod']);
+
+    grunt.registerTask('deploy', ['copy','ftp-deploy']);
 
     // Default task.
     grunt.registerTask('default', ['watch']);

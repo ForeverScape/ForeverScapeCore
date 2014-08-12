@@ -140,8 +140,6 @@
                     if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
                     {
 
-
-
                         this._flickingX = true;
                         this.offsetX +=  3000 * velX;
                         this.flickTweenX = TweenMax.to( $('.engine-position'), 1,
