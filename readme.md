@@ -5,8 +5,7 @@ The ForeverScape is a massive 2.3 football field long hand-drawn illustration th
 
 ### Live Demo ###
 ###http://staging.foreverscape.com###
-Currently, the new engine is in beta staging. We don't have a dev area yet, so this is both staging and dev, and therefore may be unstable during periods of high velocity development. 
-
+<b>Currently, the new engine is in beta staging. We don't have a dev area yet, so this is both staging and dev, and therefore may be unstable during periods of high velocity development. </b>
 
 
 ###Licensing:###
