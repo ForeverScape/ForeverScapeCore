@@ -38,13 +38,17 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        time: {{ fscapeEngineCtrl.time| number:0 }}<br/>\r" +
     "\n" +
-    "        offX: {{fscapeEngineCtrl.offsetX}}<br/>\r" +
-    "\n" +
-    "        offY: {{fscapeEngineCtrl.offsetY}}<br/>\r" +
+    "        hasRender: {{ fscapeEngineCtrl.hasRender| number:0 }}<br/>\r" +
     "\n" +
     "\r" +
     "\n" +
+    "        <div id=\"trace\">Hello</div>\r" +
+    "\n" +
     "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +

@@ -451,6 +451,18 @@ module.exports = function(grunt) {
                     ],
                 dest: '',
                 exclusions: []
+            },
+            light:{
+                auth: {
+                    host: 'ftp.foreverscape.com',
+                    port: 21,
+                    authKey: 'key1'
+                },
+                src: [
+                    'deploy/src',
+                ],
+                dest: '',
+                exclusions: ['deploy/src/main/resources/**']
             }
         },
 
@@ -498,7 +510,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html-build');
     grunt.registerTask('buildIndex', ['htmlbuild:dev', 'replace:dev', 'htmlbuild:prod', 'replace:prod']);
 
-    grunt.registerTask('deploy', ['copy','ftp-deploy']);
+    grunt.registerTask('deploy', ['compile','copy','ftp-deploy:build']);
+    grunt.registerTask('deploy:light', ['compile','copy','ftp-deploy:light']);
 
     // Default task.
     grunt.registerTask('default', ['watch']);

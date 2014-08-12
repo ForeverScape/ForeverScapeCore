@@ -15,33 +15,38 @@ angular.module('FScapeApp.Models').factory('gridModel',
 
                 tileModel.getTiles().then( function(){
 
-
-
-
                 // this should only generate a grid that pulls from the data well based on calculations
                 for (var i = 0; i < 150; i++) {
 
                     var color = 0xff0000;
-                    //offsetY =
+                    var startPage = configModel.data.startPage;
 
                     var rowOffset = 0;
                     var colOffset = 0;
-                    var tileOffset = 0;
+                    var tileOffset = 0 + startPage;
 
                     if( i >= 50 && i < 100)
                     {
                         rowOffset = -9;
                         colOffset = 5;
                         color=0x00ff00;
-                        tileOffset = -40;
+                        tileOffset = -40 + startPage;
                     }
                     if( i >= 100 )
                     {
                         rowOffset = - 18;
                         colOffset = 10;
                         color=0x0000ff;
-                        tileOffset = -80;
+                        tileOffset = -80 + startPage;
                     }
+
+                    var tileId = i + tileOffset;
+
+                    if( tileId > configModel.data.totalPages)
+                    {
+                        tileId = Math.abs( tileId - configModel.data.totalPages );
+                    }
+
 
                     that.gridBoxes.push(
                         {
@@ -57,7 +62,7 @@ angular.module('FScapeApp.Models').factory('gridModel',
                             width:configModel.data.tileWidth,
                             height: configModel.data.tileHeight,
                             currentTile: tileModel.tiles[i + tileOffset ],
-                            currentTileId: i + tileOffset,
+                            currentTileId: tileId,
 
                             x: 0,
                             y: 0,

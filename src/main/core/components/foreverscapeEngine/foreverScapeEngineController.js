@@ -1,3 +1,18 @@
+(function() {
+    'use strict';
+
+    var traceVal = [];
+    var trace = function( val )
+    {
+        traceVal.push('<br/>' + val);
+
+        $('#trace').html(traceVal.join(''));
+
+        if(  traceVal.length > 10 )
+        {
+            traceVal.shift();
+        }
+    };
 
 
     angular.module('FScapeApp.Controllers').controller('foreverScapeEngineController',
@@ -10,6 +25,10 @@
                 offsetY: 0,
                 time: 0,
 
+                canIntro: true,
+
+
+                hasRender:false,
 
                 //drag flick
                 mouseDownX: null,
@@ -45,20 +64,67 @@
                 gridBoxes:[],
                 config:null,
 
+
+
+                endCoords:{},
+                startCoords:{},
+
+                is_touch_device: false,
+
                 onInit: function( ) {
                     var that = this;
 
-                    this.setZoomTarget();
+                    $scope.trace = "";
+
+                    trace("init");
+
+                    that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
+
+
+                    $(document.body).bind("touchstart", function(event) {
+
+                        that.mouseDownX = event.originalEvent.targetTouches[0].pageX || e.originalEvent.changedTouches[0].pageX;
+                        that.mouseDownY = event.originalEvent.targetTouches[0].pageY || e.originalEvent.changedTouches[0].pageY;
+
+                        that.mouseX  = event.originalEvent.targetTouches[0].pageX|| e.originalEvent.changedTouches[0].pageX;
+                        that.mouseY  = event.originalEvent.targetTouches[0].pageY|| e.originalEvent.changedTouches[0].pageY;
+
+                        trace("start " + that.mouseDownX);
+
+                        that.down()
+                    });
+
+                    $(document.body).bind("touchmove", function(event) {
+
+                        event.preventDefault();
+                        that.mouseX = event.originalEvent.targetTouches[0].pageX || e.originalEvent.changedTouches[0].pageX;
+                        that.mouseY= event.originalEvent.targetTouches[0].pageY || e.originalEvent.changedTouches[0].pageY;
+
+                        trace("move" +  that.mouseX );
+                        that.move();
+                    });
+
+                    $(document.body).bind("touchend", function(event) {
+
+                        that.up();
+
+                        trace("end")
+                        trace("s " + that.mouseDownX );
+                        trace("e " + that.mouseY);
+
+
+                    });
 
                     configModel.getConfig().then( function(){
 
+                        trace("gotConfig");
+
                         that.config = configModel.data;
-
                         that.gridBoxes = gridModel.gridBoxes;
-
-
                         tileModel.getTiles().then( function(result){
                             that.imageTiles = result;
+                            trace("got tiles");
+                            that.setZoomTarget();
                         });
 
                     });
@@ -66,7 +132,6 @@
                     $('.engine-frame').bind('mousewheel', function(e){
 
                         e.originalEvent.preventDefault();
-
                         if(e.originalEvent.wheelDelta  > 0) {
                             that.zoomIn();
                         } else{
@@ -74,20 +139,62 @@
                         }
                     });
 
+                    jQuery('.engine-frame').bind('swipeone',function(e){
 
+                        //alert("swipe");
+                    });
+
+                    jQuery('.engine-frame').bind('pinch',function(e){
+
+                        //alert("pinch");
+                    });
+
+                    trace("finish init");
+
+//                    setTimeout( function(){
+//
+//                        if( that.canIntro )
+//                        {
+//                            that.offsetY += 2500;
+//                            TweenMax.to( $('.engine-position'),3,
+//                                {
+//                                    css:{top:that.offsetY}
+//                                });
+//                        }
+//
+//                    }, 2500 );
 
                 },
+
 
                 mouseDown: function($event)
                 {
                     $event.preventDefault();
 
-                    this.startDragTime = new Date();
+                    if( this.is_touch_device )
+                        return;
+
+                    trace("mouseDown");
 
                     this.mouseDownX = $event.pageX;
                     this.mouseDownY = $event.pageY;
                     this.mouseX = $event.pageX;
                     this.mouseY = $event.pageY;
+
+
+
+                    this.down();
+                },
+
+                down:function()
+                {
+                    this.canIntro = false;
+
+                    this.startDragTime = new Date();
+
+                    this.mousePreviousX = this.mouseX;
+                    this.mousePreviousY = this.mouseY;
+
 
                     this._mouseDown = true;
                     this._flickingX = false;
@@ -109,72 +216,27 @@
 
                 },
 
-                mouseUp: function($event)
+                mouseMove: function( $event )
                 {
-                    this.endDragTime = new Date();
+                    $event.preventDefault();
 
-
-                    this._mouseDown = false;
-                    this._dragging = false;
-
-
-                    this.flick();
-
-                },
-
-                flick: function()
-                {
-
-                    var that = this;
-
-                    var dTime  = ( this.endDragTime - this.startDragTime);
-
-                    if( dTime === 0 )
+                    if( this.is_touch_device )
                         return;
 
-                    var velX = this.dx / dTime;
-                    var velY = this.dy / dTime;
-
-
-                    //flick
-                    if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
-                    {
-
-                        this._flickingX = true;
-                        this.offsetX +=  3000 * velX;
-                        this.flickTweenX = TweenMax.to( $('.engine-position'), 1,
-                            {
-                                css:{left:this.offsetX},
-                                onComplete: function(){
-                                    that._flickingX = false;
-                                }
-                            });
-                    }
-                    if( ! this._flickingY &&Math.abs( velX ) > .15 || Math.abs( velY ) > .15 )
-                    {
-
-                        this._flickingY= true;
-                        this.offsetY +=  3000 * velY;
-                        this.flickTweenY = TweenMax.to( $('.engine-position'), 1,
-                            {
-                                css:{top:this.offsetY},
-                                onComplete: function(){
-                                    that._flickingY = false;
-                                }
-                            });
-                    }
-                },
-
-
-                mouseMove: function($event)
-                {
-                    this.endDragTime = new Date();
 
                     this.mouseX = $event.pageX;
                     this.mouseY = $event.pageY;
 
-                    this.dx = $event.pageX - this.mousePreviousX;
-                    this.dy = $event.pageY - this.mousePreviousY;
+                    this.move();
+                },
+
+                move: function()
+                {
+                    this.endDragTime = new Date();
+
+
+                    this.dx = this.mouseX  - this.mousePreviousX;
+                    this.dy = this.mouseY  - this.mousePreviousY;
 
                     if( this._mouseDown && ! this._flickingX  )
                     {
@@ -201,9 +263,81 @@
                     this.mousePreviousY = this.mouseY;
                 },
 
+                mouseUp: function($event)
+                {
+                    $event.preventDefault();
+
+                    if( this.is_touch_device )
+                        return;
+
+                    trace("mouseUp");
+
+                    this.up();
+
+                },
+
+                up: function()
+                {
+                    this.endDragTime = new Date();
+                    this._mouseDown = false;
+                    this._dragging = false;
+
+
+                    this.flick();
+
+                },
+
+                flick: function()
+                {
+
+                    var that = this;
+
+                    var dTime  = ( this.endDragTime - this.startDragTime);
+
+                    if( dTime === 0 )
+                        return;
+
+                    var velX = this.dx / dTime;
+                    var velY = this.dy / dTime;
+
+
+                    trace("flick");
+                    //flick
+                    if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
+                    {
+                        trace("flickX start");
+                        this._flickingX = true;
+                        this.offsetX +=  3000 * velX;
+                        this.flickTweenX = TweenMax.to( $('.engine-position'), 1,
+                            {
+                                css:{left:that.offsetX},
+                                onComplete: function(){
+                                    that._flickingX = false;
+                                }
+                            });
+                    }
+                    if( ! this._flickingY &&Math.abs( velX ) > .15 || Math.abs( velY ) > .15 )
+                    {
+                        trace("flickY start");
+                        this._flickingY= true;
+                        this.offsetY +=  3000 * velY;
+                        this.flickTweenY = TweenMax.to( $('.engine-position'), 1,
+                            {
+                                css:{top:that.offsetY},
+                                onComplete: function(){
+                                    that._flickingY = false;
+                                }
+                            });
+                    }
+                },
+
+
+
+
 
                 zoomIn: function( val)
                 {
+                    trace( "zoomIn");
                     if( this.zoom > 1.5)
                         return;
 
@@ -220,11 +354,14 @@
 
                 setZoomTarget: function(){
 
+                    trace( "setZoomTarget");
                     var that = this;
                     TweenMax.to( $('.engine-scale'), 1,
                         {
                             css:{scale:that.zoom}
                         });
+
+                    trace( "setZoomTarget:end");
                 },
 
                 render: function()
@@ -232,8 +369,12 @@
                     var that = this;
                     that.time+= .015;
 
+
+
                     if( that.config === null)
                         return;
+
+                    this.hasRender = true;
 
 
 
@@ -249,27 +390,22 @@
                     {
                         var gb = that.gridBoxes[i];
 
-                        var element = $('#' + gb.domId);
-                        var offset = element.offset();
+
+
+                        if(!gb.element )
+                        {
+                            gb.element = $("#" + gb.domId );
+                            gb.thumbElement = $("#thumb-" + gb.domId );
+                            gb.fullElement = $("#full-" + gb.domId );
+                        }
+
+                        var offset = gb.element.offset();
 
                         gb.screenX = parseInt( offset.left, 10 );
                         gb.screenY = parseInt( offset.top, 10 ) ;
 
-                        element.find('.grid-info').css({ 'color': gb.color });
-
                         var isOffscreenLeft = gb.screenX < this.offscreenLeft && this.dx < 0;
                         var isOffscreenRight = gb.screenX >= this.offscreenRight && this.dx > 0;
-
-                        if( !  gb.thumbElement )
-                        {
-                            gb.thumbElement = $("#thumb-" + gb.domId );
-                        }
-
-                        if( !  gb.fullElement )
-                        {
-                            gb.fullElement = $("#full-" + gb.domId );
-                        }
-
 
                         if( isOffscreenLeft)
                         {
@@ -277,7 +413,7 @@
                             gb.currentTileId += 30;
                             gb.row += 3;
 
-                        } else if(  isOffscreenRight )
+                        } else if( isOffscreenRight )
                         {
                             gb.col -= 15;
                             gb.currentTileId -= 30;
@@ -316,8 +452,8 @@
                             }
                             gb.currentTile = tileModel.tiles[gb.currentTileId ];
 
-                            element.css({ 'left': gb.x });
-                            element.css({ 'top': gb.y });
+                            gb.element.css({ 'left': gb.x });
+                            gb.element.css({ 'top': gb.y });
 
 
                             if( gb.currentTile){
@@ -331,13 +467,10 @@
                         }
 
 
+
+
                         if( ! this._dragging && ! this._flickingX && ! this._flickingY )
                         {
-
-                            console.log("do it")
-
-                            var full  = $("#full-" + gb.domId );
-
                             var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
                             var isOnRight = gb.screenX < window.innerWidth;
                             var isOnTop = gb.screenY > - ( this.config.tileHeight * this.zoom) ;
@@ -348,26 +481,25 @@
 
                                 if( gb.currentTile){
 
-                                   // console.log("onscreen " + gb.currentTile.id)
 
                                     gb.isOnScreen = true;
 
-                                    if( gb.fullElement.attr('src') != gb.currentTile.fullUrl);
-                                    {
-                                        full.attr("src",gb.currentTile.fullUrl);
-                                    }
+//                                    if( gb.fullElement.attr('src') != gb.currentTile.fullUrl);
+//                                    {
+//                                        gb.fullElement.attr("src",gb.currentTile.fullUrl);
+//                                    }
                                 }
 
                             } else {
 
-                                if( gb.currentTile){
-
-                                    gb.isOnScren = false;
-
-                                    if( gb.fullElement.attr('src') )
-                                        gb.fullElement.attr("src","");
-
-                                }
+//                                if( gb.currentTile){
+//
+//                                    gb.isOnScren = false;
+//
+//                                    if( gb.fullElement.attr('src') )
+//                                        gb.fullElement.attr("src","");
+//
+//                                }
 
                             }
 
@@ -378,7 +510,10 @@
                     }
 
 
+
+
                 }
+
 
 
 
@@ -410,27 +545,30 @@
             };
     })();
 
-    (function() {
-        var lastTime = 0;
-        var vendors = ['webkit', 'moz'];
-        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-            window.cancelAnimationFrame =
-                window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
-        }
+//    (function() {
+//        var lastTime = 0;
+//        var vendors = ['webkit', 'moz'];
+//        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+//            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+//            window.cancelAnimationFrame =
+//                window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+//        }
+//
+//        if (!window.requestAnimationFrame)
+//            window.requestAnimationFrame = function(callback, element) {
+//                var currTime = new Date().getTime();
+//                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+//                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+//                    timeToCall);
+//                lastTime = currTime + timeToCall;
+//                return id;
+//            };
+//
+//        if (!window.cancelAnimationFrame)
+//            window.cancelAnimationFrame = function(id) {
+//                clearTimeout(id);
+//            };
+//    }());
 
-        if (!window.requestAnimationFrame)
-            window.requestAnimationFrame = function(callback, element) {
-                var currTime = new Date().getTime();
-                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-                    timeToCall);
-                lastTime = currTime + timeToCall;
-                return id;
-            };
 
-        if (!window.cancelAnimationFrame)
-            window.cancelAnimationFrame = function(id) {
-                clearTimeout(id);
-            };
-    }());
+}());

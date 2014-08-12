@@ -1,7 +1,8 @@
 angular.module('FScapeApp.Models').factory('configModel',
     function(BaseModel, configService,$q){
 
-    // let's just use this. no sense in making an async call here.
+    // let's just use this since the data is so small yet everything depends on it
+    // no sense in making an async call here.
     var defaults =
     {
         "totalPages":760,
@@ -12,11 +13,13 @@ angular.module('FScapeApp.Models').factory('configModel',
         "pathWebsize":"websize_1024",
         "license":null,
         "tileWidth": 1004,
-        "tileHeight": 768
+        "tileHeight": 768,
+        "startPage": 533
     };
 
 
-        var model = new BaseModel(defaults, configService);
+
+    var model = new BaseModel(defaults, configService);
 
     model.getConfig = function()
     {

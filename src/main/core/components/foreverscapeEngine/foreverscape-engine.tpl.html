@@ -3,10 +3,12 @@
     <div class="hud">
         zoom: {{fscapeEngineCtrl.zoom}}<br/>
         time: {{ fscapeEngineCtrl.time| number:0 }}<br/>
-        offX: {{fscapeEngineCtrl.offsetX}}<br/>
-        offY: {{fscapeEngineCtrl.offsetY}}<br/>
+        hasRender: {{ fscapeEngineCtrl.hasRender| number:0 }}<br/>
 
+        <div id="trace">Hello</div>
     </div>
+
+
 
     <div class="engine-frame"
          ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
