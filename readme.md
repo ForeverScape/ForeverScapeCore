@@ -8,6 +8,12 @@ The ForeverScape is a massive 2.3 football field long hand-drawn illustration th
 <b>Currently, the new engine is in beta staging. We don't have a dev area yet, so this is both staging and dev, and therefore may be unstable during periods of high velocity development. </b>
 
 
+####Learn More:####
+See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
+
+
+
+
 ###Licensing:###
 
 Any display of content directly from or derived from the ForeverScape artwork must be accompanied with the text "ForeverScape" on or in the same vicinity of the display apparatus, NOT JUST IN SOURCE CODE. The minimum font size for the text "ForeverScape" must be at least 7% of the of height or width (whichever is greater) of the screen size of the artwork presented and must link to ```http://foreverscape.com?source={{ URL of your company or app}}``` in a browser on the device. This applies to any single image, cropping of a single image or assembly of multiple images. 
@@ -57,10 +63,5 @@ Code is distributed under MIT license.
 ###Unit Testing###
 
 TBD
-
-
-###LEarn More:###
-See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
-
 
 
