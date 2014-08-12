@@ -81,36 +81,59 @@
                     that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
 
 
-                    $(document.body).bind("touchstart", function(event) {
+                    $(document).bind("touchstart", function(event) {
+//
+                        event.preventDefault();
+                        event.originalEvent.preventDefault();
 
-                        that.mouseDownX = event.originalEvent.targetTouches[0].pageX || e.originalEvent.changedTouches[0].pageX;
-                        that.mouseDownY = event.originalEvent.targetTouches[0].pageY || e.originalEvent.changedTouches[0].pageY;
+                        that.mouseDownX = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
+                        that.mouseDownY = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
 
-                        that.mouseX  = event.originalEvent.targetTouches[0].pageX|| e.originalEvent.changedTouches[0].pageX;
-                        that.mouseY  = event.originalEvent.targetTouches[0].pageY|| e.originalEvent.changedTouches[0].pageY;
+                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
+                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
 
                         trace("start " + that.mouseDownX);
 
                         that.down()
                     });
 
-                    $(document.body).bind("touchmove", function(event) {
+                    document.ontouchmove = function(e){
+                        // Do things
+                        e.preventDefault();
+                    };
 
+                    $(document).bind("touchmove", function(event) {
+
+                        trace("touchmove");
                         event.preventDefault();
-                        that.mouseX = event.originalEvent.targetTouches[0].pageX || e.originalEvent.changedTouches[0].pageX;
-                        that.mouseY= event.originalEvent.targetTouches[0].pageY || e.originalEvent.changedTouches[0].pageY;
+                        event.originalEvent.preventDefault();
+                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
+                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
 
                         trace("move" +  that.mouseX );
                         that.move();
                     });
 
-                    $(document.body).bind("touchend", function(event) {
+                    $(document).bind("touchend", function(event) {
+
+                        event.preventDefault();
+                        event.originalEvent.preventDefault();
 
                         that.up();
 
                         trace("end")
                         trace("s " + that.mouseDownX );
-                        trace("e " + that.mouseY);
+                        trace("e " + that.mouseX);
+
+
+                    });
+
+                    $(document).bind("touchcancel", function(event) {
+
+                        event.preventDefault();
+                        event.originalEvent.preventDefault();
+
+                       trace("touchCancel")
 
 
                     });
@@ -169,7 +192,7 @@
 
                 mouseDown: function($event)
                 {
-                    $event.preventDefault();
+                  //  $event.preventDefault();
 
                     if( this.is_touch_device )
                         return;
