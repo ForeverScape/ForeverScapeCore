@@ -17,8 +17,6 @@ You can create commercial software products using this API and the images in the
 Code is distributed under MIT license. 
 
 
-###Demo:###
-To Be Announced, see the artwork at the current *slammed together* website http://foreverscape.com
 
 
 ###Proposed Features:###
@@ -58,6 +56,11 @@ To Be Announced, see the artwork at the current *slammed together* website http:
 
 ###Unit Testing###
 
+TBD
+
+
+###LEarn More:###
+See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
 
 
 
