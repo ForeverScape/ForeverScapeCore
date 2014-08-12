@@ -243,7 +243,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"navigation\">\r" +
+    "    <div class=\"navigation\" ng-show=\"win.innerWidth > 350\">\r" +
     "\n" +
     "        <ul >\r" +
     "\n" +
@@ -253,7 +253,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "                    ng-mouseleave=\"learnHover=false\">\r" +
     "\n" +
-    "                <b>L</b>earn\r" +
+    "                <a href=\"http://foreverscape.com/about\"><b>L</b>earn</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
@@ -263,7 +263,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "                    ng-mouseleave=\"shopHover=false\">\r" +
     "\n" +
-    "                <b>S</b>hop\r" +
+    "                <a href=\"https://foreverscape.com/shop/index.php\"><b>S</b>hop</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
@@ -283,7 +283,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "                ng-mouseleave=\"videoHover=false\">\r" +
     "\n" +
-    "                <b>V</b>ideo\r" +
+    "                <a href=\"http://www.foreverscape.com/videos/\"><b>V</b>ideo</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
@@ -293,7 +293,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "                ng-mouseleave=\"sourceHover=false\">\r" +
     "\n" +
-    "                <b>S</b>ourcecode\r" +
+    "                <a href=\"https://github.com/vance/ForeverScapeCore\"><b>S</b>ourcecode</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +

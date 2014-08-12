@@ -160,18 +160,18 @@
 
 
 
-//                    setTimeout( function(){
-//
-//                        if( that.canIntro )
-//                        {
-//                            that.offsetY += 2500;
-//                            TweenMax.to( $('.engine-position'),3,
-//                                {
-//                                    css:{top:that.offsetY}
-//                                });
-//                        }
-//
-//                    }, 2500 );
+                    setTimeout( function(){
+
+                        if( that.canIntro )
+                        {
+                            that.offsetX -= 900;;
+                            TweenMax.to( $('.engine-position'),3,
+                                {
+                                    css:{left:that.offsetX}
+                                });
+                        }
+
+                    }, 2500 );
 
                 },
 
