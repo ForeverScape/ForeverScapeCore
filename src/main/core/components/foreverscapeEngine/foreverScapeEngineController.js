@@ -20,7 +20,7 @@
 
             var controller = {
 
-                zoom:.5,
+                zoom:.36,
                 offsetX: 0,
                 offsetY: 0,
                 time: 0,
@@ -53,10 +53,6 @@
                 offscreenTop: -10000,
                 offscreenBottom: 20000,
 
-                farthestLeft: 90000,
-                farthestRight: 0,
-
-                tx: 0,
 
                 hide: false, // change this to true, the entire header will not show up
                 location: $location,
@@ -348,7 +344,7 @@
                 },
                 zoomOut: function()
                 {
-                    if( this.zoom <= .1)
+                    if( this.zoom <= .21)
                         return;
                     this.zoom -= .015;
                     this.setZoomTarget();
@@ -444,7 +440,7 @@
                             if( gb.currentTileId < 0 )
                             {
                                 gb.currentTileId = this.config.totalPages + gb.currentTileId;
-                            } else if( gb.currentTileId > this.config.totalPages )
+                            } else if( gb.currentTileId >= this.config.totalPages )
                             {
                                 gb.currentTileId = gb.currentTileId - this.config.totalPages;
                             }
@@ -467,7 +463,7 @@
 
 
 
-                        if( this.zoom > .5 && ! this._dragging && ! this._flickingX && ! this._flickingY )
+                        if( this.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
                         {
                             var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
                             var isOnRight = gb.screenX < window.innerWidth;
@@ -478,7 +474,6 @@
                             {
 
                                 if( gb.currentTile){
-
 
                                     gb.isOnScreen = true;
 

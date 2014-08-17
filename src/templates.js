@@ -147,84 +147,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
-  $templateCache.put('main/core/modals/errorModal/error.tpl.html',
-    "<div class=\"debugger\" ng-controller=\"ErrorController as errorCtrl\">\r" +
-    "\n" +
-    "  <div class=\"overlay-header\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <h2>SERVER ERROR!</h2>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <p>{{errorCtrl.errorService.errorMessage}}</p>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "  </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('main/core/modals/successModal/success.tpl.html',
-    "<div ng-controller=\"SuccessController as successCtrl\">\r" +
-    "\n" +
-    "  <div class=\"overlay-header\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <h2>Success!</h2>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "  </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('main/core/overlay-containers/fullscreen/overlay.tpl.html',
-    "<div class=\"overlay-container\"\r" +
-    "\n" +
-    "     ng-controller=\"OverlayController as overlayCtrl\"\r" +
-    "\n" +
-    "     ng-show=\"overlayCtrl.showOverlay\"\r" +
-    "\n" +
-    "     ng-click=\"overlayCtrl.onShadowClick($event)\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <div class=\"overlay-content-wrapper\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "        <div class=\"overlay-close\" ng-show=\"overlayCtrl.showCloseIcon\" ng-click=\"overlayCtrl.close()\"></div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "        <div class=\"overlay-help\" ng-show=\"overlayCtrl.showHelpIcon\"></div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "        <overlay-content></overlay-content>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('main/website/components/nav/navigation.html',
+  $templateCache.put('main/core/components/nav/navigation.html',
     "<nav class=\"header-container\" ng-controller=\"navController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
     "\n" +
     "\r" +
@@ -306,6 +229,83 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\r" +
     "\n" +
     "</nav>"
+  );
+
+
+  $templateCache.put('main/core/modals/errorModal/error.tpl.html',
+    "<div class=\"debugger\" ng-controller=\"ErrorController as errorCtrl\">\r" +
+    "\n" +
+    "  <div class=\"overlay-header\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <h2>SERVER ERROR!</h2>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <p>{{errorCtrl.errorService.errorMessage}}</p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "  </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('main/core/modals/successModal/success.tpl.html',
+    "<div ng-controller=\"SuccessController as successCtrl\">\r" +
+    "\n" +
+    "  <div class=\"overlay-header\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <h2>Success!</h2>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "  </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('main/core/overlay-containers/fullscreen/overlay.tpl.html',
+    "<div class=\"overlay-container\"\r" +
+    "\n" +
+    "     ng-controller=\"OverlayController as overlayCtrl\"\r" +
+    "\n" +
+    "     ng-show=\"overlayCtrl.showOverlay\"\r" +
+    "\n" +
+    "     ng-click=\"overlayCtrl.onShadowClick($event)\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"overlay-content-wrapper\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"overlay-close\" ng-show=\"overlayCtrl.showCloseIcon\" ng-click=\"overlayCtrl.close()\"></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"overlay-help\" ng-show=\"overlayCtrl.showHelpIcon\"></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <overlay-content></overlay-content>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>"
   );
 
 
