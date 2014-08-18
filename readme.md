@@ -11,7 +11,9 @@ The ForeverScape is a massive 2.3 football field long hand-drawn illustration th
 ####Learn More:####
 See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
 
+####Caveat####
 
+Looking at mobile performance, we will have to likely abondon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.
 
 
 ###Licensing:###
