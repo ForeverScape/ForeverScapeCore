@@ -32,7 +32,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"hud\">\r" +
+    "   <!-- <div class=\"hud\">\r" +
     "\n" +
     "        zoom: {{fscapeEngineCtrl.zoom}}<br/>\r" +
     "\n" +
@@ -44,7 +44,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        <div id=\"trace\">Hello</div>\r" +
     "\n" +
-    "    </div>\r" +
+    "    </div>-->\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -82,41 +82,29 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "                    <div class=\"thumb\">\r" +
     "\n" +
-    "                        <img image-onload numeric-id=\"{{gridBox.currentTile.id}}\" id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" ng-style=\"{width:gridBox.width, height: gridBox.height}\"/>\r" +
+    "                        <img image-onload numeric-id=\"{{gridBox.currentTile.id}}\" id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" />\r" +
     "\n" +
     "                    </div>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "\r" +
     "\n" +
     "<!--\r" +
     "\n" +
-    "\r" +
+    "<div class=\"grid-info\">\r" +
     "\n" +
-    "                    <div class=\"grid-info\">\r" +
+    "    Page {{gridBox.id}}<br/>\r" +
     "\n" +
-    "                        Page {{gridBox.id}}<br/>\r" +
+    "    {{gridBox.currentTile.name }}<br/>\r" +
     "\n" +
-    "                        {{gridBox.currentTile.name }}<br/>\r" +
+    "    {{gridBox.isOnScreen}}\r" +
     "\n" +
-    "                        {{gridBox.isOnScreen}}\r" +
-    "\n" +
-    "                    </div>\r" +
+    "</div>\r" +
     "\n" +
     "-->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                    <!--<img src=\"http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg\" />-->\r" +
-    "\n" +
-    "\r" +
+    "<!--<img src=\"http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg\" />-->\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -166,55 +154,35 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"navigation\" ng-show=\"win.innerWidth > 350\">\r" +
+    "    <div class=\"navigation\">\r" +
     "\n" +
     "        <ul >\r" +
     "\n" +
-    "            <li ng-class=\"{active:learnHover}\"\r" +
-    "\n" +
-    "                    ng-mouseenter=\"learnHover=true\"\r" +
-    "\n" +
-    "                    ng-mouseleave=\"learnHover=false\">\r" +
+    "            <li >\r" +
     "\n" +
     "                <a href=\"http://foreverscape.com/about\"><b>L</b>earn</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
-    "            <li ng-class=\"{active:shopHover}\"\r" +
-    "\n" +
-    "                    ng-mouseenter=\"shopHover=true\"\r" +
-    "\n" +
-    "                    ng-mouseleave=\"shopHover=false\">\r" +
+    "            <li >\r" +
     "\n" +
     "                <a href=\"https://foreverscape.com/shop/index.php\"><b>S</b>hop</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
-    "            <li ng-class=\"{active:discoverHover}\"\r" +
+    "            <li>\r" +
     "\n" +
-    "                    ng-mouseenter=\"discoverHover=true\"\r" +
-    "\n" +
-    "                    ng-mouseleave=\"discoverHover=false\">\r" +
-    "\n" +
-    "                <b>D</b>iscover\r" +
+    "                <a href=\"https://foreverscape.com/shop/index.php\"><b>D</b>iscover</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
-    "            <li ng-class=\"{active:videoHover}\"\r" +
-    "\n" +
-    "                ng-mouseenter=\"videoHover=true\"\r" +
-    "\n" +
-    "                ng-mouseleave=\"videoHover=false\">\r" +
+    "            <li >\r" +
     "\n" +
     "                <a href=\"http://www.foreverscape.com/videos/\"><b>V</b>ideo</a>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
-    "            <li ng-class=\"{active:sourceHover}\"\r" +
-    "\n" +
-    "                ng-mouseenter=\"sourceHover=true\"\r" +
-    "\n" +
-    "                ng-mouseleave=\"sourceHover=false\">\r" +
+    "            <li >\r" +
     "\n" +
     "                <a href=\"https://github.com/vance/ForeverScapeCore\"><b>S</b>ourcecode</a>\r" +
     "\n" +

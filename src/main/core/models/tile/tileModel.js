@@ -65,15 +65,13 @@ angular.module('FScapeApp.Models').factory('tileModel',
                     config.basePath.replace(':version', config.cdnVersion),
                     config.pathWebsize,
                         'forever_' + generalUtils.string.pad( i + 1, '0', 4) + '.jpg'
-                ),
+                )
             }
 
             tiles.push( tile );
         }
 
         this.tiles = tiles;
-
-        console.log( tiles );
 
         return tiles;
     }

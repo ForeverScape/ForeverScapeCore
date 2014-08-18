@@ -1,7 +1,6 @@
 .foreverscape-engine-wrapper
 {
-
-  background-color:#eeeeff;
+  background-color:#000;
   position:fixed;
   left:0;
   right:0;
@@ -34,19 +33,23 @@
     opacity:1;
     width:100%;
     height:100%;
-    border:1px solid #000;
     background-color:#000;
 
     .grid-box
     {
       position:absolute;
-      opacity:1;
-      border:1px solid #000;
+      width: 1004px;
+      height: 768px;
     }
 
     .thumb {
       position:absolute;
       z-index:20;
+
+      img {
+        width: 1005px;
+        height: 769px;
+      }
     }
     .full {
       position:absolute;

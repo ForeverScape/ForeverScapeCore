@@ -1,12 +1,12 @@
 <div class="foreverscape-engine-wrapper">
 
-    <div class="hud">
+   <!-- <div class="hud">
         zoom: {{fscapeEngineCtrl.zoom}}<br/>
         time: {{ fscapeEngineCtrl.time| number:0 }}<br/>
         hasRender: {{ fscapeEngineCtrl.hasRender| number:0 }}<br/>
 
         <div id="trace">Hello</div>
-    </div>
+    </div>-->
 
 
 
@@ -25,24 +25,18 @@
 
                     <div class="full"><img id="full-{{gridBox.domId}}"  ng-style="{width:gridBox.width, height: gridBox.height}"/></div>
                     <div class="thumb">
-                        <img image-onload numeric-id="{{gridBox.currentTile.id}}" id="thumb-{{gridBox.domId}}" ng-src="{{gridBox.currentTile.thumbUrl}}" ng-style="{width:gridBox.width, height: gridBox.height}"/>
+                        <img image-onload numeric-id="{{gridBox.currentTile.id}}" id="thumb-{{gridBox.domId}}" ng-src="{{gridBox.currentTile.thumbUrl}}" />
                     </div>
-
 
 <!--
-
-                    <div class="grid-info">
-                        Page {{gridBox.id}}<br/>
-                        {{gridBox.currentTile.name }}<br/>
-                        {{gridBox.isOnScreen}}
-                    </div>
+<div class="grid-info">
+    Page {{gridBox.id}}<br/>
+    {{gridBox.currentTile.name }}<br/>
+    {{gridBox.isOnScreen}}
+</div>
 -->
 
-
-
-
-                    <!--<img src="http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg" />-->
-
+<!--<img src="http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg" />-->
                 </div>
 
             </div>

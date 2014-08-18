@@ -6,7 +6,7 @@
     {
         traceVal.push('<br/>' + val);
 
-        $('#trace').html(traceVal.join(''));
+       // $('#trace').html(traceVal.join(''));
 
         if(  traceVal.length > 10 )
         {
@@ -22,7 +22,7 @@
 
                 zoom:.36,
                 offsetX: 0,
-                offsetY: 0,
+                offsetY: -350,
                 time: 0,
 
                 canIntro: true,
@@ -163,7 +163,7 @@
                             that.offsetX -= 900;;
                             TweenMax.to( $('.engine-position'),3,
                                 {
-                                    css:{left:that.offsetX}
+                                    css:{left:that.offsetX, top:that.offsetY}
                                 });
                         }
 
