@@ -15,7 +15,7 @@ angular.module('FScapeApp.Models').factory('gridModel',
 
                 tileModel.getTiles().then( function(){
 
-                // this should only generate a grid that pulls from the data well based on calculations
+
                 for (var i = 0; i < 150; i++) {
 
                     var color = 0xff0000;

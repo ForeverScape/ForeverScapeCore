@@ -44,9 +44,9 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        <div id=\"trace\">Hello</div>\r" +
     "\n" +
-    "    </div>-->\r" +
+    "    </div>\r" +
     "\n" +
-    "\r" +
+    "-->\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -68,7 +68,13 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "            <div class=\"engine-position\">\r" +
+    "            <div id=\"tile-engine\" class=\"engine-position\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<!--\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -78,13 +84,13 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "                    <div class=\"full\"><img id=\"full-{{gridBox.domId}}\"  ng-style=\"{width:gridBox.width, height: gridBox.height}\"/></div>\r" +
+    "\r" +
     "\n" +
-    "                    <div class=\"thumb\">\r" +
+    "                   <img class=\"full\" id=\"full-{{gridBox.domId}}\"  ng-style=\"{width:gridBox.width, height: gridBox.height}\"/>\r" +
     "\n" +
-    "                        <img image-onload numeric-id=\"{{gridBox.currentTile.id}}\" id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" />\r" +
+    "\r" +
     "\n" +
-    "                    </div>\r" +
+    "                   <img class=\"thumb\" image-onload numeric-id=\"{{gridBox.currentTile.id}}\" id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" />\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -105,6 +111,8 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\r" +
     "\n" +
     "\r" +
+    "\n" +
+    "-->\r" +
     "\n" +
     "\r" +
     "\n" +

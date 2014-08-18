@@ -6,7 +6,7 @@
     {
         traceVal.push('<br/>' + val);
 
-       // $('#trace').html(traceVal.join(''));
+        $('#trace').html(traceVal.join(''));
 
         if(  traceVal.length > 10 )
         {
@@ -19,6 +19,9 @@
         function($scope, BaseController,$location, configModel, tileModel, gridModel) {
 
             var controller = {
+
+                _hasGrid: false,
+                _allowTouch: true,
 
                 zoom:.36,
                 offsetX: 0,
@@ -45,8 +48,11 @@
                 _dragging: false,
                 _flickingX: false,
                 _flickingY: false,
+                _scaling:false,
                 flickTweenX:null,
                 flickTweenY: null,
+                zoomTween:null,
+                prevPinchDist: 0,
 
                 offscreenLeft: -1004,
                 offscreenRight: 200000,
@@ -76,15 +82,37 @@
 
                     this.buildGrid();
 
-
-
                     that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
 
+
+                    $(document).bind('gesturestart', function(e) {
+                        e.originalEvent.preventDefault();
+
+                    }, false);
+
+                    $(document).bind('gestureend', function(e) {
+                        e.originalEvent.preventDefault();
+
+                    }, false);
 
                     $(document).bind('touchstart', function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
+
+                        if( event.originalEvent.touches.length === 2 ||
+                            event.originalEvent.targetTouches.length ===2 ) {
+
+                            that._scaling = true;
+                            that.pinchStart(event);
+                            return;
+                        }
+
+                        if( !that._allowTouch )
+                        {
+                            return;
+                        }
+                        that._allowTouch = false;
 
                         that.mouseDownX = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
                         that.mouseDownY = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
@@ -92,18 +120,20 @@
                         that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
                         that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
 
-                        that.down()
+                        that.down();
                     });
-
-                    document.ontouchmove = function(e){
-                        // Do things
-                        e.preventDefault();
-                    };
 
                     $(document).bind('touchmove', function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
+
+                        if(that._scaling) {
+                            that.pinchMove(event);
+                            return;
+                        }
+
+
                         that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
                         that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
 
@@ -114,6 +144,18 @@
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
+
+
+                        window.clearTimeout( that.touchTimeout );
+                        that.touchTimeout = window.setTimeout( function(){
+                            that._allowTouch = true;
+                        }, 300 );
+
+                        if(that._scaling) {
+                            that.pinchEnd(event);
+                            that._scaling = false;
+                            return;
+                        }
 
                         that.up();
                     });
@@ -130,6 +172,7 @@
 
                         that.config = configModel.data;
                         that.gridBoxes = gridModel.gridBoxes;
+
                         tileModel.getTiles().then( function(result){
                             that.imageTiles = result;
                             trace('got tiles');
@@ -138,22 +181,22 @@
 
                     });
 
-                    $('.engine-frame').bind('mousewheel', function(e){
+                    $(document).mousewheel(function(e) {
 
                         e.originalEvent.preventDefault();
-                        if(e.originalEvent.wheelDelta  > 0) {
+                        if(e.deltaY  > 0) {
                             that.zoomIn();
                         } else{
                             that.zoomOut();
                         }
                     });
 
-                    jQuery('.engine-frame').bind('swipeone',function(e){
+                    $('.engine-frame').bind('swipeone',function(e){
 
                         //alert('swipe');
                     });
 
-                    jQuery('.engine-frame').bind('pinch',function(e){
+                    $('.engine-frame').bind('pinch',function(e){
 
                         trace('Pinch')
                     });
@@ -176,19 +219,56 @@
                 },
 
 
-                buildGrid: function()
+                pinchStart: function(e)
+                {
+                    this.startDistance = this.getPinchDistance(e);
+                },
+                pinchMove: function(e)
                 {
 
 
+                    var dist = this.getPinchDistance(e);
+                    //var difference = this.startDistance - difference;
 
+                    if( dist - this.prevPinchDist > 0)
+                    {
+                        this.zoomIn();
+                        this.setZoomTarget();
 
+                    } else {
+                        this.zoomOut();
+                    }
 
+                    this.prevPinchDist = dist;
 
+                },
+                pinchEnd: function(e)
+                {
+                    trace("pinchEnd");
+                },
+
+                getPinchDistance: function(e)
+                {
+                    var dist = 0;
+                    if( e.originalEvent.touches[0])
+                    {
+                        dist = Math.sqrt(
+                                (e.originalEvent.touches[0].pageX-e.originalEvent.touches[1].pageX) * (e.originalEvent.touches[0].pageX-e.originalEvent.touches[1].pageX) +
+                                (e.originalEvent.touches[0].pageY-e.originalEvent.touches[1].pageY) * (e.originalEvent.touches[0].pageY-e.originalEvent.touches[1].pageY));
+
+                    } else  if( e.originalEvent.changedTouches[0])
+                    {
+                        dist = Math.sqrt(
+                                (e.originalEvent.changedTouches[0].pageX-e.originalEvent.changedTouches[1].pageX) * (e.originalEvent.changedTouches[0].pageX-e.originalEvent.changedTouches[1].pageX) +
+                                (e.originalEvent.changedTouches[0].pageY-e.originalEvent.changedTouches[1].pageY) * (e.originalEvent.changedTouches[0].pageY-e.originalEvent.changedTouches[1].pageY));
+
+                    }
+                    return dist;
                 },
 
                 mouseDown: function($event)
                 {
-                  //  $event.preventDefault();
+                    $event.preventDefault();
 
                     if( this.is_touch_device )
                         return;
@@ -199,8 +279,6 @@
                     this.mouseDownY = $event.pageY;
                     this.mouseX = $event.pageX;
                     this.mouseY = $event.pageY;
-
-
 
                     this.down();
                 },
@@ -259,14 +337,14 @@
                     if( this._mouseDown && ! this._flickingX  )
                     {
                         this._dragging = true;
-                        this.offsetX += this.dx;
+                        this.offsetX += this.dx * ( 3 * ( 1.6 - this.zoom) );
 
                         $('.engine-position').css({ 'left': this.offsetX });
                     }
                     if( this._mouseDown && ! this._flickingY  )
                     {
                         this._dragging = true;
-                        this.offsetY += this.dy;
+                        this.offsetY += this.dy* ( 3 *  ( 1.6 - this.zoom) );
 
                         $('.engine-position').css({ 'top': this.offsetY });
                     }
@@ -348,39 +426,112 @@
 
 
 
-                zoomIn: function( val)
+                zoomIn: function( multiplier)
                 {
+                    if( ! multiplier )
+                    {
+                        multiplier = 1;
+                    }
+
                     if( this.zoom > 1.5)
                         return;
 
-                    this.zoom += .015;
+                    this.zoom += .025* multiplier;
                     this.setZoomTarget();
                 },
-                zoomOut: function()
+                zoomOut: function(multiplier)
                 {
+                    if( ! multiplier )
+                    {
+                        multiplier = 1;
+                    }
+
                     if( this.zoom <= .21)
                         return;
-                    this.zoom -= .015;
+                    this.zoom -= .025 * multiplier;
                     this.setZoomTarget();
                 },
 
-                setZoomTarget: function(){
+                setZoomTarget: function( newZoom){
                     var that = this;
-                    TweenMax.to( $('.engine-scale'), 1,
+
+                    if( newZoom )
+                    {
+                        that.zoom = newZoom;
+                    }
+
+                    if( this.zoomTween )
+                    {
+                        this.zoomTween.kill();
+                    }
+
+                    that.zoomTween = TweenMax.to( $('.engine-scale'),0,
                         {
                             css:{scale:that.zoom}
                         });
                 },
 
+
+
+                buildGrid: function()
+                {
+                    // this used to be generated in ng-repeate
+                    // we do this manually to improve performance
+
+                    if( ! this.gridBoxes.length )
+                    {
+                        return;
+                    }
+
+
+                    for( var i = 0; i <  this.gridBoxes.length ;i++)
+                    {
+
+                        var gb = this.gridBoxes[i];
+                        var container = document.createElement('div');
+                        var domId = 'grid-' + i;
+
+                        container.setAttribute('id',domId );
+                        container.setAttribute('class', 'grid-box');
+                        container.setAttribute('style', 'left:' + gb.x +'px;top:' + gb.y +'px;'  );
+
+                        var full = document.createElement('img');
+                        full.setAttribute('class', 'full');
+                        full.setAttribute('id', 'full-' + domId);
+
+                        var thumb = document.createElement('img');
+                        thumb.setAttribute('class', 'thumb');
+                        thumb.setAttribute('id', 'thumb-' + domId);
+                        thumb.setAttribute('src', gb.currentTile.thumbUrl );
+
+
+                        jQuery( container).append( thumb );
+                        jQuery( container).append( full );
+
+                        jQuery("#tile-engine").append(container);
+                    }
+
+                    this._hasGrid = true;
+                },
+
+
+
+
+
+
                 render: function()
                 {
                     var that = this;
-                    that.time+= .015;
-
-
+                    that.time+= 1;
 
                     if( that.config === null)
                         return;
+
+                    if( ! this._hasGrid )
+                    {
+                        this.buildGrid();
+                        return;
+                    }
 
                     this.hasRender = true;
 
@@ -462,17 +613,14 @@
                             gb.element.css({ 'top': gb.y });
 
 
-                            if( gb.currentTile){
+                            if( gb.currentTile  ){
                                 if( gb.thumbElement.attr('src') != gb.currentTile.thumbUrl);
                                 {
-                                    gb.currentTile.isLoading = true;
-                                    gb.thumbElement.attr('src',gb.currentTile.thumbUrl);
+                                    gb.thumbElement.attr('src', gb.currentTile.thumbUrl);
                                 }
                             }
 
                         }
-
-
 
 
                         if( this.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
@@ -480,30 +628,22 @@
                             var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
                             var isOnRight = gb.screenX < window.innerWidth;
                             var isOnTop = gb.screenY > - ( this.config.tileHeight * this.zoom) ;
-                            var isOnBottom = gb.screenY < window.innerHeight;
+                            var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight * this.zoom) ;
 
-                            if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScren)
+                            if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScreen )
                             {
-
-                                if( gb.currentTile){
-
-                                    gb.isOnScreen = true;
-                                    if( gb.fullElement.attr('src') != gb.currentTile.fullUrl);
-                                    {
-                                        gb.fullElement.attr('src',gb.currentTile.fullUrl);
-                                    }
+                                if( gb.currentTile && gb.fullElement.attr('src').toString() != gb.currentTile.fullUrl.toString());
+                                {
+;                                   gb.isOnScreen = true;
+                                    gb.fullElement.attr('src',gb.currentTile.fullUrl);
                                 }
-
                             }
 
                         } else {
-
-                                if( gb.currentTile){
-
-                                    gb.isOnScren = false;
-                                    gb.fullElement.attr('src','main/resources/img/blank.gif');
-                                }
-
+                            if( gb.currentTile){
+                                gb.isOnScreen = false;
+                                gb.fullElement.attr('src','main/resources/img/blank.gif');
+                            }
                         }
 
 
@@ -512,11 +652,7 @@
 
 
 
-
                 }
-
-
-
 
             };
 

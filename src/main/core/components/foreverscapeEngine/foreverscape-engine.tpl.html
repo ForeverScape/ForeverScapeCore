@@ -6,8 +6,8 @@
         hasRender: {{ fscapeEngineCtrl.hasRender| number:0 }}<br/>
 
         <div id="trace">Hello</div>
-    </div>-->
-
+    </div>
+-->
 
 
     <div class="engine-frame"
@@ -18,15 +18,18 @@
 
         <div class="engine-scale">
 
-            <div class="engine-position">
+            <div id="tile-engine" class="engine-position">
+
+
+<!--
 
                 <div id="{{gridBox.domId}}" ng-style="{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }" class="grid-box" ng-repeat="(index,gridBox) in fscapeEngineCtrl.gridBoxes">
 
 
-                    <div class="full"><img id="full-{{gridBox.domId}}"  ng-style="{width:gridBox.width, height: gridBox.height}"/></div>
-                    <div class="thumb">
-                        <img image-onload numeric-id="{{gridBox.currentTile.id}}" id="thumb-{{gridBox.domId}}" ng-src="{{gridBox.currentTile.thumbUrl}}" />
-                    </div>
+
+                   <img class="full" id="full-{{gridBox.domId}}"  ng-style="{width:gridBox.width, height: gridBox.height}"/>
+
+                   <img class="thumb" image-onload numeric-id="{{gridBox.currentTile.id}}" id="thumb-{{gridBox.domId}}" ng-src="{{gridBox.currentTile.thumbUrl}}" />
 
 <div class="grid-info">
     Page {{gridBox.id}}<br/>
@@ -37,6 +40,7 @@
                 </div>
 
 
+-->
 
 
 

@@ -39,19 +39,18 @@
     .grid-box
     {
       position:absolute;
-      width: 1005px;
-      height: 769px;
+      width: 1004px;
+      height: 768px;
       z-index:20;
     }
 
     .thumb {
-      position:absolute;
-      z-index:20;
 
-      img {
-        width: 1005px;
-        height: 769px;
-      }
+        position:absolute;
+        z-index:20;
+        width: 1004px;
+        height: 768px;
+
     }
     .full {
       position:absolute;
