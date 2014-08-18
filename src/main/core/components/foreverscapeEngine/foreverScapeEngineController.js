@@ -30,9 +30,6 @@
 
                 canIntro: true,
 
-
-                hasRender:false,
-
                 //drag flick
                 mouseDownX: null,
                 mouseDownY: null,
@@ -532,10 +529,6 @@
                         this.buildGrid();
                         return;
                     }
-
-                    this.hasRender = true;
-
-
 
                     var loadBoundaryOffsetX =  (this.config.tileWidth * 4 * this.zoom );
                     this.offscreenLeft = 100 - loadBoundaryOffsetX;
