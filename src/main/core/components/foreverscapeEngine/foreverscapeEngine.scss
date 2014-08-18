@@ -6,6 +6,7 @@
   right:0;
   top:90px;
   bottom:0px;
+  z-index:2;
 
   .engine-scale
   {
@@ -38,8 +39,9 @@
     .grid-box
     {
       position:absolute;
-      width: 1004px;
-      height: 768px;
+      width: 1005px;
+      height: 769px;
+      z-index:20;
     }
 
     .thumb {

@@ -70,14 +70,18 @@
                 onInit: function( ) {
                     var that = this;
 
-                    $scope.trace = "";
+                    $scope.trace = '';
 
-                    trace("init");
+                    trace('init');
+
+                    this.buildGrid();
+
+
 
                     that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
 
 
-                    $(document).bind("touchstart", function(event) {
+                    $(document).bind('touchstart', function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
@@ -96,7 +100,7 @@
                         e.preventDefault();
                     };
 
-                    $(document).bind("touchmove", function(event) {
+                    $(document).bind('touchmove', function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
@@ -106,7 +110,7 @@
                         that.move();
                     });
 
-                    $(document).bind("touchend", function(event) {
+                    $(document).bind('touchend', function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
@@ -114,7 +118,7 @@
                         that.up();
                     });
 
-                    $(document).bind("touchcancel", function(event) {
+                    $(document).bind('touchcancel', function(event) {
 
                         event.preventDefault();
                         event.originalEvent.preventDefault();
@@ -122,13 +126,13 @@
 
                     configModel.getConfig().then( function(){
 
-                        trace("gotConfig");
+                        trace('gotConfig');
 
                         that.config = configModel.data;
                         that.gridBoxes = gridModel.gridBoxes;
                         tileModel.getTiles().then( function(result){
                             that.imageTiles = result;
-                            trace("got tiles");
+                            trace('got tiles');
                             that.setZoomTarget();
                         });
 
@@ -146,12 +150,12 @@
 
                     jQuery('.engine-frame').bind('swipeone',function(e){
 
-                        //alert("swipe");
+                        //alert('swipe');
                     });
 
                     jQuery('.engine-frame').bind('pinch',function(e){
 
-                        trace("Pinch")
+                        trace('Pinch')
                     });
 
 
@@ -172,6 +176,16 @@
                 },
 
 
+                buildGrid: function()
+                {
+
+
+
+
+
+
+                },
+
                 mouseDown: function($event)
                 {
                   //  $event.preventDefault();
@@ -179,7 +193,7 @@
                     if( this.is_touch_device )
                         return;
 
-                    trace("mouseDown");
+                    trace('mouseDown');
 
                     this.mouseDownX = $event.pageX;
                     this.mouseDownY = $event.pageY;
@@ -269,7 +283,7 @@
                     if( this.is_touch_device )
                         return;
 
-                    trace("mouseUp");
+                    trace('mouseUp');
 
                     this.up();
 
@@ -302,7 +316,7 @@
                     //flick
                     if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
                     {
-                        trace("flickX start");
+                        trace('flickX start');
                         this._flickingX = true;
                         this.offsetX +=  3000 * velX;
                         this.flickTweenX = TweenMax.to( $('.engine-position'), 1,
@@ -316,7 +330,7 @@
                     }
                     if( ! this._flickingY &&Math.abs( velX ) > .15 || Math.abs( velY ) > .15 )
                     {
-                        trace("flickY start");
+                        trace('flickY start');
                         this._flickingY= true;
                         this.offsetY +=  3000 * velY;
                         this.flickTweenY = TweenMax.to( $('.engine-position'), 1,
@@ -384,13 +398,11 @@
                     {
                         var gb = that.gridBoxes[i];
 
-
-
                         if(!gb.element )
                         {
-                            gb.element = $("#" + gb.domId );
-                            gb.thumbElement = $("#thumb-" + gb.domId );
-                            gb.fullElement = $("#full-" + gb.domId );
+                            gb.element = $('#' + gb.domId );
+                            gb.thumbElement = $('#thumb-' + gb.domId );
+                            gb.fullElement = $('#full-' + gb.domId );
                         }
 
                         var offset = gb.element.offset();
@@ -454,7 +466,7 @@
                                 if( gb.thumbElement.attr('src') != gb.currentTile.thumbUrl);
                                 {
                                     gb.currentTile.isLoading = true;
-                                    gb.thumbElement.attr("src",gb.currentTile.thumbUrl);
+                                    gb.thumbElement.attr('src',gb.currentTile.thumbUrl);
                                 }
                             }
 
@@ -470,16 +482,15 @@
                             var isOnTop = gb.screenY > - ( this.config.tileHeight * this.zoom) ;
                             var isOnBottom = gb.screenY < window.innerHeight;
 
-                            if( (isOnLeft && isOnRight) && isOnTop && isOnBottom)
+                            if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScren)
                             {
 
                                 if( gb.currentTile){
 
                                     gb.isOnScreen = true;
-
                                     if( gb.fullElement.attr('src') != gb.currentTile.fullUrl);
                                     {
-                                        gb.fullElement.attr("src",gb.currentTile.fullUrl);
+                                        gb.fullElement.attr('src',gb.currentTile.fullUrl);
                                     }
                                 }
 
@@ -490,10 +501,7 @@
                                 if( gb.currentTile){
 
                                     gb.isOnScren = false;
-
-                                    if( gb.fullElement.attr('src') )
-                                        gb.fullElement.attr("src","");
-
+                                    gb.fullElement.attr('src','main/resources/img/blank.gif');
                                 }
 
                         }

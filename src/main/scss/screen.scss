@@ -36,6 +36,10 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
     overflow-x:hidden;
     overflow-y:hidden;
 
+    img{
+      border:none;
+
+    }
 
   }
 

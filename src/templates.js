@@ -88,8 +88,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "<!--\r" +
-    "\n" +
     "<div class=\"grid-info\">\r" +
     "\n" +
     "    Page {{gridBox.id}}<br/>\r" +
@@ -100,13 +98,17 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "</div>\r" +
     "\n" +
-    "-->\r" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "<!--<img src=\"http://d2zwcujesf1bgv.cloudfront.net/prod/v11/images/websize_1024/forever_000{{gridBox.id + 1}}.jpg\" />-->\r" +
+    "\r" +
     "\n" +
-    "                </div>\r" +
+    "\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
