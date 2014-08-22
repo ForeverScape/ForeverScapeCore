@@ -440,11 +440,23 @@ module.exports = function(grunt) {
         },
 
         'ftp-deploy': {
-            build: {
+            productionfull: {
                 auth: {
                     host: 'ftp.foreverscape.com',
                     port: 21,
-                    authKey: 'key1'
+                    authKey: 'production'
+                },
+                src: [
+                    'deploy/src',
+                ],
+                dest: '',
+                exclusions: []
+            },
+            stagingfull: {
+                auth: {
+                    host: 'ftp.foreverscape.com',
+                    port: 21,
+                    authKey: 'staging'
                 },
                 src: [
                         'deploy/src',
@@ -452,11 +464,11 @@ module.exports = function(grunt) {
                 dest: '',
                 exclusions: []
             },
-            light:{
+            devfull:{
                 auth: {
                     host: 'ftp.foreverscape.com',
                     port: 21,
-                    authKey: 'key1'
+                    authKey: 'dev'
                 },
                 src: [
                     'deploy/src',
@@ -464,7 +476,19 @@ module.exports = function(grunt) {
                 dest: '',
                 exclusions: ['deploy/src/main/resources/lib/**']
             },
-            code:{
+            devlight:{
+                auth: {
+                    host: 'ftp.foreverscape.com',
+                    port: 21,
+                    authKey: 'dev'
+                },
+                src: [
+                    'deploy/src',
+                ],
+                dest: '',
+                exclusions: ['deploy/src/main/resources/lib/**']
+            },
+            devcode:{
                 auth: {
                     host: 'ftp.foreverscape.com',
                     port: 21,
@@ -522,9 +546,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html-build');
     grunt.registerTask('buildIndex', ['htmlbuild:dev', 'replace:dev', 'htmlbuild:prod', 'replace:prod']);
 
-    grunt.registerTask('deploy', ['compile','copy','ftp-deploy:build']);
-    grunt.registerTask('deploy:light', ['compile','copy','ftp-deploy:light']);
-    grunt.registerTask('deploy:code', ['compile','copy','ftp-deploy:code']);
+    grunt.registerTask('deploy:production', ['compile','copy','ftp-deploy:stagingfull']);
+
+    grunt.registerTask('deploy:stagingfull', ['compile','copy','ftp-deploy:stagingfull']);
+
+    grunt.registerTask('deploy:devfull', ['compile','copy','ftp-deploy:devfull']);
+    grunt.registerTask('deploy:devlight', ['compile','copy','ftp-deploy:devlight']);
+    grunt.registerTask('deploy:devcode', ['compile','copy','ftp-deploy:devcode']);
 
     // Default task.
     grunt.registerTask('default', ['watch']);

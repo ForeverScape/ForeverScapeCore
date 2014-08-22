@@ -24,6 +24,9 @@
                 _allowTouch: true,
 
                 zoom:.36,
+                zoomMax: 1.6, //these might get bumped up if window size is really big
+                zoomMin:.5,   //these might get bumped up if window size is really big
+
                 offsetX: 0,
                 offsetY: -350,
                 time: 0,
@@ -334,14 +337,14 @@
                     if( this._mouseDown && ! this._flickingX  )
                     {
                         this._dragging = true;
-                        this.offsetX += this.dx * ( 3 * ( 1.6 - this.zoom) );
+                        this.offsetX += this.dx * ( 3 * ( this.zoomMax +.1  - this.zoom) );
 
                         $('.engine-position').css({ 'left': this.offsetX });
                     }
                     if( this._mouseDown && ! this._flickingY  )
                     {
                         this._dragging = true;
-                        this.offsetY += this.dy* ( 3 *  ( 1.6 - this.zoom) );
+                        this.offsetY += this.dy* ( 3 *  ( this.zoomMax +.1  - this.zoom) );
 
                         $('.engine-position').css({ 'top': this.offsetY });
                     }
@@ -430,7 +433,7 @@
                         multiplier = 1;
                     }
 
-                    if( this.zoom > 1.5)
+                    if( this.zoom > this.zoomMax)
                         return;
 
                     this.zoom += .025* multiplier;
@@ -501,7 +504,6 @@
                         thumb.setAttribute('id', 'thumb-' + domId);
                         thumb.setAttribute('src', gb.currentTile.thumbUrl );
 
-
                         jQuery( container).append( thumb );
                         jQuery( container).append( full );
 
@@ -512,10 +514,13 @@
                 },
 
 
-
-
-
-
+                /*
+                        For performance reasons, we move the parent div, not each tile individually.
+                        Notice how there is only a single loop in render, and that it does not have
+                        to even touch all tile objects, only the grid objects that get associated
+                        based on index. We never have to iterate through all images except when
+                        querying for waypoints.
+                 */
                 render: function()
                 {
                     var that = this;
@@ -575,6 +580,7 @@
                         var isOffscreenBottom = gb.screenY > this.offscreenBottom;
 
 
+                        // grid has moved above the top or bottom threshold, increment the image index
                         if( isOffscreenTop && this.dy < 0 )
                         {
 
@@ -587,6 +593,7 @@
                             gb.row -= 10;
                         }
 
+                        // grid has moved left or right of the loading boundary, increment the image index
                         if( isOffscreenLeft || isOffscreenRight ||
                             isOffscreenTop || isOffscreenBottom )
                         {
@@ -600,11 +607,10 @@
                             {
                                 gb.currentTileId = gb.currentTileId - this.config.totalPages;
                             }
-                            gb.currentTile = tileModel.tiles[gb.currentTileId ];
+                            gb.currentTile = tileModel.tiles[gb.currentTileId];
 
                             gb.element.css({ 'left': gb.x });
                             gb.element.css({ 'top': gb.y });
-
 
                             if( gb.currentTile  ){
                                 if( gb.thumbElement.attr('src') != gb.currentTile.thumbUrl);
@@ -612,10 +618,9 @@
                                     gb.thumbElement.attr('src', gb.currentTile.thumbUrl);
                                 }
                             }
-
                         }
 
-
+                        // see if the image is in bounds of the screen and show the high resolution if zoomed in enough
                         if( this.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
                         {
                             var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
@@ -639,11 +644,7 @@
                             }
                         }
 
-
-
                     }
-
-
 
                 }
 
