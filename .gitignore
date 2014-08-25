@@ -7,3 +7,4 @@
 /src/minified
 .ftppass
 /deploy
+/src/main/.sass-cache
