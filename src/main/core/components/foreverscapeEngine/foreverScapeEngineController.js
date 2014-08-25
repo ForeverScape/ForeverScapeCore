@@ -446,7 +446,7 @@
                         multiplier = 1;
                     }
 
-                    if( this.zoom <= .21)
+                    if( this.zoom <= .26)
                         return;
                     this.zoom -= .025 * multiplier;
                     this.setZoomTarget();
@@ -539,7 +539,7 @@
                     this.offscreenLeft = 100 - loadBoundaryOffsetX;
                     this.offscreenRight = (16 * this.config.tileWidth * this.zoom) - loadBoundaryOffsetX;
 
-                    var loadBoundaryOffsetY =  (this.config.tileHeight * 4 * this.zoom );
+                    var loadBoundaryOffsetY =  (this.config.tileHeight * 2 * this.zoom );
                     this.offscreenTop = 50 - loadBoundaryOffsetY;
                     this.offscreenBottom = (this.zoom * 11 * this.config.tileHeight )- loadBoundaryOffsetY;
 
@@ -676,30 +676,31 @@
             };
     })();
 
-//    (function() {
-//        var lastTime = 0;
-//        var vendors = ['webkit', 'moz'];
-//        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-//            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-//            window.cancelAnimationFrame =
-//                window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
-//        }
-//
-//        if (!window.requestAnimationFrame)
-//            window.requestAnimationFrame = function(callback, element) {
-//                var currTime = new Date().getTime();
-//                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-//                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-//                    timeToCall);
-//                lastTime = currTime + timeToCall;
-//                return id;
-//            };
-//
-//        if (!window.cancelAnimationFrame)
-//            window.cancelAnimationFrame = function(id) {
-//                clearTimeout(id);
-//            };
-//    }());
+    //polyfill for reqAnimationFrame though it prolly won't perform well at all on the system anyway
+    (function() {
+        var lastTime = 0;
+        var vendors = ['webkit', 'moz'];
+        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+            window.cancelAnimationFrame =
+                window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame)
+            window.requestAnimationFrame = function(callback, element) {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                    timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+
+        if (!window.cancelAnimationFrame)
+            window.cancelAnimationFrame = function(id) {
+                clearTimeout(id);
+            };
+    }());
 
 
 }());

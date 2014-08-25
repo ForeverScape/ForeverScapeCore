@@ -1,0 +1,76 @@
+nav {
+  position: fixed;
+  top:0px;
+  margin-top:0px;
+  z-index:100;
+  width:100%;
+  height: 10%;
+  height:65px;
+  color:#fff;
+  background-color:rgba(0,0,0,.5);
+
+
+  a:link, a:visited {
+    text-decoration: none;
+    color:#aaaaaa;
+    cursor: pointer;
+  }
+  a:hover, a:active {
+        color:#ffffff;
+    cursor: pointer;
+  }
+
+  .title {
+    width:285px;
+    height:40px;
+
+    position: absolute;
+    right:0px;
+
+    color:#cccccc;
+    @include sprites-generate(weblogo-sm-trans);
+  }
+
+  .menu {
+
+    position:absolute;
+    background-color:#444444;
+    border-radius: 5px;
+    border:1px solid #bbbbbb;
+    margin-left:3px;
+    margin-top:3px;
+
+    width:40px;
+    height:38px;
+    @include sprites-generate(menu-button);
+  }
+
+  .navigation {
+
+    width: 400px;
+    color:#aaaaaa;
+    position:absolute;
+    height:20px;
+    bottom:5px;
+    right:5px;
+
+    font-size:20px;
+
+    ul {
+
+      margin:0;
+
+      .active {
+        color:#555555;
+      }
+
+      li {
+        display:inline;
+        cursor:pointer;
+      }
+
+    }
+
+  }
+
+}

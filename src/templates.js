@@ -145,6 +145,29 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
+  $templateCache.put('main/core/components/locationTool/location-tool.html',
+    "<div class=\"location-tool\" ng-controller=\"locationTool as locationCtrl\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"playback\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"play\" alt=\"play\" ng-onclick=\"startPlayback($event)\" ng-show=\"!isPlaying\"></div>\r" +
+    "\n" +
+    "        <div class=\"pause\" alt=\"pause\"  ng-onclick=\"stopPlayback($event)\"  ng-show=\"isPlaying\"></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('main/core/components/nav/navigation.html',
     "<nav class=\"header-container\" ng-controller=\"navController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
     "\n" +

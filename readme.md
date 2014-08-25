@@ -1,11 +1,11 @@
 ##ForeverScape Tile Engine##
 ### An Artwork so Large, it Needs it's own Software to View it ###
 
-The ForeverScape is a massive 2.3 football field long hand-drawn illustration that tiles like wallpaper (every page connects to the next). It is periodic and the left side matches the right, making traditional map APIs not applicable. The drawing is set to "Go Until I do" with no end in sight. This is an Angular component implementation that allows users to explore the ForeverScape universe and developers to build upon this universe with their own interactives.
+The ForeverScape is a massive 2.3 football field long hand-drawn illustration that tiles like wallpaper (every page connects to the next).  The drawing is set to "Go Until I do" with no end in sight. The images are periodic and the left column matches the right column, making traditional map APIs not applicable. This is an Angular component implementation that allows users to explore the ForeverScape universe and developers to build upon this universe with their own interactives.
 
 ### Live Demo ###
 ###http://staging.foreverscape.com###
-View the stable version of tile engine.
+Explore the artwork for yourself using the stable version of tile engine.
 
 ####Dev Area:####
 ###http://dev.foreverscape.com###
@@ -42,7 +42,7 @@ Code is distributed under MIT license.
 
 ###Usage:###
 
-  There are several ways to use this library	'
+  There are several ways to use this library
   
   	   1. Add your own components to the application directory (or other directory of choice)
             

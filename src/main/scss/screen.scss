@@ -19,8 +19,19 @@ $retinaBgWidth: image-width(sprite-path($sprites-sprites));
 $retinaBgHeight: image-height(sprite-path($sprites-sprites));
 
 @mixin sprites-generate($image) {
+
   body & {
     font-family: Helvetica, Sans Serif, Arial;
+
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+
     @include sprites-sprite($image);
   }
 
@@ -33,8 +44,7 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
     width:100%;
     height:100%;
 
-    overflow-x:hidden;
-    overflow-y:hidden;
+
 
     img{
       border:none;
@@ -68,6 +78,7 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
   COMPONENTs
 ***/
 @import "../core/components/nav/Navigation";
+@import "../core/components/locationTool/locationTool";
 
 @import "../core/components/foreverscapeEngine/foreverscapeEngine";
 
