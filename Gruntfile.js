@@ -474,7 +474,7 @@ module.exports = function(grunt) {
                     'deploy/src',
                 ],
                 dest: '',
-                exclusions: ['deploy/src/main/resources/lib/**']
+                exclusions: []
             },
             devlight:{
                 auth: {

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('FScapeApp.Controllers').controller('locationTool',
-        function($scope, BaseController,$location,$window) {
+        function($scope, BaseController,$location,$window, $rootScope) {
 
             var c = {
 
@@ -22,12 +22,15 @@
 
                 startPlayback: function()
                 {
+
                     $rootScope.$broadcast('startPlayback');
+                    $scope.isPlaying = true;
 
                 },
                 stopPlayback: function()
                 {
                     $rootScope.$broadcast('stopPlayback');
+                    $scope.isPlaying = false;
 
                 },
 

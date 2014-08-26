@@ -73,26 +73,39 @@
 
                 is_touch_device: false,
 
+
                 onInit: function( ) {
                     var that = this;
 
                     $scope.trace = '';
 
-                    trace('init');
-
                     this.buildGrid();
+                    this.setupTouchEvents();
+
+                    setTimeout( function(){
+                        if( that.canIntro )
+                        {
+                            that.offsetX -= 900;;
+                            TweenMax.to( $('.engine-position'),3,
+                            {
+                                css:{left:that.offsetX, top:that.offsetY}
+                            });
+                        }
+                    }, 2500 );
+
+                },
+
+                setupTouchEvents: function(){
+
+                    var that = this;
 
                     that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
-
-
                     $(document).bind('gesturestart', function(e) {
                         e.originalEvent.preventDefault();
-
                     }, false);
 
                     $(document).bind('gestureend', function(e) {
                         e.originalEvent.preventDefault();
-
                     }, false);
 
                     $(document).bind('touchstart', function(event) {
@@ -190,31 +203,6 @@
                             that.zoomOut();
                         }
                     });
-
-                    $('.engine-frame').bind('swipeone',function(e){
-
-                        //alert('swipe');
-                    });
-
-                    $('.engine-frame').bind('pinch',function(e){
-
-                        trace('Pinch')
-                    });
-
-
-
-                    setTimeout( function(){
-
-                        if( that.canIntro )
-                        {
-                            that.offsetX -= 900;;
-                            TweenMax.to( $('.engine-position'),3,
-                                {
-                                    css:{left:that.offsetX, top:that.offsetY}
-                                });
-                        }
-
-                    }, 2500 );
 
                 },
 
@@ -660,7 +648,6 @@
                         }
                     }
                 },
-
 
             };
 
