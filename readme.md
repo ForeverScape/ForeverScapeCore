@@ -66,6 +66,6 @@ Code is distributed under MIT license.
 
 ###Unit Testing###
 
-TBD
+Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet.
 
 
