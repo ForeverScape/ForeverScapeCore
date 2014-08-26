@@ -3,13 +3,12 @@
 
 The ForeverScape is a massive 2.3 football field long hand-drawn illustration that tiles like wallpaper (every page connects to the next).  The drawing is set to "Go Until I do" with no end in sight. The images are periodic and the left column matches the right column, making traditional map APIs not applicable. This is an Angular component implementation that allows users to explore the ForeverScape universe and developers to build upon this universe with their own interactives.
 
-### Live Demo ###
-###http://staging.foreverscape.com###
+### Live Demo http://staging.foreverscape.com###
+
 Explore the artwork for yourself using the stable version of tile engine.
 
-####Dev Area:####
-###http://dev.foreverscape.com###
-Coming soon
+Dev: http://dev.foreverscape.com
+
 
 ####Learn More:####
 See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
