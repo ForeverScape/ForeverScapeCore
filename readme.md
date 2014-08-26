@@ -3,13 +3,12 @@
 
 The ForeverScape is a massive 2.3 football field long hand-drawn illustration that tiles like wallpaper (every page connects to the next).  The drawing is set to "Go Until I do" with no end in sight. The images are periodic and the left column matches the right column, making traditional map APIs not applicable. This is an Angular component implementation that allows users to explore the ForeverScape universe and developers to build upon this universe with their own interactives.
 
-### Live Demo ###
-###http://staging.foreverscape.com###
+### Live Demo http://staging.foreverscape.com###
+
 Explore the artwork for yourself using the stable version of tile engine.
 
-####Dev Area:####
-###http://dev.foreverscape.com###
-Coming soon
+Dev: http://dev.foreverscape.com
+
 
 ####Learn More:####
 See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
@@ -34,7 +33,7 @@ Code is distributed under MIT license.
 
    - Endless, column shifting tiling 
    - Memory and load optimization 
-   - Go-To-Any-Point
+   - Go-To-Any-Point *Page or Coordinate*
    - Read data from game controller for scripting
    - External interfaces to allow control by game engine, webpage, iframe etc.
 
@@ -67,6 +66,6 @@ Code is distributed under MIT license.
 
 ###Unit Testing###
 
-TBD
+Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet, there are just too many features to get out there, let alone the backend is not yet implimented. 
 
 
