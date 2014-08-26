@@ -559,94 +559,108 @@
                         gb.screenX = parseInt( offset.left, 10 );
                         gb.screenY = parseInt( offset.top, 10 ) ;
 
-                        var isOffscreenLeft = gb.screenX < this.offscreenLeft && this.dx < 0;
-                        var isOffscreenRight = gb.screenX >= this.offscreenRight && this.dx > 0;
+                        this.setIsOffscreen(gb);
 
-                        if( isOffscreenLeft)
-                        {
-                            gb.col += 15;
-                            gb.currentTileId += 30;
-                            gb.row += 3;
-
-                        } else if( isOffscreenRight )
-                        {
-                            gb.col -= 15;
-                            gb.currentTileId -= 30;
-                            gb.row -= 3;
-                        }
-
-
-                        var isOffscreenTop = gb.screenY < this.offscreenTop;
-                        var isOffscreenBottom = gb.screenY > this.offscreenBottom;
-
-
-                        // grid has moved above the top or bottom threshold, increment the image index
-                        if( isOffscreenTop && this.dy < 0 )
-                        {
-
-                            gb.currentTileId += 50;
-                            gb.row += 10;
-
-                        } else if ( isOffscreenBottom && this.dy > 0)
-                        {
-                            gb.currentTileId -= 50;
-                            gb.row -= 10;
-                        }
-
-                        // grid has moved left or right of the loading boundary, increment the image index
-                        if( isOffscreenLeft || isOffscreenRight ||
-                            isOffscreenTop || isOffscreenBottom )
-                        {
-                            gb.x = (gb.col * gb.width);
-                            gb.y = (gb.row * gb.height);
-
-                            if( gb.currentTileId < 0 )
-                            {
-                                gb.currentTileId = this.config.totalPages + gb.currentTileId;
-                            } else if( gb.currentTileId >= this.config.totalPages )
-                            {
-                                gb.currentTileId = gb.currentTileId - this.config.totalPages;
-                            }
-                            gb.currentTile = tileModel.tiles[gb.currentTileId];
-
-                            gb.element.css({ 'left': gb.x });
-                            gb.element.css({ 'top': gb.y });
-
-                            if( gb.currentTile  ){
-                                if( gb.thumbElement.attr('src') != gb.currentTile.thumbUrl);
-                                {
-                                    gb.thumbElement.attr('src', gb.currentTile.thumbUrl);
-                                }
-                            }
-                        }
-
-                        // see if the image is in bounds of the screen and show the high resolution if zoomed in enough
-                        if( this.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
-                        {
-                            var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
-                            var isOnRight = gb.screenX < window.innerWidth;
-                            var isOnTop = gb.screenY > - ( this.config.tileHeight * this.zoom) ;
-                            var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight * this.zoom) ;
-
-                            if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScreen )
-                            {
-                                if( gb.currentTile && gb.fullElement.attr('src').toString() != gb.currentTile.fullUrl.toString());
-                                {
-;                                   gb.isOnScreen = true;
-                                    gb.fullElement.attr('src',gb.currentTile.fullUrl);
-                                }
-                            }
-
-                        } else {
-                            if( gb.currentTile){
-                                gb.isOnScreen = false;
-                                gb.fullElement.attr('src','main/resources/img/blank.gif');
-                            }
-                        }
+                        this.loadFullResTiles(gb);
 
                     }
 
-                }
+                },
+
+                // long function, but a lot is needed to see if it should load or not
+                setIsOffscreen: function( gb)
+                {
+
+                    var isOffscreenLeft = gb.screenX < this.offscreenLeft && this.dx < 0;
+                    var isOffscreenRight = gb.screenX >= this.offscreenRight && this.dx > 0;
+
+                    if( isOffscreenLeft)
+                    {
+                        gb.col += 15;
+                        gb.currentTileId += 30;
+                        gb.row += 3;
+
+                    } else if( isOffscreenRight )
+                    {
+                        gb.col -= 15;
+                        gb.currentTileId -= 30;
+                        gb.row -= 3;
+                    }
+
+
+                    var isOffscreenTop = gb.screenY < this.offscreenTop;
+                    var isOffscreenBottom = gb.screenY > this.offscreenBottom;
+
+
+                    // grid has moved above the top or bottom threshold, increment the image index
+                    if( isOffscreenTop && this.dy < 0 )
+                    {
+
+                        gb.currentTileId += 50;
+                        gb.row += 10;
+
+                    } else if ( isOffscreenBottom && this.dy > 0)
+                    {
+                        gb.currentTileId -= 50;
+                        gb.row -= 10;
+                    }
+
+                    // grid has moved left or right of the loading boundary, increment the image index
+                    if( isOffscreenLeft || isOffscreenRight ||
+                        isOffscreenTop || isOffscreenBottom )
+                    {
+                        gb.x = (gb.col * gb.width);
+                        gb.y = (gb.row * gb.height);
+
+                        if( gb.currentTileId < 0 )
+                        {
+                            gb.currentTileId = this.config.totalPages + gb.currentTileId;
+                        } else if( gb.currentTileId >= this.config.totalPages )
+                        {
+                            gb.currentTileId = gb.currentTileId - this.config.totalPages;
+                        }
+                        gb.currentTile = tileModel.tiles[gb.currentTileId];
+
+                        gb.element.css({ 'left': gb.x });
+                        gb.element.css({ 'top': gb.y });
+
+                        if( gb.currentTile  ){
+                            if( gb.thumbElement.attr('src') != gb.currentTile.thumbUrl);
+                            {
+                                gb.thumbElement.attr('src', gb.currentTile.thumbUrl);
+                            }
+                        }
+                    }
+
+                },
+
+
+                loadFullResTiles: function(gb){
+                    // see if the image is in bounds of the screen and show the high resolution if zoomed in enough
+                    if( this.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
+                    {
+                        var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
+                        var isOnRight = gb.screenX < window.innerWidth;
+                        var isOnTop = gb.screenY > - ( this.config.tileHeight * this.zoom) ;
+                        var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight * this.zoom) ;
+
+                        if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScreen )
+                        {
+                            if( gb.currentTile && gb.fullElement.attr('src').toString() != gb.currentTile.fullUrl.toString());
+                            {
+                                ;                                   gb.isOnScreen = true;
+                                gb.fullElement.attr('src',gb.currentTile.fullUrl);
+                            }
+                        }
+
+                    } else {
+                        if( gb.currentTile){
+                            gb.isOnScreen = false;
+                            gb.fullElement.attr('src','main/resources/img/blank.gif');
+                        }
+                    }
+                },
+
 
             };
 
