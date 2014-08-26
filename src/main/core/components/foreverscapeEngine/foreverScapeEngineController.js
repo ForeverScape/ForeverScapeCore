@@ -539,7 +539,7 @@
                     this.offscreenLeft = 100 - loadBoundaryOffsetX;
                     this.offscreenRight = (16 * this.config.tileWidth * this.zoom) - loadBoundaryOffsetX;
 
-                    var loadBoundaryOffsetY =  (this.config.tileHeight * 2 * this.zoom );
+                    var loadBoundaryOffsetY =  (this.config.tileHeight * 4 * this.zoom );
                     this.offscreenTop = 50 - loadBoundaryOffsetY;
                     this.offscreenBottom = (this.zoom * 11 * this.config.tileHeight )- loadBoundaryOffsetY;
 
