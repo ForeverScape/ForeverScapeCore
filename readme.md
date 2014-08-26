@@ -66,6 +66,6 @@ Code is distributed under MIT license.
 
 ###Unit Testing###
 
-Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet.
+Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet, there are just too many features to get out there, let alone the backend is not yet implimented. 
 
 
