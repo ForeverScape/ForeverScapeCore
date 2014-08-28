@@ -69,3 +69,50 @@ Code is distributed under MIT license.
 Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet, there are just too many features to get out there, let alone the backend is not yet implimented. 
 
 
+### TODO: Stories  ###
+
+Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
+
+** basics **
+- Repository	
+- ~~Setup staging server	~~
+- Setup New Database + API Server	http://www.hostdepartment.com/databases/mysql-hosting/
+- ~~Deployment/Build scripts	~~
+- ~~setup dev server	~~
+- 
+- **Tile Engine**
+	- mobile layout works for iOS
+	-mobie layout works for android
+	- ~~works in fireforx~~ had to workaround for zoom
+	- ~~works in IE~~ 10+ only tested so far
+	- ~~works in chrome~~
+	- Place Marker *developing*
+	- Scroll To Marker  *developing*
+	- commenting API  *developing*
+	- snap a screenshot and share on Facebook wall / twitter --> deploy to CDN or S3 (needs JS SDK auth)
+	- autoplayback in any direction  *developing*
+	- fullscreen mode
+	- double-tap [touch] to zoom back to default  *developing*
+	- ~~pinch [touch] to set zoom~~ tested ios, android need to test mobile IE
+	- perhaps use AWS identity services + DynamoDB for location comment engine
+	- widget player project that people can "embed" into blog, website etc. 
+- **Website Overhaul Design**	
+	- Fonts Etc
+	- Layout Templates
+	- pages + content 
+	- SEO grunt script to redirect to hashed pages
+- **Integrate  products sales	**
+	- top banner area
+	- sales page
+	- snap a capture and send a physical postcard with on demand print API
+	
+**GAM**
+	- use AWS identity services 
+	- Social media API + login
+	- Game API
+	- Game CMS
+	- setup Game Staging site?? nah, just make "game mode" on site when logged in
+	- Publish Targets Android
+	- Publish Target IOS
+
+
