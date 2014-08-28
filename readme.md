@@ -58,7 +58,7 @@ Code is distributed under MIT license.
 Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet, there are just too many features to get out there, let alone the backend is not yet implimented. 
 
 
-### TODO: Stories + Features  ###
+##TODO: Stories + Features##
 
 Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
 
