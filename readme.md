@@ -96,6 +96,7 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 	- snap a capture and send a physical postcard with on demand print API
 	
 **GAME Design**
+
 	- use AWS identity services
 	- Social media API + login
 	- Game API
