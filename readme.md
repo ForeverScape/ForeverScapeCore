@@ -62,16 +62,16 @@ Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for
 
 Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
 
-** basics **
-- Repository	
-- ~~Setup staging server	~~
+**basics**
+- ~~Repository~~	
+- ~~Setup staging server~~
 - Setup New Database + API Server	http://www.hostdepartment.com/databases/mysql-hosting/
-- ~~Deployment/Build scripts	~~
-- ~~setup dev server	~~
-- 
+- ~~Deployment/Build scripts~~
+- ~~setup dev server~~
+
 - **Tile Engine**
 	- mobile layout works for iOS
-	-mobie layout works for android
+	- mobie layout works for android
 	- ~~works in fireforx~~ had to workaround for zoom
 	- ~~works in IE~~ 10+ only tested so far
 	- ~~works in chrome~~
