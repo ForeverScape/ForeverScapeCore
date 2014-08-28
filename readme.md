@@ -28,17 +28,6 @@ Code is distributed under MIT license.
 
 
 
-
-###Proposed Features:###
-
-   - Endless, column shifting tiling 
-   - Memory and load optimization 
-   - Go-To-Any-Point *Page or Coordinate*
-   - Read data from game controller for scripting
-   - External interfaces to allow control by game engine, webpage, iframe etc.
-
-
-
 ###Usage:###
 
   There are several ways to use this library
@@ -69,7 +58,7 @@ Code is distributed under MIT license.
 Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for this project yet, there are just too many features to get out there, let alone the backend is not yet implimented. 
 
 
-### TODO: Stories  ###
+### TODO: Stories + Features  ###
 
 Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
 
@@ -101,12 +90,12 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 	- Layout Templates
 	- pages + content 
 	- SEO grunt script to redirect to hashed pages
-- **Integrate  products sales	**
+- **Integrate  products sales**
 	- top banner area
 	- sales page
 	- snap a capture and send a physical postcard with on demand print API
 	
-**GAM**
+**GAME Design**
 	- use AWS identity services 
 	- Social media API + login
 	- Game API
