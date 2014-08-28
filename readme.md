@@ -101,7 +101,8 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 	- Game API
 	- Game CMS
 	- setup Game Staging site?? nah, just make "game mode" on site when logged in
+	- Mobile Targets: Use Appcellerator Titanium or PhoneGap???
+	- Mobile platform specific code
 	- Publish Targets Android
 	- Publish Target IOS
-
-
+	
