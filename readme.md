@@ -96,12 +96,12 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 	- snap a capture and send a physical postcard with on demand print API
 	
 **GAME Design**
-	 - use AWS identity services
-	 - Social media API + login
-	 - Game API
-	 - Game CMS
-	 - setup Game Staging site?? nah, just make "game mode" on site when logged in
-	 - Publish Targets Android
-	 - Publish Target IOS
+	- use AWS identity services
+	- Social media API + login
+	- Game API
+	- Game CMS
+	- setup Game Staging site?? nah, just make "game mode" on site when logged in
+	- Publish Targets Android
+	- Publish Target IOS
 
 
