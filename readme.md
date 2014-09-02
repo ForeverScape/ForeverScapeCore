@@ -60,6 +60,9 @@ Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for
 
 ##TODO: Stories + Features##
 
+The biggest thing i'm struggling with is how to organize your angular app to be resuable. Googling the matter doesn't turn up results newer than 2013. Any suggestions? I'm trying to abstract the core model data such as coordinate, goto, find etc. into a service that will always have the data available. Ping me if you have a good organization strategy for angular reuse. 
+
+
 Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
 
 **basics**
