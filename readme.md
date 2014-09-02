@@ -1,7 +1,7 @@
 ##ForeverScape##
 ###Artwork So Large You Need Special Software Just To See It###
 
-Over five years ago a hand-drawn illustration began, one so large that only machines could see it. The *paper* alone weighs over twenty pounds of paper. You'd think Google Map's could at least chart it, but in fact the periodic nature requires specialized software just to view it since the left side matched the right side. This open-source project is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape.
+Over five years ago a hand-drawn illustration began, one so large that only machines could see it. The *paper* alone weighs over twenty pounds! You'd think Google Map's could at least chart it, but in fact the periodic nature requires specialized software just to view it since the left side matched the right side. This open-source project is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape.
 
 ###Live Demo: http://staging.foreverscape.com###
 
