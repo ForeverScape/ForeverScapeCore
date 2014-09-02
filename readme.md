@@ -1,12 +1,11 @@
 ##ForeverScape##
 ###Artwork So Large You Can't See it Without Special Software ###
 
-###Live Demo: http://staging.foreverscape.com###
-
-####The 5-Year *ongoing* illustration spans over two football fields####
+####The 5-Year *ongoing* illustration Spans Over Two Football Fields####
 
 Traditional, hum-drum APIs like GooglMaps need not apply. It is periodic, and every page connects to the next. The drawing *"Goes Until I do"* with no end in sight it is over ten stories tall. This open source project is an Angular component implementation that allows users to explore the ForeverScape universe and invites developers to build upon this universe with their own interactive software as they see fit. Bring it.
 
+###Live Demo: http://staging.foreverscape.com###
 
 
 ####Learn More about this Portland Artwork: http://foreverscape.com####
