@@ -1,11 +1,13 @@
 ##ForeverScape##
 ###Artwork So Large You Can't See it Without Special Software ###
 
-####Five years in the making, this *ongoing* illustration spans over two football fields in length. It is bigger than reality.####
+###Live Demo http://staging.foreverscape.com###
+
+####The 5-Year *ongoing* illustration spans over two football fields####
 
 Every page connects to the next. It is periodic so traditional map APIs such as GoogleMaps or OpenMaps need not apply. The drawing *"Goes Until I do"* with no end in sight. This is an Angular component implementation that allows users to explore the ForeverScape universe and invites developers to build upon this universe with their own interactive software as they see fit. Bring it.
 
-### Live Demo http://staging.foreverscape.com###
+
 
 ####Learn More about this Portland Artwork: http://foreverscape.com####
  
