@@ -1,7 +1,7 @@
 ##ForeverScape##
 ###Artwork So Large You Need Special Software Just To See It###
 
-Five years in the making, the *eight hundred+ page* hand-drawn ForeverScape spans over two football fields paper sheets. It is periodic, with the left-side matching the left-side. THis open source solution exists because mapping APIs cannot take into account the periodic nature: the left side matches the right! It is an ongoing engima, beyond conventional plotting algorithyms.
+Five years in the making, the *eight hundred plus* pages of hand-drawn ForeverScape span over two football fields. It is periodic. The left-side matches the right-side. It is an ongoing engima.
 
 ###Live Demo: http://staging.foreverscape.com###
 
