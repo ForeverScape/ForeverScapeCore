@@ -1,7 +1,7 @@
 ##ForeverScape##
-### An Artwork So Large You Need Special Software To See It ###
+###So Large You Can't See it With the Naked Eye ###
 
-####The ForeverScape is an *ongoing,* massive 2.3 football field long hand-drawn illustration spanning over *820+ pages.* ####
+####An *ongoing,* massive 2.3 football field long hand-drawn illustration that requires special software to view it. * ####
 
 Every page connects to the next. It is periodic so traditional map APIs such as GoogleMaps or OpenMaps need not apply. The drawing *"Goes Until I do"* with no end in sight. This is an Angular component implementation that allows users to explore the ForeverScape universe and invites developers to build upon this universe with their own interactive software as they see fit. Bring it.
 
