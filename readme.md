@@ -5,18 +5,8 @@ The ForeverScape is a massive 2.3 football field long hand-drawn illustration th
 
 ### Live Demo http://staging.foreverscape.com###
 
-Explore the artwork for yourself using the stable version of tile engine.
-
-Dev: http://dev.foreverscape.com
-
-
 ####Learn More:####
 See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
-
-####Caveat####
-
-Looking at mobile performance, we will have to likely abondon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.
-
 
 ###Licensing:###
 
@@ -60,8 +50,8 @@ Dayjob I keep 80%+ code coverage. I don't really have time to maintain tests for
 
 ##TODO: Stories + Features##
 
-The biggest thing i'm struggling with is how to organize your angular app to be reusable. Creating  a corporate app is easy, but what if you want all the functionality of a whole app, but as a reusable module (both from a maintainability standpoint and an organisational one)? Googling the matter doesn't turn up results newer than 2013. Any suggestions? I'm trying to abstract the core model data such as coordinate, goto, find etc. into a service that will always have the data available. Ping me if you have a good organization strategy for angular reuse. 
-
+The biggest thing i'm struggling with is how to organize your angular app to be reusable. Creating  a corporate app is easy, but what if you want all the functionality of a whole app, but as a reusable module (both from a maintainability standpoint and an organisational one)? Googling the matter doesn't turn up results newer than 2013. Any suggestions? I'm trying to abstract the core model data such as coordinate, goto, find etc. into a service that will always have the 
+Dev: http://dev.foreverscape.com
 
 Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
 
@@ -110,3 +100,7 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 	- Publish Targets Android
 	- Publish Target IOS
 	
+
+####FU Angular ####
+
+Looking at mobile performance, we abondon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.data available. Ping me if you have a good organization strategy for angular reuse. 
