@@ -1,7 +1,7 @@
 ##ForeverScape *"It Goes Until I do"*##
 ###Artwork So Large You Need Special Software Just To See It###
 
-Five years in the making, the *eight hundred plus* pages of hand-drawn ForeverScape span over two football fields. It is periodic. The left-side matches the right-side. It is an ongoing engima.
+**Five years in the making, the *eight hundred plus* pages of hand-drawn ForeverScape span over two football fields. It is periodic. The left-side matches the right-side. It is an ongoing engima.**
 
 ###Live Demo: http://staging.foreverscape.com###
 
