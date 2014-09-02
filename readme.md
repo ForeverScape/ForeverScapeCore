@@ -1,9 +1,9 @@
 ##ForeverScape##
 ###Artwork So Large You Can't See it Without Special Software ###
 
-####The 5-Year *ongoing* illustration Spans Over Two Football Fields####
+####*"It Goes Until I do"* ####
 
-Traditional, hum-drum APIs like GooglMaps need not apply. It is periodic, and every page connects to the next. The drawing *"Goes Until I do"* with no end in sight it is over ten stories tall. This open source project is an Angular component implementation that allows users to explore the ForeverScape universe and invites developers to build upon this universe with their own interactive software as they see fit. Bring it.
+Developers are invited to expand on the already five-year-old artwork with no end in sight. Spanning over two football field in length, this microcosm of reality is more than anyone bargained for. As an AngularJS set of modules, how far arew you willing to take it?
 
 ###Live Demo: http://staging.foreverscape.com###
 
