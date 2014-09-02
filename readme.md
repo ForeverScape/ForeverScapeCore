@@ -9,9 +9,6 @@ Developers are invited to expand on the already five-year-old artwork with no en
 
 <br/>
 <br/>
- 
-####Learn More about this Portland Artwork: http://foreverscape.com####
-
 
 ###Usage:###
 
@@ -29,6 +26,9 @@ Developers are invited to expand on the already five-year-old artwork with no en
             - Compile using `Compiling` directions below
             - host the application on your server of choice
             - run index.html in your browser
+
+ 
+####Learn More about this Portland Artwork: http://foreverscape.com####
 
 
 ###Compiling###
