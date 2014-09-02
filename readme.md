@@ -3,7 +3,7 @@
 
 ####*"It Goes Until I do"* ####
 
-Developers are invited to expand on the already five-year-old artwork with no end in sight. Spanning over two football field in length, this microcosm of reality is more than anyone bargained for. As an AngularJS set of modules, how far arew you willing to take it?
+Developers are invited to expand on the already five-year-old artwork with no end in sight. Spanning over two football field in length, this microcosm of reality is more than anyone bargained for. How far are you willing to take it?
 
 ###Live Demo: http://staging.foreverscape.com###
 
