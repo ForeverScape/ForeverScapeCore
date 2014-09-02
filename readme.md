@@ -1,7 +1,7 @@
 ##ForeverScape##
 ###Artwork So Large You Can't See it Without Special Software ###
 
-####Five years in the making, this *ongoing, massive 2.3 football field long* illustration is bigger than reality.####
+####Five years in the making, this *ongoing* illustration spans over two football fields in length. It is bigger than reality.####
 
 Every page connects to the next. It is periodic so traditional map APIs such as GoogleMaps or OpenMaps need not apply. The drawing *"Goes Until I do"* with no end in sight. This is an Angular component implementation that allows users to explore the ForeverScape universe and invites developers to build upon this universe with their own interactive software as they see fit. Bring it.
 
