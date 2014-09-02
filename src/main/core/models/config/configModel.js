@@ -5,8 +5,8 @@ angular.module('FScapeApp.Models').factory('configModel',
     // no sense in making an async call here.
     var defaults =
     {
-        "totalPages":760,
-        "cdnVersion":"v11",
+        "totalPages":820,
+        "cdnVersion":"v12",
         "cdnPrefix":"http://d2zwcujesf1bgv.cloudfront.net/",
         "basePath":"prod/:version/images/",
         "pathThumbnail":"tiny_preload_size",
@@ -14,7 +14,7 @@ angular.module('FScapeApp.Models').factory('configModel',
         "license":null,
         "tileWidth": 1004,
         "tileHeight": 768,
-        "startPage": 533
+        "startPage": 719
     };
 
 

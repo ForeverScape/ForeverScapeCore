@@ -27,6 +27,17 @@
                 zoomMax: 1.6, //these might get bumped up if window size is really big
                 zoomMin:.5,   //these might get bumped up if window size is really big
 
+                // TODO:
+
+                /*
+                        big todos:
+                           - move coordinates to service
+                           - all mouse events to own service
+
+
+                 */
+
+
                 offsetX: 0,
                 offsetY: -350,
                 time: 0,
@@ -83,7 +94,9 @@
                     this.setupTouchEvents();
 
                     $rootScope.$on('fscape.togglePlayback', function(){
-                        console.log("hey", fscapeService.isPlaying)
+
+
+
                     })
 
 
@@ -331,19 +344,31 @@
                         this._dragging = true;
                         this.offsetX += this.dx * ( 3 * ( this.zoomMax +.1  - this.zoom) );
 
-                        $('.engine-position').css({ 'left': this.offsetX });
+                        this.setCSSPosition();
                     }
                     if( this._mouseDown && ! this._flickingY  )
                     {
                         this._dragging = true;
                         this.offsetY += this.dy* ( 3 *  ( this.zoomMax +.1  - this.zoom) );
 
-                        $('.engine-position').css({ 'top': this.offsetY });
+                        this.setCSSPosition();
                     }
+
+
+                    // todo: refactor so service keeps track of offset
 
 
                     this.mousePreviousX = this.mouseX;
                     this.mousePreviousY = this.mouseY;
+                },
+
+                // working on abstracting this out, yay!!
+                setCSSPosition: function(){
+                    $('.engine-position').css(
+                        {
+                            'left':this.offsetX,
+                            'top': this.offsetY
+                        });
                 },
 
                 mouseUp: function($event)
@@ -526,6 +551,13 @@
                         this.buildGrid();
                         return;
                     }
+
+                    if( fscapeService.isPlaying )
+                    {
+                        this.offsetX += 10;
+                        console.log(" scolling",  this.offsetX );
+                    }
+
 
                     var loadBoundaryOffsetX =  (this.config.tileWidth * 4 * this.zoom );
                     this.offscreenLeft = 100 - loadBoundaryOffsetX;
