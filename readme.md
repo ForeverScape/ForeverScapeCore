@@ -5,8 +5,7 @@ The ForeverScape is a massive 2.3 football field long hand-drawn illustration th
 
 ### Live Demo http://staging.foreverscape.com###
 
-####Learn More:####
-See the artwork, watch videos etc. at the current *slammed together* website http://foreverscape.com
+####Learn More: http://foreverscape.com####
 
 ###Licensing:###
 
