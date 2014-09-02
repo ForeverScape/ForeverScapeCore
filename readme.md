@@ -5,8 +5,8 @@ The ForeverScape is an *ongoing,* massive 2.3 football field long hand-drawn ill
 
 ### Live Demo http://staging.foreverscape.com###
 
-####Learn More: http://foreverscape.com####
-
+####Learn More about this Portland Artwork: http://foreverscape.com####
+ 
 ###Licensing:###
 
 Any display of content directly from or derived from the ForeverScape artwork must be accompanied with the text "ForeverScape" on or in the same vicinity of the display apparatus, NOT JUST IN SOURCE CODE. The minimum font size for the text "ForeverScape" must be at least 7% of the of height or width (whichever is greater) of the screen size of the artwork presented and must link to ```http://foreverscape.com?source={{ URL of your company or app}}``` in a browser on the device. This applies to any single image, cropping of a single image or assembly of multiple images. If your host is found to be pulling more than 500,000 CDN responses, please contact ForeverScape LLC to split the Amazon CloudFront bill or make arrangements to purchase redistribution rights. Failure to comply will lead to blocking your hosts. 
