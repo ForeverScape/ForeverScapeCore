@@ -1,5 +1,5 @@
 ##ForeverScape##
-###So Large You Can't See it With the Naked Eye ~~http://staging.foreverscape.com~~ ###
+###Artwork So Large You Can't See it With the Naked Eye ###
 
 ####An *ongoing, massive 2.3 football field long* hand-drawn illustration that requires special software to view it.####
 
