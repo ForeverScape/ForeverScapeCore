@@ -1,7 +1,7 @@
 ##ForeverScape##
 ###Artwork So Large You Can't See it Without Special Software ###
 
-###Live Demo http://staging.foreverscape.com###
+###See the Live Demo: http://staging.foreverscape.com###
 
 ####The 5-Year *ongoing* illustration spans over two football fields####
 
