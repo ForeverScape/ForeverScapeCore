@@ -1,7 +1,7 @@
 ##ForeverScape##
 ###Artwork So Large You Need Special Software Just To See It###
 
-Five years in the making, the *eight hundred+ page* hand-drawn ForeverScape is over two football fields of paper. APIs like Google Maps are inapplicable because the left-side matches the right-side: it is periodic. This open source solution is an invitation for developers to create their own journey through the ForeverScape.
+Five years in the making, the *eight hundred+ page* hand-drawn ForeverScape spans over two football fields paper sheets. It is periodic, with the left-side matching the left-side. THis open source solution exists because mapping APIs cannot take into account the periodic nature: the left side matches the right! It is an ongoing engima, beyond conventional plotting algorithyms.
 
 ###Live Demo: http://staging.foreverscape.com###
 
