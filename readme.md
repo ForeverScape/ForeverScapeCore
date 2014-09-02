@@ -8,7 +8,10 @@ Traditional, hum-drum APIs like GooglMaps need not apply. It is periodic, and ev
 ###Live Demo: http://staging.foreverscape.com###
 
 
-####Learn More about this Portland Artwork: http://foreverscape.com####
+
+
+
+
  
 ###Licensing:###
 
@@ -17,7 +20,7 @@ Any display of content directly from or derived from the ForeverScape artwork mu
 You can create commercial software products using this API and the images in the CDN hosted by ForeverScape, LLC as long as you adhere to the restrictions above. Failture to comply will be prosecuted to the fullest extent of the law, including trademark and copyright law. Redistribution of images is strictly prohibited and granted only by the Artist in writing. Reproduction of images, in the form of digital tranfer over network, print, etching, engraving, stamping, and other mediums is strictly prohibited.
 
 Code is distributed under MIT license. 
-
+####Learn More about this Portland Artwork: http://foreverscape.com####
 
 
 ###Usage:###
