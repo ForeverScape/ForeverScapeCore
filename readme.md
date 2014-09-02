@@ -1,10 +1,11 @@
-##ForeverScape *"It Goes Until I do"*##
+##ForeverScape##
 ###Artwork So Large You Need Special Software Just To See It###
 
 Five years ago a drawing began. A drawing so large, you can't see it with the naked eye. The paper alone weighs over twenty pounds. You'd think Google Map's could at least chart it, but in fact the periodic nature requires specialized software just to view it. This is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape.
 
 ###Live Demo: http://staging.foreverscape.com###
 
+*"It Goes Until I do"*
 <br/>
 
 ###Usage:###
