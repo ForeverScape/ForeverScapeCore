@@ -1,5 +1,5 @@
 ##ForeverScape##
-###Artwork So Large You Can't See it With the Naked Eye ###
+###Artwork So Large You Can't See it Without Special Software ###
 
 ####An *ongoing, massive 2.3 football field long* hand-drawn illustration that requires special software to view it.####
 
