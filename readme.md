@@ -1,11 +1,11 @@
 ##ForeverScape##
-###Artwork So Large You Can't See it Without Special Software ###
+###Artwork So Large You Need Special Software Just To See It###
 
-####*"It Goes Until I do"* ####
-
-Developers are invited to expand on the already five-year-old artwork with no end in sight. Spanning over two football field in length, this microcosm of reality is more than anyone bargained for. How far are you willing to take it?
+Over five years in the making, the ForeverScape is over two football fields in length. Some have asked, why not use an API like Google Maps? Well, it is periodic and the left side matches the right side, so the math does not apply. This open source solution is an invitation for developers to create their own journey through the ForeverScape.
 
 ###Live Demo: http://staging.foreverscape.com###
+
+####*"It Goes Until I do"* ####
 
 <br/>
 <br/>
