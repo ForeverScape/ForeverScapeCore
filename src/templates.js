@@ -154,9 +154,9 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "        <div class=\"play\" alt=\"play\" ng-onclick=\"startPlayback($event)\" ng-show=\"!isPlaying\"></div>\r" +
+    "        <div class=\"play\" alt=\"play\" ng-click=\"locationCtrl.togglePlayback($event)\" ng-show=\"!fscapeService.isPlaying\"></div>\r" +
     "\n" +
-    "        <div class=\"pause\" alt=\"pause\"  ng-onclick=\"stopPlayback($event)\"  ng-show=\"isPlaying\"></div>\r" +
+    "        <div class=\"pause\" alt=\"pause\"  ng-click=\"locationCtrl.togglePlayback($event)\"  ng-show=\"fscapeService.isPlaying\"></div>\r" +
     "\n" +
     "\r" +
     "\n" +

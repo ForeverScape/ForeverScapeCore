@@ -20,6 +20,10 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
 
 @mixin sprites-generate($image) {
 
+
+  html{
+    overflow-y:hidden;
+  }
   body & {
     font-family: Helvetica, Sans Serif, Arial;
 
@@ -30,6 +34,8 @@ $retinaBgHeight: image-height(sprite-path($sprites-sprites));
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    overflow-y:hidden;
 
 
     @include sprites-sprite($image);

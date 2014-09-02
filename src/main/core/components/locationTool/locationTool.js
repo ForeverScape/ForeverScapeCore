@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('FScapeApp.Controllers').controller('locationTool',
-        function($scope, BaseController,$location,$window, $rootScope) {
+        function($scope, BaseController,$location,$window, $rootScope, fscapeService) {
 
             var c = {
 
@@ -10,6 +10,9 @@
                 location: $location,
 
                 onInit: function( ) {
+                    $rootScope.fscape = {};
+
+                    $scope.fscapeService = fscapeService;
 
                     $scope.win = $window;
                     $scope.isPlaying = false;
@@ -20,21 +23,11 @@
                     this.onResize();
                 },
 
-                startPlayback: function()
+                togglePlayback: function()
                 {
-
-                    $rootScope.$broadcast('startPlayback');
-                    $scope.isPlaying = true;
+                    fscapeService.togglePlayback();
 
                 },
-                stopPlayback: function()
-                {
-                    $rootScope.$broadcast('stopPlayback');
-                    $scope.isPlaying = false;
-
-                },
-
-
 
 
                 onResize: function()

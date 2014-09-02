@@ -16,7 +16,7 @@
 
 
     angular.module('FScapeApp.Controllers').controller('foreverScapeEngineController',
-        function($scope, BaseController,$location, configModel, tileModel, gridModel) {
+        function($scope, BaseController,$location, configModel, tileModel, gridModel, $rootScope, fscapeService) {
 
             var controller = {
 
@@ -82,6 +82,12 @@
                     this.buildGrid();
                     this.setupTouchEvents();
 
+                    $rootScope.$on('fscape.togglePlayback', function(){
+                        console.log("hey", fscapeService.isPlaying)
+                    })
+
+
+
                     setTimeout( function(){
                         if( that.canIntro )
                         {
@@ -93,6 +99,7 @@
                         }
                     }, 2500 );
 
+                    $('.preload-junk').html('');
                 },
 
                 setupTouchEvents: function(){
@@ -213,10 +220,7 @@
                 },
                 pinchMove: function(e)
                 {
-
-
                     var dist = this.getPinchDistance(e);
-                    //var difference = this.startDistance - difference;
 
                     if( dist - this.prevPinchDist > 0)
                     {
