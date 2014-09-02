@@ -1,7 +1,7 @@
 ##ForeverScape##
 ###Artwork So Large You Need Special Software Just To See It###
 
-Over five years in the making, the ForeverScape is over two football fields in length. Some have asked, why not use an API like Google Maps? Well, it is periodic and the left side matches the right side, so the math does not apply. This open source solution is an invitation for developers to create their own journey through the ForeverScape.
+Five years in the making, the ForeverScape is over two football fields in length. Some have asked, why not use an API like Google Maps? Well, it is periodic and the left side matches the right side, so the math does not apply. This open source solution is an invitation for developers to create their own journey through the ForeverScape.
 
 ###Live Demo: http://staging.foreverscape.com###
 
