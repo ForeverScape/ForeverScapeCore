@@ -51,6 +51,9 @@ Dev: http://dev.foreverscape.com
 
 Items without *developing* tag are *future stories*. *Developing* tags are actively in development.
 
+**Top Refactoring Tasks**
+- abstract the touch/gesture stuff out of the tile engine, add callback mechanisms so multiple controllers can use it
+
 **basics**
 - ~~Repository~~	
 - ~~Setup staging server~~
