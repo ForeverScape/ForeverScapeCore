@@ -9,8 +9,15 @@ Over five years ago a hand-drawn illustration began, one so large that only mach
 
 ###Live Demo: http://staging.foreverscape.com###
 
-*"It Goes Until I do"*
-<br/>
+**&ldquo;It Goes Until I do&rdquo;**
+
+
+Read More: 
+ - <a href="http://foreverscape.com">Original Website</a>
+ - <a href="http://www.reed.edu/reed_magazine/sallyportal/posts/2013/sketching-infinity.html">Sketching Infinity </a>
+ - <a href="http://wemakepdx.tumblr.com/post/79275905951/recap-vance-feldman-sxc"> Sketch Exchange </a>
+ - <a href="http://www.portlandmercury.com/portland/it-goes-until-i-do/Content?oid=11108536"> Artist Profile </a>
+
 
 ###Licensing:###
 
