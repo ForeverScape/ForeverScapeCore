@@ -3,9 +3,9 @@
 
 **Two football fields long, standing 12 stories tall, it is ongoing...**
 
-Over five years ago a hand-drawn illustration began, one so large that only machines could see it. The *paper* alone weighs over twenty pounds! You'd think Google Maps could at chart it, but in fact the periodic nature and every page connecting left-to-right breaks tile-engine logic. This open-source project is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape. The core is pure javascript wrapped in AngularJS for the user interface componets. Every hand drawn page is individually scanned.
+Over five years ago a hand-drawn illustration began, one so large that only machines could see it. The *paper* alone weighs over twenty pounds! You'd think Google Maps could at chart it, but in fact the periodic nature and every page connecting left-to-right breaks tile-engine logic. This open-source project is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape. The core is pure javascript wrapped in AngularJS for the user interface components. Every hand drawn page is individually scanned.
 
-*The plan is to have a fully fledged geography system with drag and drop comment markers. This underlying API will pave the way for the ultimate scavenger hunt game.*
+*The plan is to have a fully fledged geography system with drag and drop comment markers and goto-any-point. This underlying API will pave the way for the ultimate scavenger hunt game, or whatever you can dream of.*
 
 ###Live Demo: http://staging.foreverscape.com###
 
@@ -13,10 +13,10 @@ Over five years ago a hand-drawn illustration began, one so large that only mach
 
 
 Read More: 
- - <a href="http://foreverscape.com">Original Website</a>
  - <a href="http://www.reed.edu/reed_magazine/sallyportal/posts/2013/sketching-infinity.html">Sketching Infinity </a>
  - <a href="http://wemakepdx.tumblr.com/post/79275905951/recap-vance-feldman-sxc"> Sketch Exchange </a>
  - <a href="http://www.portlandmercury.com/portland/it-goes-until-i-do/Content?oid=11108536"> Artist Profile </a>
+ - <a href="http://foreverscape.com">The Soon to be Deprecated Website</a>
 
 
 ###Licensing:###
@@ -44,8 +44,6 @@ Code is distributed under MIT license.
             - host the application on your server of choice
             - run index.html in your browser
 
- 
-####Learn More about this Portland Artwork: http://foreverscape.com####
 
 ###Compiling###
 
@@ -75,7 +73,7 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 - **Tile Engine**
 	- mobile layout works for iOS
 	- mobie layout works for android
-	- ~~works in fireforx~~ had to workaround for zoom
+	- ~~works in firefox~~ had to workaround for zoom
 	- ~~works in IE~~ 10+ only tested so far
 	- ~~works in chrome~~
 	- Place Marker *developing*
@@ -113,5 +111,5 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 
 ####FU Angular ####
 
-While Angular is great for building UI and two-way data binding, this overhead is bad for the actual tile engine. Looking at mobile performance, we abondon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.data available. Ping me if you have a good organization strategy for angular reuse. 
+While Angular is great for building UI and two-way data binding, this overhead is bad for the actual tile engine. Looking at mobile performance, we abandon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.data available. Ping me if you have a good organization strategy for angular reuse. 
 
