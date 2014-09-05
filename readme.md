@@ -3,7 +3,7 @@
 
 **Two football fields long, standing 12 stories tall, it is ongoing...**
 
-Over five years ago a hand-drawn illustration began, one so large that only machines could see it. The *paper* alone weighs over twenty pounds! You'd think Google Maps could at chart it, but in fact the periodic nature and every page connecting left-to-right breaks tile-engine logic. This open-source project is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape. The core is pure javascript wrapped in AngularJS for the user interface componets. 
+Over five years ago a hand-drawn illustration began, one so large that only machines could see it. The *paper* alone weighs over twenty pounds! You'd think Google Maps could at chart it, but in fact the periodic nature and every page connecting left-to-right breaks tile-engine logic. This open-source project is an invitation to create your own exploration engine, a diving-off point into the larger-than-life reality known as the ForeverScape. The core is pure javascript wrapped in AngularJS for the user interface componets. Every hand drawn page is individually scanned.
 
 *The plan is to have a fully fledged geography system with drag and drop comment markers. This underlying API will pave the way for the ultimate scavenger hunt game.*
 
