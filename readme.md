@@ -106,5 +106,5 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 
 ####FU Angular ####
 
-Looking at mobile performance, we abondon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.data available. Ping me if you have a good organization strategy for angular reuse. 
+While Angular is great for building UI and two-way data binding, this overhead is bad for the actual tile engine. Looking at mobile performance, we abondon the Angular convention of ng-repeat for the actual tile engine component. UI and other interfaces are fine, but the tiling needs to be super-efficient, we can't have two-way binding and $digests() going on all the time.data available. Ping me if you have a good organization strategy for angular reuse. 
 
