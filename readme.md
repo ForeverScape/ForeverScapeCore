@@ -69,6 +69,7 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 - Setup New Database + ~~API Server~~ Nope. Let's use AWS via JS SDK directy for backendless client
 - ~~Deployment/Build scripts~~
 - ~~setup dev server~~
+- set Cloudfront to pull static content from staging and live server, make the minified index pull statics from CDN, not relative path. Make grunt task to auto-increment builds so that statics get deployed to new version directories
 
 - **Tile Engine**
 	- mobile layout works for iOS
