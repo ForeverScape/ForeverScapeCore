@@ -61,7 +61,7 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 **basics**
 - ~~Repository~~	
 - ~~Setup staging server~~
-- Setup New Database + API Server	http://www.hostdepartment.com/databases/mysql-hosting/
+- Setup New Database + ~~API Server~~ Nope. Let's use AWS via JS SDK directy for backendless client
 - ~~Deployment/Build scripts~~
 - ~~setup dev server~~
 
@@ -77,7 +77,7 @@ Items without *developing* tag are *future stories*. *Developing* tags are activ
 	- snap a screenshot and share on Facebook wall / twitter --> deploy to CDN or S3 (needs JS SDK auth)
 	- autoplayback in any direction  *developing*
 	- fullscreen mode
-	- double-tap [touch] to zoom back to default  *developing*
+	- double-tap [touch] to zoom back to default  <span style="color"*developing*
 	- ~~pinch [touch] to set zoom~~ tested ios, android need to test mobile IE
 	- perhaps use AWS identity services + DynamoDB for location comment engine
 	- widget player project that people can "embed" into blog, website etc. 
