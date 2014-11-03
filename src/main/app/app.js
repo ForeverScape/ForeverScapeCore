@@ -5,6 +5,8 @@ angular.module('FScapeApp.Services', ['ngRoute', 'ngResource', 'appSettings']);
 angular.module('FScapeApp.Directives', ['ngRoute', 'ngResource', 'appSettings']);
 angular.module('FScapeApp.Filters', ['ngRoute', 'ngResource', 'appSettings']);
 angular.module('FScapeApp.Providers', ['ngRoute', 'ngResource', 'appSettings']);
+//angular.module('FScapeApp.Controllers', ['angular-gestures']);
+
 
 var app = angular.module('FScapeApp', [
     'ngTouch',
@@ -15,7 +17,8 @@ var app = angular.module('FScapeApp', [
     'FScapeApp.Services',
     'FScapeApp.Directives',
     'FScapeApp.Filters',
-    'FScapeApp.Providers'
+    'FScapeApp.Providers',
+    'angular-gestures'
 ]);
 
 app.config( function($routeProvider ) {
@@ -24,11 +27,10 @@ app.config( function($routeProvider ) {
         $routeProvider
             .when('/test', {
                 templateUrl: 'main/app/pages/testbed/testbed.tpl.html'
-                //controller: 'HomeController'
-            })
+            }).when('/', {
+                templateUrl: 'main/website/pages/home/home.tpl.html'
+            });
 
-
-        // $locationProvider.html5Mode(true); <-- this will remove the (#)hash from the url, but causes some issues
     }
 );
 

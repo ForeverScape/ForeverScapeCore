@@ -25,6 +25,8 @@
                     $scope.windowHeight = $window.innerHeight;
 
 
+
+
                     // angular reacts too slow, so i'm doing this classic style
                     // it does not always digest on window size change
 
@@ -63,10 +65,7 @@
                                 {
                                     css:{top:'0px', scale:1,left:'1px'}
                                 });
-
                         }
-
-
 
                     } else {
                         jQuery('.navigation').show();
@@ -80,8 +79,6 @@
                             {
                                 css:{height:'65px'}
                             });
-
-
 
                         TweenMax.to( $('.title'), 1,
                             {

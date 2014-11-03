@@ -4,9 +4,6 @@
     angular.module('FScapeApp.Services').factory('fscapeService',
         function($location, $cookies, $rootScope) {
 
-
-
-
             return {
 
 

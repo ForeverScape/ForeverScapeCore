@@ -27,14 +27,29 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
+  $templateCache.put('main/core/components/bottomNav/bottom-nav.html',
+    "<div class=\"location-tool\" ng-controller=\"bottomNavController as bottomNavCtrl\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <playback></playback>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('main/core/components/foreverscapeEngine/foreverscape-engine.tpl.html',
     "<div class=\"foreverscape-engine-wrapper\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "   <!-- <div class=\"hud\">\r" +
+    "    <div class=\"hud\">\r" +
     "\n" +
-    "        zoom: {{fscapeEngineCtrl.zoom}}<br/>\r" +
+    "\r" +
     "\n" +
     "        time: {{ fscapeEngineCtrl.time| number:0 }}<br/>\r" +
     "\n" +
@@ -42,11 +57,13 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
+    "        zoom: {{touchService.zoom}}\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "        <div id=\"trace\">Hello</div>\r" +
     "\n" +
     "    </div>\r" +
-    "\n" +
-    "-->\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -60,7 +77,11 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "         ng-mouseup=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
     "\n" +
-    "         ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\">\r" +
+    "         ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\"\r" +
+    "\n" +
+    "         hm-pinch=\"fscapeEngineCtrl.pinchGesture($event)\"\r" +
+    "\n" +
+    "            hm-touch=\"fscapeEngineCtrl.pinchGesture($event)\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -68,7 +89,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "            <div id=\"tile-engine\" class=\"engine-position\">\r" +
+    "        <div id=\"tile-engine\" class=\"engine-position\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -233,6 +254,21 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
+  $templateCache.put('main/core/components/playback/playback.html',
+    "<div class=\"playback\" ng-controller=\"playbackController as playbackCtrl\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"play\" alt=\"play\" ng-click=\"fscapeService.togglePlayback($event)\" ng-show=\"!fscapeService.isPlaying\"></div>\r" +
+    "\n" +
+    "    <div class=\"pause\" alt=\"pause\"  ng-click=\"fscapeService.togglePlayback($event)\"  ng-show=\"fscapeService.isPlaying\"></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('main/core/modals/errorModal/error.tpl.html',
     "<div class=\"debugger\" ng-controller=\"ErrorController as errorCtrl\">\r" +
     "\n" +
@@ -312,10 +348,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
 
   $templateCache.put('main/website/pages/home/home.tpl.html',
     "<div class=\"page\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "\r" +
     "\n" +

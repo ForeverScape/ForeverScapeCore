@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('FScapeApp.Controllers').controller('locationTool',
-        function($scope, BaseController,$location,$window, $rootScope, fscapeService) {
+        function($scope, BaseController,$window, $rootScope, fscapeService) {
 
             var c = {
 

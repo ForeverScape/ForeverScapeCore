@@ -1,11 +1,36 @@
 (function() {
     'use strict';
 
+    var traceVal = [];
+    var trace = function( val )
+    {
+        traceVal.push('<br/>' + val);
+
+        $('#trace').html(traceVal.join(''));
+
+        if(  traceVal.length > 10 )
+        {
+            traceVal.shift();
+        }
+    };
+
+
     angular.module('FScapeApp.Services').service('touchService',
-        function($rootScope){
+        function($rootScope,$window){
 
             var touchService = {
 
+                scale:1,
+
+                zoom:.5,
+                zoomMax: 1.6, //these might get bumped up if window size is really big
+                zoomMin:.45,   //these might get bumped up if window size is really big
+
+                positionX: 0,
+                positionY: 0,
+
+
+                hasInit: false,
 
                 //drag flick
                 mouseDownX: null,
@@ -29,14 +54,31 @@
                 prevPinchDist: 0,
 
 
-
-
-
-                setupTouchEvents: function(){
-
+                init: function(){
                     var that = this;
 
+                    if( that.hasInit )
+                    {
+                        return;
+                    }
+
+                    //set initial zoom
+                    setTimeout( function(){
+
+                    }, 1000 );
+
+                    TweenMax.to(that, 1,
+                    {
+                        zoom:.36,
+                        onUpdate: function(){
+                            $rootScope.$broadcast('setZoom');
+                        }
+                    });
+
+                    that.hasInit = true;
+
                     that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
+
                     $(document).bind('gesturestart', function(e) {
                         e.originalEvent.preventDefault();
                     }, false);
@@ -44,6 +86,11 @@
                     $(document).bind('gestureend', function(e) {
                         e.originalEvent.preventDefault();
                     }, false);
+
+                    $(document).bind('mousedown', function(event) {
+                        that.mouseDown(event);
+                    });
+
 
                     $(document).bind('touchstart', function(event) {
 
@@ -81,7 +128,7 @@
                         if(that._scaling) {
                             that.pinchMove(event);
                             return;
-                        }
+                    }
 
 
                         that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
@@ -117,7 +164,6 @@
                     });
 
                     $(document).mousewheel(function(e) {
-
                         e.originalEvent.preventDefault();
                         if(e.deltaY  > 0) {
                             that.zoomIn();
@@ -126,8 +172,17 @@
                         }
                     });
 
+                    angular.element( $window).bind( 'resize', this.onResize);
+                    angular.element( $window).bind('orientationchange', this.onResize);
+
+                    this.onResize();
+
                 },
 
+                onResize: function()
+                {
+                    this.zoomMin = (window.innerWidth / 6000) + .2;
+                },
 
                 pinchStart: function(e)
                 {
@@ -135,22 +190,16 @@
                 },
                 pinchMove: function(e)
                 {
-
-
                     var dist = this.getPinchDistance(e);
-                    //var difference = this.startDistance - difference;
 
                     if( dist - this.prevPinchDist > 0)
                     {
-                        this.zoomIn();
-                        this.setZoomTarget();
-
+                        this.zoomIn(1);
                     } else {
-                        this.zoomOut();
+                        this.zoomOut(1);
                     }
 
                     this.prevPinchDist = dist;
-
                 },
                 pinchEnd: function(e)
                 {
@@ -182,8 +231,6 @@
 
                     if( this.is_touch_device )
                         return;
-
-                    trace('mouseDown');
 
                     this.mouseDownX = $event.pageX;
                     this.mouseDownY = $event.pageY;
@@ -291,7 +338,6 @@
 
                 flick: function()
                 {
-
                     var that = this;
 
                     var dTime  = ( this.endDragTime - this.startDragTime);
@@ -318,7 +364,6 @@
                     }
                     if( ! this._flickingY &&Math.abs( velX ) > .15 || Math.abs( velY ) > .15 )
                     {
-
                         this._flickingY= true;
                         this.offsetY +=  3000 * velY;
                         this.flickTweenY = TweenMax.to( $('.engine-position'), 1,
@@ -330,10 +375,45 @@
                                 }
                             });
                     }
+                },
+
+
+                zoomIn: function( multiplier)
+                {
+                    if( ! multiplier )
+                    {
+                        multiplier = 2;
+                    }
+                    this.setZoomTarget();
+                    if( this.zoom > this.zoomMax)
+                        return;
+
+                    this.zoom += .025 * multiplier;
+
+                },
+
+                zoomOut: function(multiplier)
+                {
+                    if( ! multiplier )
+                    {
+                        multiplier = 2;
+                    }
+                    this.setZoomTarget();
+                    if( this.zoom <= this.zoomMin)
+                        return;
+                    this.zoom -= .025 * multiplier;
+
+                },
+
+
+                setZoomTarget: function(){
+                    $rootScope.$broadcast('setZoom');
                 }
+
+
             }
 
-            touchService.setupTouchEvents();
+            touchService.init();
 
             return touchService;
 

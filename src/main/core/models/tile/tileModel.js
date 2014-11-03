@@ -12,9 +12,6 @@ angular.module('FScapeApp.Models').factory('tileModel',
     model.getTiles = function()
     {
         var that = this;
-
-        console.log(printStackTrace());
-
         return configModel.getConfig().then(function(){
             that.createTiles( );
 

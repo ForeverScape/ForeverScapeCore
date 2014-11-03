@@ -1,24 +1,27 @@
 <div class="foreverscape-engine-wrapper">
 
-   <!-- <div class="hud">
-        zoom: {{fscapeEngineCtrl.zoom}}<br/>
+    <div class="hud">
+
         time: {{ fscapeEngineCtrl.time| number:0 }}<br/>
         hasRender: {{ fscapeEngineCtrl.hasRender| number:0 }}<br/>
 
+        zoom: {{touchService.zoom}}
+
         <div id="trace">Hello</div>
     </div>
--->
 
 
     <div class="engine-frame"
          ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
          ng-mousedown="fscapeEngineCtrl.mouseDown($event)"
          ng-mouseup="fscapeEngineCtrl.mouseUp($event)"
-         ng-mousemove="fscapeEngineCtrl.mouseMove($event)">
+         ng-mousemove="fscapeEngineCtrl.mouseMove($event)"
+         hm-pinch="fscapeEngineCtrl.pinchGesture($event)"
+            hm-touch="fscapeEngineCtrl.pinchGesture($event)">
 
         <div class="engine-scale">
 
-            <div id="tile-engine" class="engine-position">
+        <div id="tile-engine" class="engine-position">
 
 
 <!--

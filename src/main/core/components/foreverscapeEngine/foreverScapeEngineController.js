@@ -16,7 +16,9 @@
 
 
     angular.module('FScapeApp.Controllers').controller('foreverScapeEngineController',
-        function($scope, BaseController,$location, configModel, tileModel, gridModel, $rootScope, fscapeService) {
+        function($scope, BaseController,$location, configModel, tileModel, gridModel, $rootScope, fscapeService, touchService) {
+
+            $scope.touchService = touchService;
 
             var controller = {
 
@@ -30,11 +32,9 @@
                 // TODO:
 
                 /*
-                        big todos:
-                           - move coordinates to service
-                           - all mouse events to own service
-
-
+                    big todos:
+                       - move coordinates to service
+                       - all mouse events to own service
                  */
 
 
@@ -77,16 +77,21 @@
                 gridBoxes:[],
                 config:null,
 
-
-
                 endCoords:{},
                 startCoords:{},
 
                 is_touch_device: false,
 
+                pinchGesture: function()
+                {
+                    trace('--pinchGesture');
+                },
+
 
                 onInit: function( ) {
                     var that = this;
+
+                    touchService.init();
 
                     $scope.trace = '';
 
@@ -94,9 +99,13 @@
                     this.setupTouchEvents();
 
                     $rootScope.$on('fscape.togglePlayback', function(){
-                    })
 
+                    });
 
+                    $rootScope.$on( 'setZoom', function(){
+                        trace('setzoom');
+                        $('.engine-scale').css('transform', 'scale(' +touchService.zoom + ')');
+                    });
 
                     setTimeout( function(){
                         if( that.canIntro )
@@ -104,10 +113,13 @@
                             that.offsetX -= 900;;
                             TweenMax.to( $('.engine-position'),3,
                             {
-                                css:{left:that.offsetX, top:that.offsetY}
+                                css:{left:that.offsetX, top:that.offsetY},
+                                onUpdate: function(){
+                                    $scope.$apply();
+                                }
                             });
                         }
-                    }, 2500 );
+                    }, 1000 );
 
                     $('.preload-junk').html('');
                 },
@@ -117,6 +129,7 @@
                     var that = this;
 
                     that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
+
                     $(document).bind('gesturestart', function(e) {
                         e.originalEvent.preventDefault();
                     }, false);
@@ -134,7 +147,7 @@
                             event.originalEvent.targetTouches.length ===2 ) {
 
                             that._scaling = true;
-                            that.pinchStart(event);
+                            //that.pinchStart(event);
                             return;
                         }
 
@@ -159,10 +172,9 @@
                         event.originalEvent.preventDefault();
 
                         if(that._scaling) {
-                            that.pinchMove(event);
+                            //that.pinchMove(event);
                             return;
                         }
-
 
                         that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
                         that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
@@ -175,14 +187,13 @@
                         event.preventDefault();
                         event.originalEvent.preventDefault();
 
-
                         window.clearTimeout( that.touchTimeout );
                         that.touchTimeout = window.setTimeout( function(){
                             that._allowTouch = true;
                         }, 300 );
 
                         if(that._scaling) {
-                            that.pinchEnd(event);
+                            //that.pinchEnd(event);
                             that._scaling = false;
                             return;
                         }
@@ -198,27 +209,14 @@
 
                     configModel.getConfig().then( function(){
 
-                        trace('gotConfig');
-
                         that.config = configModel.data;
                         that.gridBoxes = gridModel.gridBoxes;
 
                         tileModel.getTiles().then( function(result){
                             that.imageTiles = result;
-                            trace('got tiles');
-                            that.setZoomTarget();
+
                         });
 
-                    });
-
-                    $(document).mousewheel(function(e) {
-
-                        e.originalEvent.preventDefault();
-                        if(e.deltaY  > 0) {
-                            that.zoomIn();
-                        } else{
-                            that.zoomOut();
-                        }
                     });
 
                 },
@@ -226,46 +224,46 @@
 
                 pinchStart: function(e)
                 {
-                    this.startDistance = this.getPinchDistance(e);
+                   // this.startDistance = this.getPinchDistance(e);
                 },
                 pinchMove: function(e)
                 {
-                    var dist = this.getPinchDistance(e);
-
-                    if( dist - this.prevPinchDist > 0)
-                    {
-                        this.zoomIn();
-                        this.setZoomTarget();
-
-                    } else {
-                        this.zoomOut();
-                    }
-
-                    this.prevPinchDist = dist;
+//                    var dist = this.getPinchDistance(e);
+//
+//                    if( dist - this.prevPinchDist > 0)
+//                    {
+//                        this.zoomIn();
+//                        this.setZoomTarget();
+//
+//                    } else {
+//                        this.zoomOut();
+//                    }
+//
+//                    this.prevPinchDist = dist;
 
                 },
                 pinchEnd: function(e)
                 {
-                    trace("pinchEnd");
+                   // trace("pinchEnd");
                 },
 
                 getPinchDistance: function(e)
                 {
-                    var dist = 0;
-                    if( e.originalEvent.touches[0])
-                    {
-                        dist = Math.sqrt(
-                                (e.originalEvent.touches[0].pageX-e.originalEvent.touches[1].pageX) * (e.originalEvent.touches[0].pageX-e.originalEvent.touches[1].pageX) +
-                                (e.originalEvent.touches[0].pageY-e.originalEvent.touches[1].pageY) * (e.originalEvent.touches[0].pageY-e.originalEvent.touches[1].pageY));
-
-                    } else  if( e.originalEvent.changedTouches[0])
-                    {
-                        dist = Math.sqrt(
-                                (e.originalEvent.changedTouches[0].pageX-e.originalEvent.changedTouches[1].pageX) * (e.originalEvent.changedTouches[0].pageX-e.originalEvent.changedTouches[1].pageX) +
-                                (e.originalEvent.changedTouches[0].pageY-e.originalEvent.changedTouches[1].pageY) * (e.originalEvent.changedTouches[0].pageY-e.originalEvent.changedTouches[1].pageY));
-
-                    }
-                    return dist;
+//                    var dist = 0;
+//                    if( e.originalEvent.touches[0])
+//                    {
+//                        dist = Math.sqrt(
+//                                (e.originalEvent.touches[0].pageX-e.originalEvent.touches[1].pageX) * (e.originalEvent.touches[0].pageX-e.originalEvent.touches[1].pageX) +
+//                                (e.originalEvent.touches[0].pageY-e.originalEvent.touches[1].pageY) * (e.originalEvent.touches[0].pageY-e.originalEvent.touches[1].pageY));
+//
+//                    } else  if( e.originalEvent.changedTouches[0])
+//                    {
+//                        dist = Math.sqrt(
+//                                (e.originalEvent.changedTouches[0].pageX-e.originalEvent.changedTouches[1].pageX) * (e.originalEvent.changedTouches[0].pageX-e.originalEvent.changedTouches[1].pageX) +
+//                                (e.originalEvent.changedTouches[0].pageY-e.originalEvent.changedTouches[1].pageY) * (e.originalEvent.changedTouches[0].pageY-e.originalEvent.changedTouches[1].pageY));
+//
+//                    }
+//                    return dist;
                 },
 
                 mouseDown: function($event)
@@ -339,14 +337,14 @@
                     if( this._mouseDown && ! this._flickingX  )
                     {
                         this._dragging = true;
-                        this.offsetX += this.dx * ( 3 * ( this.zoomMax +.1  - this.zoom) );
+                        this.offsetX += this.dx * ( 3 * ( this.zoomMax +.1  - touchService.zoom) );
 
                         this.setCSSPosition();
                     }
                     if( this._mouseDown && ! this._flickingY  )
                     {
                         this._dragging = true;
-                        this.offsetY += this.dy* ( 3 *  ( this.zoomMax +.1  - this.zoom) );
+                        this.offsetY += this.dy* ( 3 *  ( this.zoomMax +.1  - touchService.zoom) );
 
                         this.setCSSPosition();
                     }
@@ -435,56 +433,6 @@
                 },
 
 
-
-
-
-                zoomIn: function( multiplier)
-                {
-                    if( ! multiplier )
-                    {
-                        multiplier = 1;
-                    }
-
-                    if( this.zoom > this.zoomMax)
-                        return;
-
-                    this.zoom += .025* multiplier;
-                    this.setZoomTarget();
-                },
-                zoomOut: function(multiplier)
-                {
-                    if( ! multiplier )
-                    {
-                        multiplier = 1;
-                    }
-
-                    if( this.zoom <= .26)
-                        return;
-                    this.zoom -= .025 * multiplier;
-                    this.setZoomTarget();
-                },
-
-                setZoomTarget: function( newZoom){
-                    var that = this;
-
-                    if( newZoom )
-                    {
-                        that.zoom = newZoom;
-                    }
-
-                    if( this.zoomTween )
-                    {
-                        this.zoomTween.kill();
-                    }
-
-                    that.zoomTween = TweenMax.to( $('.engine-scale'),0,
-                        {
-                            css:{scale:that.zoom}
-                        });
-                },
-
-
-
                 buildGrid: function()
                 {
                     // this used to be generated in ng-repeate
@@ -550,17 +498,16 @@
                     if( fscapeService.isPlaying )
                     {
                         this.offsetX += 10;
-                        console.log(" scolling",  this.offsetX );
                     }
 
 
-                    var loadBoundaryOffsetX =  (this.config.tileWidth * 4 * this.zoom );
+                    var loadBoundaryOffsetX =  (this.config.tileWidth * 4 * touchService.zoom );
                     this.offscreenLeft = 100 - loadBoundaryOffsetX;
-                    this.offscreenRight = (16 * this.config.tileWidth * this.zoom) - loadBoundaryOffsetX;
+                    this.offscreenRight = (16 * this.config.tileWidth * touchService.zoom) - loadBoundaryOffsetX;
 
-                    var loadBoundaryOffsetY =  (this.config.tileHeight * 4 * this.zoom );
+                    var loadBoundaryOffsetY =  (this.config.tileHeight * 4 * touchService.zoom );
                     this.offscreenTop = 50 - loadBoundaryOffsetY;
-                    this.offscreenBottom = (this.zoom * 11 * this.config.tileHeight )- loadBoundaryOffsetY;
+                    this.offscreenBottom = (touchService.zoom * 11 * this.config.tileHeight )- loadBoundaryOffsetY;
 
                     for( var i = 0; i < this.gridBoxes.length;i++)
                     {
@@ -655,21 +602,28 @@
 
 
                 loadFullResTiles: function(gb){
+
+
+
                     // see if the image is in bounds of the screen and show the high resolution if zoomed in enough
-                    if( this.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
+                    if( touchService.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
                     {
-                        var isOnLeft = gb.screenX  > - ( this.config.tileWidth * this.zoom);
+                        var isOnLeft = gb.screenX  > - ( this.config.tileWidth * touchService.zoom);
                         var isOnRight = gb.screenX < window.innerWidth;
-                        var isOnTop = gb.screenY > - ( this.config.tileHeight * this.zoom) ;
-                        var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight * this.zoom) ;
+                        var isOnTop = gb.screenY > - ( this.config.tileHeight * touchService.zoom) ;
+                        var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight *touchService.zoom) ;
 
                         if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScreen )
                         {
-                            if( gb.currentTile && gb.fullElement.attr('src').toString() != gb.currentTile.fullUrl.toString());
+                            if( gb.fullElement.attr('src') )
                             {
-                                ;                                   gb.isOnScreen = true;
-                                gb.fullElement.attr('src',gb.currentTile.fullUrl);
+                                if( gb.currentTile && gb.fullElement.attr('src').toString() != gb.currentTile.fullUrl.toString());
+                                {
+                                    gb.isOnScreen = true;
+                                    gb.fullElement.attr('src',gb.currentTile.fullUrl);
+                                }
                             }
+
                         }
 
                     } else {
@@ -678,7 +632,7 @@
                             gb.fullElement.attr('src','main/resources/img/blank.gif');
                         }
                     }
-                },
+                }
 
             };
 
