@@ -94,9 +94,6 @@
                     this.setupTouchEvents();
 
                     $rootScope.$on('fscape.togglePlayback', function(){
-
-
-
                     })
 
 
@@ -356,8 +353,6 @@
 
 
                     // todo: refactor so service keeps track of offset
-
-
                     this.mousePreviousX = this.mouseX;
                     this.mousePreviousY = this.mouseY;
                 },

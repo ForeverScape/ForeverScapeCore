@@ -3,7 +3,9 @@ angular.module('FScapeApp.Models').factory('tileModel',
 
     var defaults =  [];
 
-    var model = new BaseModel(defaults, tileService)
+    var model = new BaseModel(defaults, tileService);
+
+    var cachedTilesPromise;
 
     model.tiles = [];
 
@@ -11,21 +13,24 @@ angular.module('FScapeApp.Models').factory('tileModel',
     {
         var that = this;
 
-        var deferred = $q.defer();
+        console.log(printStackTrace());
 
+        return configModel.getConfig().then(function(){
+            that.createTiles( );
 
-        configModel.getConfig().then(function(){
-            this.data = that.createTiles( );
-            deferred.resolve( this.data );
+            if( that.tiles  ) {
+                that.cachedTilesPromise = $q.when(that.tiles);
+            }
+
+            if(! that.cachedTilesPromise )
+            {
+                that.cachedTilesPromise =  that.service.getTiles().then( function(result){
+                    that.data = that.updateTileData( result.data );
+                });
+            }
+            return that.cachedTilesPromise;
         });
 
-        // update the tile names async
-        this.service.getTiles().then( function(result){
-            this.data = that.updateTileData( result.data );
-
-        });
-
-        return deferred.promise;
     };
 
    model.updateTileData= function( data )
