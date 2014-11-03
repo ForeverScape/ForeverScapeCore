@@ -13,9 +13,9 @@
 
     <div class="engine-frame"
          ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
+         ng-mousedown="fscapeEngineCtrl.mouseDown($event)"
          ng-mouseup="fscapeEngineCtrl.mouseUp($event)"
          ng-mousemove="fscapeEngineCtrl.mouseMove($event)"
-
          hm-pinch="touchService.handlePinch($event)"
          hm-touch="fscapeEngineCtrl.touchGesture($event)">
 

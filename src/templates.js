@@ -73,11 +73,11 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "         ng-mouseleave=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
     "\n" +
+    "         ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\"\r" +
+    "\n" +
     "         ng-mouseup=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
     "\n" +
     "         ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\"\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "         hm-pinch=\"touchService.handlePinch($event)\"\r" +
     "\n" +
