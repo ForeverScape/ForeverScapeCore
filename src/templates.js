@@ -6,6 +6,19 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
+  $templateCache.put('main/app/pages/home/home.tpl.html',
+    "<div class=\"page\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<foreverscape-engine width=\"100%\" height=\"fill-window\"></foreverscape-engine>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('main/app/pages/testbed/testbed.tpl.html',
     "<div class=\"page\">\r" +
     "\n" +
@@ -47,7 +60,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"hud\">\r" +
+    "   <!-- <div class=\"hud\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -63,19 +76,13 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "        <div id=\"trace\">Hello</div>\r" +
     "\n" +
-    "    </div>\r" +
+    "    </div>-->\r" +
     "\n" +
     "\r" +
     "\n" +
     "\r" +
     "\n" +
     "    <div class=\"engine-frame\"\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "         ng-mouseleave=\"touchService.mouseUp($event)\"\r" +
     "\n" +
@@ -90,8 +97,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "         hm-pinch=\"touchService.handlePinch($event)\"\r" +
     "\n" +
     "         hm-touch=\"touchService.touchGesture($event)\"\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "         >\r" +
     "\n" +
@@ -108,62 +113,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\r" +
     "\n" +
     "<!--\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    " ng-mouseleave=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
-    "\n" +
-    "         ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\"\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "         hm-drag=\"fscapeEngineCtrl.handleDrag($event)\"\r" +
-    "\n" +
-    "         hm-dragend=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
-    "\n" +
-    "         hm-touch=\"fscapeEngineCtrl.touchGesture($event)\"\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "         ng-mouseup=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
-    "\n" +
-    "         ng-mousemove=\"fscapeEngineCtrl.mouseMove($event)\"\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                <div id=\"{{gridBox.domId}}\" ng-style=\"{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }\" class=\"grid-box\" ng-repeat=\"(index,gridBox) in fscapeEngineCtrl.gridBoxes\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                   <img class=\"full\" id=\"full-{{gridBox.domId}}\"  ng-style=\"{width:gridBox.width, height: gridBox.height}\"/>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                   <img class=\"thumb\" image-onload numeric-id=\"{{gridBox.currentTile.id}}\" id=\"thumb-{{gridBox.domId}}\" ng-src=\"{{gridBox.currentTile.thumbUrl}}\" />\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<div class=\"grid-info\">\r" +
-    "\n" +
-    "    Page {{gridBox.id}}<br/>\r" +
-    "\n" +
-    "    {{gridBox.currentTile.name }}<br/>\r" +
-    "\n" +
-    "    {{gridBox.isOnScreen}}\r" +
-    "\n" +
-    "</div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                </div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -377,19 +326,6 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\r" +
     "\n" +
     "    </div>\r" +
-    "\n" +
-    "</div>"
-  );
-
-
-  $templateCache.put('main/website/pages/home/home.tpl.html',
-    "<div class=\"page\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<foreverscape-engine width=\"100%\" height=\"fill-window\"></foreverscape-engine>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "</div>"
   );
