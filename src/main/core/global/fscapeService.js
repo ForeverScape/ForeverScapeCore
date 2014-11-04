@@ -8,8 +8,9 @@
 
 
                 isPlaying: false,
-                offsetX:0,
-                offsetY:0,
+
+                offsetX: -200,
+                offsetY: -900,
 
                 zoom:.5,
                 zoomMax: 1.6, //these might get bumped up if window size is really big
@@ -21,7 +22,6 @@
                 init: function()
                 {
                     this.isPlaying = false;
-                    this.offset = {};
                 },
                 togglePlayback: function(){
 

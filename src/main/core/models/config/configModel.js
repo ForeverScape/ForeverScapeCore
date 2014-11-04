@@ -14,7 +14,7 @@ angular.module('FScapeApp.Models').factory('configModel',
         "license":null,
         "tileWidth": 1004,
         "tileHeight": 768,
-        "startPage": 719
+        "startPage": 537
     };
 
 

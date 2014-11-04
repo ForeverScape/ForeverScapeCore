@@ -23,12 +23,7 @@
             var controller = {
 
                 _hasGrid: false,
-                _allowTouch: true,
 
-                zoom:.36,
-
-                offsetX: 0,
-                offsetY: -300,
                 time: 0,
 
                 offscreenLeft: -1004,
@@ -36,15 +31,11 @@
                 offscreenTop: -10000,
                 offscreenBottom: 20000,
 
-
                 hide: false, // change this to true, the entire header will not show up
                 location: $location,
                 imageTiles:[],
                 gridBoxes:[],
                 config:null,
-
-                endCoords:{},
-                startCoords:{},
 
                 onInit: function( ) {
                     var that = this;
@@ -72,7 +63,10 @@
                     });
 
                     $rootScope.$on( 'fscape.setZoom', function(){
-                        $('.engine-scale').css('transform', 'scale(' +fscapeService.zoom + ')');
+                        $('.engine-scale').css({
+                            'transform': 'scale(' +fscapeService.zoom + ')',
+                            'top':'-340px'
+                        });
                     });
 
 
@@ -90,8 +84,8 @@
 
                 buildGrid: function()
                 {
-                    // this used to be generated in ng-repeate
-                    // we do this manually to improve performance
+                    // this used to be generated in ng-repeat
+                    // we do this manually to improve performance (no-way binding)
 
                     if( ! this.gridBoxes.length )
                     {
@@ -249,12 +243,10 @@
                         }
                     }
 
-                }, 
+                },
 
 
                 loadFullResTiles: function(gb){
-
-
 
                     // see if the image is in bounds of the screen and show the high resolution if zoomed in enough
                     if( fscapeService.zoom > .36 && ! this._dragging && ! touchService._flickingX && ! touchService._flickingY )

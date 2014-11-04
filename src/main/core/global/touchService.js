@@ -16,7 +16,7 @@
 
 
     angular.module('FScapeApp.Services').service('touchService',
-        function($rootScope,$window, fscapeService){
+        function($rootScope,$window, fscapeService,$timeout){
 
             var touchService = {
 
@@ -25,8 +25,8 @@
                 zoom:.5,
 
 
-                offsetX: 0,
-                offsetY: -300,
+                offsetX: -900,
+                offsetY: -900,
 
 
                 hasInit: false,
@@ -65,11 +65,6 @@
                         return;
                     }
 
-                    //set initial zoom
-                    setTimeout( function(){
-
-                    }, 1000 );
-
                     TweenMax.to(that, 1,
                     {
                         zoom:.36,
@@ -92,19 +87,28 @@
                     angular.element( $window).bind( 'resize', this.onResize);
                     angular.element( $window).bind('orientationchange', this.onResize);
 
-                    setTimeout( function(){
+                    fscapeService.setOffsetX(that.offsetX );
+                    fscapeService.setOffsetY(that.offsetY );
+
+
+                    $timeout( function(){
                         if( that.canIntro )
                         {
-                            that.offsetX = 0;
+                            fscapeService.setOffsetX(that.offsetX );
+                            fscapeService.setOffsetY(that.offsetY );
                             TweenMax.to( that,3,
                                 {
-                                    offsetX:-900,
+                                    offsetX:-1900,
+                                    offsetY:-1200,
                                     onUpdate: function(){
-                                        fscapeService.setOffsetX(that.offsetX )
+                                        console.log( that.offsetY)
+                                        fscapeService.setOffsetX(that.offsetX );
+                                        fscapeService.setOffsetY(that.offsetY );
+
                                     }
                                 });
                         }
-                    }, 1000 );
+                    }, 0 , false);
 
 
 
@@ -151,7 +155,6 @@
 
                 touchGesture: function(e)
                 {
-                    console.log('touchGesture');
                     this.down(e.gesture.center);
                 },
 
@@ -184,12 +187,12 @@
 
                     if( this.flickTweenX )
                     {
-                        this.offsetX = parseInt( $('.engine-position').css('left'), 10 );
+                        //this.offsetX = parseInt( $('.engine-position').css('left'), 10 );
                         this.flickTweenX.kill();
                     }
                     if( this.flickTweenY)
                     {
-                        this.offsetY = parseInt( $('.engine-position').css('top'), 10 );
+                        //this.offsetY = parseInt( $('.engine-position').css('top'), 10 );
                         this.flickTweenY.kill();
                     }
 
@@ -244,7 +247,7 @@
 
                 // working on abstracting this out, yay!!
                 setPosition: function(){
-                    console.log('setposition');
+
                     fscapeService.setOffsetX(this.offsetX);
                     fscapeService.setOffsetY(this.offsetY);
                 },
@@ -268,8 +271,6 @@
                 flick: function()
                 {
                     var that = this;
-
-                    console.log('flick');
 
                     var dTime  = ( this.endDragTime - this.startDragTime);
 
