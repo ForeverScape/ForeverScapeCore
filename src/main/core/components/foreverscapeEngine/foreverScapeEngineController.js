@@ -26,8 +26,7 @@
                 _allowTouch: true,
 
                 zoom:.36,
-                zoomMax: 1.6, //these might get bumped up if window size is really big
-                zoomMin:.5,   //these might get bumped up if window size is really big
+
 
                 // TODO:
 
@@ -88,7 +87,18 @@
                     $scope.trace = '';
 
                     this.buildGrid();
-                    this.setupTouchEvents();
+
+                    configModel.getConfig().then( function(){
+
+                        that.config = configModel.data;
+                        that.gridBoxes = gridModel.gridBoxes;
+
+                        tileModel.getTiles().then( function(result){
+                            that.imageTiles = result;
+
+                        });
+
+                    });
 
                     $rootScope.$on('fscape.togglePlayback', function(){
 
@@ -112,107 +122,16 @@
                         }
                     }, 1000 );
 
+
+
+
+
                     $('.preload-junk').html('');
                 },
 
-                setupTouchEvents: function(){
-
-                    var that = this;
-
-                    $(document).bind('gesturestart', function(e) {
-                        e.originalEvent.preventDefault();
-                    }, false);
-
-                    $(document).bind('gestureend', function(e) {
-                        e.originalEvent.preventDefault();
-                    }, false);
-
-                    $(document).bind('touchstart', function(event) {
-
-                        event.preventDefault();
-//                        event.originalEvent.preventDefault();
-//
-//                        if( event.originalEvent.touches.length === 2 ||
-//                            event.originalEvent.targetTouches.length ===2 ) {
-//
-//                            that._scaling = true;
-//                            //that.pinchStart(event);
-//                            return;
-//                        }
-//
-//                        if( !that._allowTouch )
-//                        {
-//                            return;
-//                        }
-//                        that._allowTouch = false;
-//
-//                        that.mouseDownX = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
-//                        that.mouseDownY = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-//
-//                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
-//                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-//
-//                        that.down();
-                    });
-4
-                    $(document).bind('touchmove', function(event) {
-
-                        event.preventDefault();
-//                        event.originalEvent.preventDefault();
-//
-//                        if(that._scaling) {
-//                            //that.pinchMove(event);
-//                            return;
-//                        }
-//
-//                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
-//                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-//
-//                        that.move();
-                    });
-
-                    $(document).bind('touchend', function(event) {
-
-                        event.preventDefault();
-//                        event.originalEvent.preventDefault();
-//
-//                        window.clearTimeout( that.touchTimeout );
-//                        that.touchTimeout = window.setTimeout( function(){
-//                            that._allowTouch = true;
-//                        }, 300 );
-//
-//                        if(that._scaling) {
-//                            //that.pinchEnd(event);
-//                            that._scaling = false;
-//                            return;
-//                        }
-//
-//                        that.up();
-                    });
-
-                    $(document).bind('touchcancel', function(event) {
-
-                        event.preventDefault();
-                        //event.originalEvent.preventDefault();
-                    });
-
-                    configModel.getConfig().then( function(){
-
-                        that.config = configModel.data;
-                        that.gridBoxes = gridModel.gridBoxes;
-
-                        tileModel.getTiles().then( function(result){
-                            that.imageTiles = result;
-
-                        });
-
-                    });
-
-                },
 
                 touchGesture: function(e)
                 {
-                    trace('--touchGesture')
                     this.down(e.gesture.center);
                 },
 
@@ -227,7 +146,6 @@
                     this.mouseDownY = e.pageY;
                     this.mouseX = e.pageX;
                     this.mouseY = e.pageY;
-
 
                     this.canIntro = false;
 
@@ -259,10 +177,6 @@
 
                 handleDrag: function( $event )
                 {
-
-                    console.log('move')
-
-
                     this.mouseX = $event.gesture.center.pageX;
                     this.mouseY = $event.gesture.center.pageY;
 
@@ -285,18 +199,17 @@
                     if( this._mouseDown && ! this._flickingX  )
                     {
                         this._dragging = true;
-                        this.offsetX += this.dx * ( 3 * ( this.zoomMax +.1  - touchService.zoom) );
+                        this.offsetX += this.dx * ( 3 * ( fscapeService.zoomMax +.1  - fscapeService.zoom) );
 
                         this.setCSSPosition();
                     }
                     if( this._mouseDown && ! this._flickingY  )
                     {
                         this._dragging = true;
-                        this.offsetY += this.dy* ( 3 *  ( this.zoomMax +.1  - touchService.zoom) );
+                        this.offsetY += this.dy* ( 3 *  ( fscapeService.zoomMax +.1  - fscapeService.zoom) );
 
                         this.setCSSPosition();
                     }
-
 
                     // todo: refactor so service keeps track of offset
                     this.mousePreviousX = this.mouseX;
@@ -326,14 +239,12 @@
                     this._mouseDown = false;
                     this._dragging = false;
 
-
                     this.flick();
-
                 },
+
 
                 flick: function()
                 {
-
                     var that = this;
 
                     var dTime  = ( this.endDragTime - this.startDragTime);

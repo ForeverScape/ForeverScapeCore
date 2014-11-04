@@ -81,9 +81,29 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "         hm-dragend=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
     "\n" +
+    "         hm-touch=\"fscapeEngineCtrl.touchGesture($event)\"\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "         ng-mouseleave=\"touchService.mouseUp($event)\"\r" +
+    "\n" +
+    "         ng-mousedown=\"touchService.mouseDown($event)\"\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "         hm-drag=\"touchService.handleDrag($event)\"\r" +
+    "\n" +
+    "         hm-dragend=\"touchService.mouseUp($event)\"\r" +
+    "\n" +
     "         hm-pinch=\"touchService.handlePinch($event)\"\r" +
     "\n" +
-    "         hm-touch=\"fscapeEngineCtrl.touchGesture($event)\">\r" +
+    "         hm-touch=\"touchService.touchGesture($event)\"\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "         >\r" +
     "\n" +
     "\r" +
     "\n" +

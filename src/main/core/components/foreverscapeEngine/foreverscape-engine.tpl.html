@@ -17,8 +17,18 @@
 
          hm-drag="fscapeEngineCtrl.handleDrag($event)"
          hm-dragend="fscapeEngineCtrl.mouseUp($event)"
+         hm-touch="fscapeEngineCtrl.touchGesture($event)"
+
+
+         ng-mouseleave="touchService.mouseUp($event)"
+         ng-mousedown="touchService.mouseDown($event)"
+
+         hm-drag="touchService.handleDrag($event)"
+         hm-dragend="touchService.mouseUp($event)"
          hm-pinch="touchService.handlePinch($event)"
-         hm-touch="fscapeEngineCtrl.touchGesture($event)">
+         hm-touch="touchService.touchGesture($event)"
+
+         >
 
         <div class="engine-scale">
 
