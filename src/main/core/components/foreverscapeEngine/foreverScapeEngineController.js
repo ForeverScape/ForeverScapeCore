@@ -80,11 +80,6 @@
                 endCoords:{},
                 startCoords:{},
 
-                is_touch_device: false,
-
-
-
-
                 onInit: function( ) {
                     var that = this;
 
@@ -124,8 +119,6 @@
 
                     var that = this;
 
-                    that.is_touch_device = 'ontouchstart' in document.documentElement || 'ontouchstart' in window;
-
                     $(document).bind('gesturestart', function(e) {
                         e.originalEvent.preventDefault();
                     }, false);
@@ -137,70 +130,70 @@
                     $(document).bind('touchstart', function(event) {
 
                         event.preventDefault();
-                        event.originalEvent.preventDefault();
-
-                        if( event.originalEvent.touches.length === 2 ||
-                            event.originalEvent.targetTouches.length ===2 ) {
-
-                            that._scaling = true;
-                            //that.pinchStart(event);
-                            return;
-                        }
-
-                        if( !that._allowTouch )
-                        {
-                            return;
-                        }
-                        that._allowTouch = false;
-
-                        that.mouseDownX = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
-                        that.mouseDownY = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-
-                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
-                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-
-                        that.down();
+//                        event.originalEvent.preventDefault();
+//
+//                        if( event.originalEvent.touches.length === 2 ||
+//                            event.originalEvent.targetTouches.length ===2 ) {
+//
+//                            that._scaling = true;
+//                            //that.pinchStart(event);
+//                            return;
+//                        }
+//
+//                        if( !that._allowTouch )
+//                        {
+//                            return;
+//                        }
+//                        that._allowTouch = false;
+//
+//                        that.mouseDownX = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
+//                        that.mouseDownY = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
+//
+//                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
+//                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
+//
+//                        that.down();
                     });
-
+4
                     $(document).bind('touchmove', function(event) {
 
                         event.preventDefault();
-                        event.originalEvent.preventDefault();
-
-                        if(that._scaling) {
-                            //that.pinchMove(event);
-                            return;
-                        }
-
-                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
-                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
-
-                        that.move();
+//                        event.originalEvent.preventDefault();
+//
+//                        if(that._scaling) {
+//                            //that.pinchMove(event);
+//                            return;
+//                        }
+//
+//                        that.mouseX  = event.originalEvent.targetTouches[0].pageX || event.originalEvent.changedTouches[0].pageX || event.originalEvent.touches[0].pageX ;
+//                        that.mouseY  = event.originalEvent.targetTouches[0].pageY || event.originalEvent.changedTouches[0].pageY || event.originalEvent.touches[0].pageY ;
+//
+//                        that.move();
                     });
 
                     $(document).bind('touchend', function(event) {
 
                         event.preventDefault();
-                        event.originalEvent.preventDefault();
-
-                        window.clearTimeout( that.touchTimeout );
-                        that.touchTimeout = window.setTimeout( function(){
-                            that._allowTouch = true;
-                        }, 300 );
-
-                        if(that._scaling) {
-                            //that.pinchEnd(event);
-                            that._scaling = false;
-                            return;
-                        }
-
-                        that.up();
+//                        event.originalEvent.preventDefault();
+//
+//                        window.clearTimeout( that.touchTimeout );
+//                        that.touchTimeout = window.setTimeout( function(){
+//                            that._allowTouch = true;
+//                        }, 300 );
+//
+//                        if(that._scaling) {
+//                            //that.pinchEnd(event);
+//                            that._scaling = false;
+//                            return;
+//                        }
+//
+//                        that.up();
                     });
 
                     $(document).bind('touchcancel', function(event) {
 
                         event.preventDefault();
-                        event.originalEvent.preventDefault();
+                        //event.originalEvent.preventDefault();
                     });
 
                     configModel.getConfig().then( function(){
@@ -225,8 +218,7 @@
 
                 mouseDown: function($event)
                 {
-                    //$event.preventDefault();
-                    //this.down($event);
+                    $event.preventDefault();
                 },
 
                 down:function(e)
@@ -265,17 +257,21 @@
 
                 },
 
+                handleDrag: function( $event )
+                {
+
+                    console.log('move')
+
+
+                    this.mouseX = $event.gesture.center.pageX;
+                    this.mouseY = $event.gesture.center.pageY;
+
+                    this.move();
+                },
+
                 mouseMove: function( $event )
                 {
                     $event.preventDefault();
-
-                    if( this.is_touch_device )
-                        return;
-
-                    this.mouseX = $event.pageX;
-                    this.mouseY = $event.pageY;
-
-                    this.move();
                 },
 
                 move: function()
@@ -319,9 +315,6 @@
                 mouseUp: function($event)
                 {
                     $event.preventDefault();
-
-                    if( this.is_touch_device )
-                        return;
 
                     this.up();
 
