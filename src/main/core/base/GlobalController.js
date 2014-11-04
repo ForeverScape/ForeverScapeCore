@@ -2,7 +2,7 @@
 
     'use strict';
     angular.module('FScapeApp.Controllers').controller('GlobalController',
-        function($scope, settings, BaseController,$rootScope,ErrorModal, SuccessModal, globalModelService) {
+        function($scope, settings, BaseController,$rootScope,ErrorModal, SuccessModal) {
 
             var c = {
                 onInit: function() {
@@ -11,9 +11,6 @@
 
                     app.$globalScope = this.$scope;
                     app.settings = settings;
-
-                    globalModelService.setSuccessCallback( this.showSuccess );
-
                     $rootScope.$on( 'serverError', this.showError.bind(this) );
                 },
 
