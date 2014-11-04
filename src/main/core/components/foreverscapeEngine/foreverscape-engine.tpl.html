@@ -1,6 +1,6 @@
 <div class="foreverscape-engine-wrapper">
 
-    <div class="hud">
+   <!-- <div class="hud">
 
         time: {{ fscapeEngineCtrl.time| number:0 }}<br/>
         hasRender: {{ fscapeEngineCtrl.hasRender| number:0 }}<br/>
@@ -8,13 +8,10 @@
         zoom: {{touchService.zoom}}
 
         <div id="trace">Hello</div>
-    </div>
+    </div>-->
 
 
     <div class="engine-frame"
-
-
-
          ng-mouseleave="touchService.mouseUp($event)"
          ng-mousedown="touchService.mouseDown($event)"
 
@@ -22,7 +19,6 @@
          hm-dragend="touchService.mouseUp($event)"
          hm-pinch="touchService.handlePinch($event)"
          hm-touch="touchService.touchGesture($event)"
-
          >
 
         <div class="engine-scale">
@@ -31,34 +27,6 @@
 
 
 <!--
-
-
- ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
-         ng-mousedown="fscapeEngineCtrl.mouseDown($event)"
-
-         hm-drag="fscapeEngineCtrl.handleDrag($event)"
-         hm-dragend="fscapeEngineCtrl.mouseUp($event)"
-         hm-touch="fscapeEngineCtrl.touchGesture($event)"
-
-
-         ng-mouseup="fscapeEngineCtrl.mouseUp($event)"
-         ng-mousemove="fscapeEngineCtrl.mouseMove($event)"
-
-                <div id="{{gridBox.domId}}" ng-style="{left:gridBox.x, top:gridBox.y, width: gridBox.width, height:gridBox.height }" class="grid-box" ng-repeat="(index,gridBox) in fscapeEngineCtrl.gridBoxes">
-
-
-
-                   <img class="full" id="full-{{gridBox.domId}}"  ng-style="{width:gridBox.width, height: gridBox.height}"/>
-
-                   <img class="thumb" image-onload numeric-id="{{gridBox.currentTile.id}}" id="thumb-{{gridBox.domId}}" ng-src="{{gridBox.currentTile.thumbUrl}}" />
-
-<div class="grid-info">
-    Page {{gridBox.id}}<br/>
-    {{gridBox.currentTile.name }}<br/>
-    {{gridBox.isOnScreen}}
-</div>
-
-                </div>
 
 
 -->

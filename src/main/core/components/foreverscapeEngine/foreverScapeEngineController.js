@@ -77,7 +77,7 @@
 
 
                     $rootScope.$on( 'fscape.setPosition', function(){
-                        console.log( 'setting position',  fscapeService.offsetX,  fscapeService.offsetY);
+
                         $('.engine-position').css({
                             'left': fscapeService.offsetX,
                             'top':fscapeService.offsetY
@@ -249,7 +249,7 @@
                         }
                     }
 
-                },
+                }, 
 
 
                 loadFullResTiles: function(gb){

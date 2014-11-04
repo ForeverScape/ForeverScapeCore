@@ -28,7 +28,7 @@ app.config( function($routeProvider ) {
             .when('/test', {
                 templateUrl: 'main/app/pages/testbed/testbed.tpl.html'
             }).when('/', {
-                templateUrl: 'main/website/pages/home/home.tpl.html'
+                templateUrl: 'main/app/pages/home/home.tpl.html'
             });
 
     }
