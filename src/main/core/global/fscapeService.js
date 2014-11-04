@@ -15,6 +15,9 @@
                 zoomMax: 1.6, //these might get bumped up if window size is really big
                 zoomMin:.45,   //these might get bumped up if window size is really big
 
+                dx: 0,
+                dy: 0,
+
                 init: function()
                 {
                     this.isPlaying = false;
@@ -26,19 +29,30 @@
                     $rootScope.$broadcast('fscape.togglePlayback');
                 },
 
-                setOffsetX: function( val )
+                setDx: function(dx)
                 {
-                    this.offsetX = val;
+                    this.dx = dx;
+                },
+                setDy: function(dy)
+                {
+                    this.dy = dy;
                 },
 
-                setOffsetY: function( val )
+                setOffsetX: function( x )
                 {
-                    this.offsetY = val;
+                    this.offsetX = x;
+                    $rootScope.$broadcast('fscape.setPosition');
+                },
+
+                setOffsetY: function( y )
+                {
+                    this.offsetY = y;
+                    $rootScope.$broadcast('fscape.setPosition');
                 },
 
                 setZoom: function (val){
                     this.zoom = val;
-                    $rootScope.$broadcast('setZoom');
+                    $rootScope.$broadcast('fscape.setZoom');
                 }
 
             };

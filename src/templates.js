@@ -71,17 +71,7 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\n" +
     "    <div class=\"engine-frame\"\r" +
     "\n" +
-    "         ng-mouseleave=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
-    "\n" +
-    "         ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\"\r" +
-    "\n" +
     "\r" +
-    "\n" +
-    "         hm-drag=\"fscapeEngineCtrl.handleDrag($event)\"\r" +
-    "\n" +
-    "         hm-dragend=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
-    "\n" +
-    "         hm-touch=\"fscapeEngineCtrl.touchGesture($event)\"\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -118,6 +108,24 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
     "\r" +
     "\n" +
     "<!--\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    " ng-mouseleave=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
+    "\n" +
+    "         ng-mousedown=\"fscapeEngineCtrl.mouseDown($event)\"\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "         hm-drag=\"fscapeEngineCtrl.handleDrag($event)\"\r" +
+    "\n" +
+    "         hm-dragend=\"fscapeEngineCtrl.mouseUp($event)\"\r" +
+    "\n" +
+    "         hm-touch=\"fscapeEngineCtrl.touchGesture($event)\"\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +

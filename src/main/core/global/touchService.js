@@ -25,8 +25,8 @@
                 zoom:.5,
 
 
-                positionX: 0,
-                positionY: 0,
+                offsetX: 0,
+                offsetY: -300,
 
 
                 hasInit: false,
@@ -51,6 +51,10 @@
                 flickTweenY: null,
                 zoomTween:null,
                 prevPinchDist: 0,
+
+
+
+                canIntro: true,
 
 
                 init: function(){
@@ -88,8 +92,23 @@
                     angular.element( $window).bind( 'resize', this.onResize);
                     angular.element( $window).bind('orientationchange', this.onResize);
 
-                    this.onResize();
+                    setTimeout( function(){
+                        if( that.canIntro )
+                        {
+                            that.offsetX = 0;
+                            TweenMax.to( that,3,
+                                {
+                                    offsetX:-900,
+                                    onUpdate: function(){
+                                        fscapeService.setOffsetX(that.offsetX )
+                                    }
+                                });
+                        }
+                    }, 1000 );
 
+
+
+                    this.onResize();
                     this.blockDefaults();
 
                 },
@@ -132,6 +151,7 @@
 
                 touchGesture: function(e)
                 {
+                    console.log('touchGesture');
                     this.down(e.gesture.center);
                 },
 
@@ -214,6 +234,9 @@
                         this.setPosition();
                     }
 
+                    fscapeService.setDx( this.dx );
+                    fscapeService.setDy( this.dy )
+
                     // todo: refactor so service keeps track of offset
                     this.mousePreviousX = this.mouseX;
                     this.mousePreviousY = this.mouseY;
@@ -245,6 +268,8 @@
                 flick: function()
                 {
                     var that = this;
+
+                    console.log('flick');
 
                     var dTime  = ( this.endDragTime - this.startDragTime);
 

@@ -27,42 +27,9 @@
 
                 zoom:.36,
 
-
-                // TODO:
-
-                /*
-                    big todos:
-                       - move coordinates to service
-                       - all mouse events to own service
-                 */
-
-
                 offsetX: 0,
                 offsetY: -300,
                 time: 0,
-
-                canIntro: true,
-
-                //drag flick
-                mouseDownX: null,
-                mouseDownY: null,
-                mouseX: null,
-                mouseY:null,
-                mousePreviousX:0,
-                mousePreviousY:0,
-                dx: 0,
-                dy: 0,
-                startDragTime: new Date(),
-                endDragTime: new Date(),
-                _mouseDown: false,
-                _dragging: false,
-                _flickingX: false,
-                _flickingY: false,
-                _scaling:false,
-                flickTweenX:null,
-                flickTweenY: null,
-                zoomTween:null,
-                prevPinchDist: 0,
 
                 offscreenLeft: -1004,
                 offscreenRight: 200000,
@@ -104,186 +71,20 @@
 
                     });
 
-                    $rootScope.$on( 'setZoom', function(){
-                        $('.engine-scale').css('transform', 'scale(' +touchService.zoom + ')');
+                    $rootScope.$on( 'fscape.setZoom', function(){
+                        $('.engine-scale').css('transform', 'scale(' +fscapeService.zoom + ')');
                     });
 
-                    setTimeout( function(){
-                        if( that.canIntro )
-                        {
-                            that.offsetX -= 900;;
-                            TweenMax.to( $('.engine-position'),3,
-                            {
-                                css:{left:that.offsetX, top:that.offsetY},
-                                onUpdate: function(){
-                                    $scope.$apply();
-                                }
-                            });
-                        }
-                    }, 1000 );
 
-
-
-
+                    $rootScope.$on( 'fscape.setPosition', function(){
+                        console.log( 'setting position',  fscapeService.offsetX,  fscapeService.offsetY);
+                        $('.engine-position').css({
+                            'left': fscapeService.offsetX,
+                            'top':fscapeService.offsetY
+                        });
+                    });
 
                     $('.preload-junk').html('');
-                },
-
-
-                touchGesture: function(e)
-                {
-                    this.down(e.gesture.center);
-                },
-
-                mouseDown: function($event)
-                {
-                    $event.preventDefault();
-                },
-
-                down:function(e)
-                {
-                    this.mouseDownX = e.pageX;
-                    this.mouseDownY = e.pageY;
-                    this.mouseX = e.pageX;
-                    this.mouseY = e.pageY;
-
-                    this.canIntro = false;
-
-                    this.startDragTime = new Date();
-
-                    this.mousePreviousX = this.mouseX;
-                    this.mousePreviousY = this.mouseY;
-
-
-                    this._mouseDown = true;
-                    this._flickingX = false;
-                    this._flickingY = false;
-
-                    this.dx = 0;
-                    this.dy = 0;
-
-                    if( this.flickTweenX )
-                    {
-                        this.offsetX = parseInt( $('.engine-position').css('left'), 10 );
-                        this.flickTweenX.kill();
-                    }
-                    if( this.flickTweenY)
-                    {
-                        this.offsetY = parseInt( $('.engine-position').css('top'), 10 );
-                        this.flickTweenY.kill();
-                    }
-
-                },
-
-                handleDrag: function( $event )
-                {
-                    this.mouseX = $event.gesture.center.pageX;
-                    this.mouseY = $event.gesture.center.pageY;
-
-                    this.move();
-                },
-
-                mouseMove: function( $event )
-                {
-                    $event.preventDefault();
-                },
-
-                move: function()
-                {
-                    this.endDragTime = new Date();
-
-
-                    this.dx = this.mouseX  - this.mousePreviousX;
-                    this.dy = this.mouseY  - this.mousePreviousY;
-
-                    if( this._mouseDown && ! this._flickingX  )
-                    {
-                        this._dragging = true;
-                        this.offsetX += this.dx * ( 3 * ( fscapeService.zoomMax +.1  - fscapeService.zoom) );
-
-                        this.setCSSPosition();
-                    }
-                    if( this._mouseDown && ! this._flickingY  )
-                    {
-                        this._dragging = true;
-                        this.offsetY += this.dy* ( 3 *  ( fscapeService.zoomMax +.1  - fscapeService.zoom) );
-
-                        this.setCSSPosition();
-                    }
-
-                    // todo: refactor so service keeps track of offset
-                    this.mousePreviousX = this.mouseX;
-                    this.mousePreviousY = this.mouseY;
-                },
-
-                // working on abstracting this out, yay!!
-                setCSSPosition: function(){
-                    $('.engine-position').css(
-                        {
-                            'left':this.offsetX,
-                            'top': this.offsetY
-                        });
-                },
-
-                mouseUp: function($event)
-                {
-                    $event.preventDefault();
-
-                    this.up();
-
-                },
-
-                up: function()
-                {
-                    this.endDragTime = new Date();
-                    this._mouseDown = false;
-                    this._dragging = false;
-
-                    this.flick();
-                },
-
-
-                flick: function()
-                {
-                    var that = this;
-
-                    var dTime  = ( this.endDragTime - this.startDragTime);
-
-                    if( dTime === 0 )
-                        return;
-
-                    var velX = this.dx / dTime;
-                    var velY = this.dy / dTime;
-
-                    //flick
-                    if( ! this._flickingX && Math.abs( velX ) > .15 || Math.abs( velY ) > .15)
-                    {
-
-                        this._flickingX = true;
-                        this.offsetX +=  3000 * velX;
-                        this.flickTweenX = TweenMax.to( $('.engine-position'), 1,
-                            {
-                                css:{left:that.offsetX},
-                                onComplete: function(){
-                                    that._flickingX = false;
-                                    $scope.$apply();
-                                }
-                            });
-                    }
-                    if( ! this._flickingY &&Math.abs( velX ) > .15 || Math.abs( velY ) > .15 )
-                    {
-
-                        this._flickingY= true;
-                        this.offsetY +=  3000 * velY;
-                        this.flickTweenY = TweenMax.to( $('.engine-position'), 1,
-                            {
-                                css:{top:that.offsetY},
-                                onComplete: function(){
-                                    that._flickingY = false;
-                                    $scope.$apply();
-                                }
-                            });
-                    }
                 },
 
 
@@ -351,17 +152,17 @@
 
                     if( fscapeService.isPlaying )
                     {
-                        this.offsetX += 10;
+                        fscapeService.offsetX += 10;
                     }
 
 
-                    var loadBoundaryOffsetX =  (this.config.tileWidth * 4 * touchService.zoom );
+                    var loadBoundaryOffsetX =  (this.config.tileWidth * 4 * fscapeService.zoom );
                     this.offscreenLeft = 100 - loadBoundaryOffsetX;
-                    this.offscreenRight = (16 * this.config.tileWidth * touchService.zoom) - loadBoundaryOffsetX;
+                    this.offscreenRight = (16 * this.config.tileWidth * fscapeService.zoom) - loadBoundaryOffsetX;
 
-                    var loadBoundaryOffsetY =  (this.config.tileHeight * 4 * touchService.zoom );
+                    var loadBoundaryOffsetY =  (this.config.tileHeight * 4 * fscapeService.zoom );
                     this.offscreenTop = 50 - loadBoundaryOffsetY;
-                    this.offscreenBottom = (touchService.zoom * 11 * this.config.tileHeight )- loadBoundaryOffsetY;
+                    this.offscreenBottom = (fscapeService.zoom * 11 * this.config.tileHeight )- loadBoundaryOffsetY;
 
                     for( var i = 0; i < this.gridBoxes.length;i++)
                     {
@@ -390,9 +191,8 @@
                 // long function, but a lot is needed to see if it should load or not
                 setIsOffscreen: function( gb)
                 {
-
-                    var isOffscreenLeft = gb.screenX < this.offscreenLeft && this.dx < 0;
-                    var isOffscreenRight = gb.screenX >= this.offscreenRight && this.dx > 0;
+                    var isOffscreenLeft = gb.screenX < this.offscreenLeft && fscapeService.dx < 0;
+                    var isOffscreenRight = gb.screenX >= this.offscreenRight && fscapeService.dx > 0;
 
                     if( isOffscreenLeft)
                     {
@@ -407,19 +207,16 @@
                         gb.row -= 3;
                     }
 
-
                     var isOffscreenTop = gb.screenY < this.offscreenTop;
                     var isOffscreenBottom = gb.screenY > this.offscreenBottom;
 
-
                     // grid has moved above the top or bottom threshold, increment the image index
-                    if( isOffscreenTop && this.dy < 0 )
+                    if( isOffscreenTop && fscapeService.dy < 0 )
                     {
-
                         gb.currentTileId += 50;
                         gb.row += 10;
 
-                    } else if ( isOffscreenBottom && this.dy > 0)
+                    } else if ( isOffscreenBottom && fscapeService.dy > 0)
                     {
                         gb.currentTileId -= 50;
                         gb.row -= 10;
@@ -460,12 +257,12 @@
 
 
                     // see if the image is in bounds of the screen and show the high resolution if zoomed in enough
-                    if( touchService.zoom > .36 && ! this._dragging && ! this._flickingX && ! this._flickingY )
+                    if( fscapeService.zoom > .36 && ! this._dragging && ! touchService._flickingX && ! touchService._flickingY )
                     {
-                        var isOnLeft = gb.screenX  > - ( this.config.tileWidth * touchService.zoom);
+                        var isOnLeft = gb.screenX  > - ( this.config.tileWidth * fscapeService.zoom);
                         var isOnRight = gb.screenX < window.innerWidth;
-                        var isOnTop = gb.screenY > - ( this.config.tileHeight * touchService.zoom) ;
-                        var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight *touchService.zoom) ;
+                        var isOnTop = gb.screenY > - ( this.config.tileHeight * fscapeService.zoom) ;
+                        var isOnBottom = gb.screenY < window.innerHeight + ( this.config.tileHeight *fscapeService.zoom) ;
 
                         if( (isOnLeft && isOnRight) && isOnTop && isOnBottom && ! gb.isOnScreen )
                         {

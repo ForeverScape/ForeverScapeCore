@@ -12,12 +12,7 @@
 
 
     <div class="engine-frame"
-         ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
-         ng-mousedown="fscapeEngineCtrl.mouseDown($event)"
 
-         hm-drag="fscapeEngineCtrl.handleDrag($event)"
-         hm-dragend="fscapeEngineCtrl.mouseUp($event)"
-         hm-touch="fscapeEngineCtrl.touchGesture($event)"
 
 
          ng-mouseleave="touchService.mouseUp($event)"
@@ -36,6 +31,15 @@
 
 
 <!--
+
+
+ ng-mouseleave="fscapeEngineCtrl.mouseUp($event)"
+         ng-mousedown="fscapeEngineCtrl.mouseDown($event)"
+
+         hm-drag="fscapeEngineCtrl.handleDrag($event)"
+         hm-dragend="fscapeEngineCtrl.mouseUp($event)"
+         hm-touch="fscapeEngineCtrl.touchGesture($event)"
+
 
          ng-mouseup="fscapeEngineCtrl.mouseUp($event)"
          ng-mousemove="fscapeEngineCtrl.mouseMove($event)"
