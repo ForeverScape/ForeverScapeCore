@@ -2,7 +2,9 @@
     'use strict';
 
     angular.module('FScapeApp.Controllers').controller('navController',
-        function($scope, BaseController,$location,$window) {
+        function($scope, BaseController,$location,$window, $timeout) {
+
+            $scope.showMenu = false;
 
             var c = {
 
@@ -11,21 +13,22 @@
 
                 onInit: function( ) {
 
+                    var that = this;
                     $scope.win = $window;
 
                     angular.element( $window).bind( 'resize', this.onResize);
                     angular.element( $window).bind('orientationchange', this.onResize);
 
-                    this.onResize();
+                    $timeout( function(){
+                        that.onResize();
+                    }, 1000, false  );
+
                 },
 
                 onResize: function()
                 {
                     $scope.windowWidth  = $window.innerWidth;
                     $scope.windowHeight = $window.innerHeight;
-
-
-
 
                     // angular reacts too slow, so i'm doing this classic style
                     // it does not always digest on window size change
@@ -50,7 +53,6 @@
                                 {
                                     css:{top:'-4px', scale:.7, left:'1px'}
                                 });
-
                         } else {
 
                             TweenMax.to( $('.header-container'), 1,
@@ -66,6 +68,11 @@
                                     css:{top:'0px', scale:1,left:'1px'}
                                 });
                         }
+
+                        TweenMax.to( $('.dropdown-menu'), 1,
+                            {
+                                css:{top:'40px'}
+                            });
 
                     } else {
                         jQuery('.navigation').show();
@@ -84,7 +91,10 @@
                             {
                                 css:{scale:1, right:'0px'}
                             });
-
+                        TweenMax.to( $('.dropdown-menu'), 1,
+                            {
+                                css:{top:'65px'}
+                            });
                     }
 
                 },

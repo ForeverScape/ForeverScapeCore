@@ -174,62 +174,71 @@ angular.module('FScapeApp.Services').run(['$templateCache', function($templateCa
   );
 
 
+  $templateCache.put('main/core/components/nav/menu.html',
+    "<div>\r" +
+    "\n" +
+    "    <ul>\r" +
+    "\n" +
+    "        <li>\r" +
+    "\n" +
+    "            <a href=\"http://foreverscape.com/about\"><b>L</b>earn</a>\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "        <li>\r" +
+    "\n" +
+    "            <a href=\"https://foreverscape.com/shop/index.php\"><b>S</b>hop</a>\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "        <li>\r" +
+    "\n" +
+    "            <a href=\"https://foreverscape.com/shop/index.php\"><b>D</b>iscover</a>\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "        <li>\r" +
+    "\n" +
+    "            <a href=\"http://www.foreverscape.com/videos/\"><b>V</b>ideo</a>\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "        <li>\r" +
+    "\n" +
+    "            <a href=\"https://github.com/vance/ForeverScapeCore\"><b>S</b>ourcecode</a>\r" +
+    "\n" +
+    "        </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </ul>\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('main/core/components/nav/navigation.html',
     "<nav class=\"header-container\" ng-controller=\"navController as navCtrl\" ng-hide=\"navCtrl.hide\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "    <span class=\"menu\" ng-click=\"showMenu=true\">\r" +
-    "\n" +
-    "        <div ng-show=\"showMenu\">HelloMenu</div>\r" +
-    "\n" +
-    "    </span>\r" +
-    "\n" +
-    "\r" +
+    "    <!-- righthand title -->\r" +
     "\n" +
     "    <div class=\"title\"></div>\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "    <div class=\"navigation\">\r" +
-    "\n" +
-    "        <ul >\r" +
-    "\n" +
-    "            <li >\r" +
-    "\n" +
-    "                <a href=\"http://foreverscape.com/about\"><b>L</b>earn</a>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "            <li >\r" +
-    "\n" +
-    "                <a href=\"https://foreverscape.com/shop/index.php\"><b>S</b>hop</a>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "            <li>\r" +
-    "\n" +
-    "                <a href=\"https://foreverscape.com/shop/index.php\"><b>D</b>iscover</a>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "            <li >\r" +
-    "\n" +
-    "                <a href=\"http://www.foreverscape.com/videos/\"><b>V</b>ideo</a>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "            <li >\r" +
-    "\n" +
-    "                <a href=\"https://github.com/vance/ForeverScapeCore\"><b>S</b>ourcecode</a>\r" +
-    "\n" +
-    "            </li>\r" +
+    "    <main-menu class=\"navigation\"></main-menu>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        </ul>\r" +
+    "\r" +
+    "\n" +
+    "    <!-- dropdown -->\r" +
+    "\n" +
+    "    <span class=\"menu\" hm-touch=\"showMenu=!showMenu\"></span>\r" +
+    "\n" +
+    "    <div class=\"dropdown-menu\" ng-show=\"showMenu\">\r" +
+    "\n" +
+    "        <main-menu class=\"vertical-menu\"></main-menu>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +

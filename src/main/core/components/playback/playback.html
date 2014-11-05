@@ -1,0 +1,6 @@
+<div class="playback" ng-controller="playbackController as playbackCtrl">
+
+    <div class="play" alt="play" ng-click="fscapeService.togglePlayback($event)" ng-show="!fscapeService.isPlaying"></div>
+    <div class="pause" alt="pause"  ng-click="fscapeService.togglePlayback($event)"  ng-show="fscapeService.isPlaying"></div>
+
+</div>

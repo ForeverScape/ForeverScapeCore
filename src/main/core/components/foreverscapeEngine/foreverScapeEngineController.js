@@ -177,7 +177,6 @@
                         this.setIsOffscreen(gb);
 
                         this.loadFullResTiles(gb);
-
                     }
 
                 },

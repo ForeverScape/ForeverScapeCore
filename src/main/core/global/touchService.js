@@ -47,6 +47,7 @@
                 _flickingX: false,
                 _flickingY: false,
                 _scaling:false,
+                _preventMove:false,
                 flickTweenX:null,
                 flickTweenY: null,
                 zoomTween:null,
@@ -98,13 +99,11 @@
                             fscapeService.setOffsetY(that.offsetY );
                             TweenMax.to( that,3,
                                 {
-                                    offsetX:-1900,
+                                    offsetX:-2200,
                                     offsetY:-1200,
                                     onUpdate: function(){
-                                        console.log( that.offsetY)
                                         fscapeService.setOffsetX(that.offsetX );
                                         fscapeService.setOffsetY(that.offsetY );
-
                                     }
                                 });
                         }
@@ -146,7 +145,7 @@
 
                 onResize: function()
                 {
-                    fscapeService.zoomMin = (window.innerWidth / 6000) + .2;
+                    fscapeService.zoomMin = ((window.innerWidth -200 ) / 6000) + .15;
                 },
 
 
@@ -216,6 +215,11 @@
 
                 move: function()
                 {
+                    if( this._preventMove === true)
+                    {
+                        return;
+                    }
+
                     this.endDragTime = new Date();
 
 
@@ -263,6 +267,7 @@
                     this.endDragTime = new Date();
                     this._mouseDown = false;
                     this._dragging = false;
+                    this._preventMove = false;
 
                     this.flick();
                 },
@@ -326,6 +331,8 @@
                 handlePinch: function(e)
                 {
                     var pinchScale = e.gesture.scale;
+
+                    this._preventMove = true;
 
                     if(pinchScale > 1)
                     {

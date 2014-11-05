@@ -1,0 +1,20 @@
+.playback {
+
+  margin-left: 10px;
+  margin-top:3px;
+
+  .play {
+    /*@include sprite-dimensions($sprites, icon-alert-orange);*/
+    width:24px;
+    height:24px;
+    @include sprites-generate(play);
+  }
+
+  .pause {
+    width:24px;
+    height:24px;
+    /*@include sprite-dimensions($sprites, icon-alert-orange);*/
+    @include sprites-generate(pause);
+  }
+
+}

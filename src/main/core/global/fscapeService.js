@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('FScapeApp.Services').factory('fscapeService',
-        function($location, $cookies, $rootScope) {
+        function($location, $rootScope) {
 
             return {
 

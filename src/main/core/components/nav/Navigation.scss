@@ -9,6 +9,21 @@ nav {
   color:#fff;
   background-color:rgba(0,0,0,.75);
 
+  .dropdown-menu {
+    background-color:rgba(0,0,0,.75);
+    border: 1px;
+    width:260px;
+    position:absolute;
+    top: 75px;
+    left:0px;
+
+    .vertical-menu {
+      font-size: 18px;
+      line-height: 34px;
+    }
+
+  }
+
 
   a:link, a:visited {
     text-decoration: none;

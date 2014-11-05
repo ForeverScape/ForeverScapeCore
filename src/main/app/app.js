@@ -9,8 +9,6 @@ angular.module('FScapeApp.Providers', ['ngRoute', 'ngResource', 'appSettings']);
 
 
 var app = angular.module('FScapeApp', [
-    'ngTouch',
-    'ngCookies',
     'FScapeApp.Modals',
     'FScapeApp.Models',
     'FScapeApp.Controllers',
